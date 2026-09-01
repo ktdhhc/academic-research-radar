@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-01",
+  "updatedAt": "2026-09-01 08:00 CST",
+  "edition": "NO. 002 · LATEST EDITION",
+  "title": "Agent 系统的三条进化线",
+  "subtitle": "今天的三篇研究分别落在记忆、执行与评估三个层面。它们共同指向一个变化：Agent 的竞争正在从单次回答质量，转向长期运行中的系统能力。",
+  "readingMinutes": 9,
+  "summary": [
+    {
+      "paperId": "agentic-memory",
+      "headline": "记忆开始成为 Agent 自己可以操作的行动空间",
+      "takeaway": "AgeMem 将存、取、改、删与总结统一成工具动作，并用强化学习训练 Agent 自主决定何时使用它们。"
+    },
+    {
+      "paperId": "os-symphony",
+      "headline": "计算机操作的鲁棒性来自“教程检索 + 反思记忆”",
+      "takeaway": "OS-Symphony 把实时视觉教程与里程碑式长期记忆组合起来，面向陌生场景和长流程任务。"
+    },
+    {
+      "paperId": "dream",
+      "headline": "评估研究型 Agent，也需要一个会使用工具的 Agent",
+      "takeaway": "DREAM 用可调用工具的评估器检查时效、事实与推理，补足静态评估器的能力缺口。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "agentic-memory",
+      "title": "Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents",
+      "titleZh": "Agentic Memory：学习统一管理大语言模型 Agent 的长期与短期记忆",
+      "type": "研究论文 · arXiv:2601.01885",
+      "authors": "Yi Yu、Liuyi Yao、Yuexiang Xie、Qingquan Tan、Jiaqi Feng、Yaliang Li、Libing Wu",
+      "venue": "ARXIV · 2026",
+      "published": "2026年1月5日",
+      "url": "https://arxiv.org/abs/2601.01885",
+      "topics": ["Agent Memory", "Reinforcement Learning", "Long-horizon Tasks"],
+      "overview": "论文提出 AgeMem，把长期记忆与短期记忆管理直接纳入 Agent 策略。存储、检索、更新、总结和删除不再由外部固定规则控制，而是成为 Agent 可选择的工具动作；训练上采用三阶段渐进式强化学习，并设计逐步 GRPO 来缓解记忆动作带来的稀疏奖励问题。",
+      "recommendation": "它把“记忆模块”重新定义为可学习的行为，而不是外挂数据库。对正在设计长期任务 Agent、上下文压缩或个性化助手的人，这篇论文提供了一个很清晰的系统边界：何时记、记什么、何时忘，都应进入策略层，而不只是工程启发式。"
+    },
+    {
+      "id": "os-symphony",
+      "title": "OS-Symphony: A Holistic Framework for Robust and Generalist Computer-Using Agents",
+      "titleZh": "OS-Symphony：面向鲁棒通用计算机操作 Agent 的整体框架",
+      "type": "长论文 · ACL 2026",
+      "authors": "Bowen Yang、Kaiming Jin、Zhenyu Wu、Zhaoyang Liu、Qiushi Sun、Zehao Li、JingJing Xie 等",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers",
+      "url": "https://aclanthology.org/2026.acl-long.1021/",
+      "topics": ["Computer Use", "Multimodal Agent", "Reflection Memory"],
+      "overview": "OS-Symphony 由一个协调器串联两类关键能力：反思记忆 Agent 通过里程碑驱动的长期记忆支持轨迹级纠错；多功能工具 Agent 则通过多模态搜索器在浏览器沙箱中生成与视觉状态匹配的实时教程。论文报告其在三个在线基准上取得提升，并在 OSWorld 上达到 65.84%。",
+      "recommendation": "它关注的不是“再加一个更强模型”，而是如何让 Harness 在未知网站、视觉上下文丢失和长流程中保持稳定。对 Computer Use 产品而言，实时教程获取与历史视觉上下文的精细裁剪，可能比单纯延长上下文更接近可落地的可靠性方案。"
+    },
+    {
+      "id": "dream",
+      "title": "DREAM: Deep Research Evaluation with Agentic Metrics",
+      "titleZh": "DREAM：使用 Agentic 指标评估深度研究",
+      "type": "长论文 · ACL 2026",
+      "authors": "Elad Ben Avraham、ChangHao Li、Ron Dorfman、Roy Ganz、Oren Nuriel、Amir Dudai、Aviad Aberdam 等",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers",
+      "url": "https://aclanthology.org/2026.acl-long.448/",
+      "topics": ["Deep Research", "Agent Evaluation", "Factuality"],
+      "overview": "DREAM 针对深度研究报告缺少单一标准答案的问题，提出“能力对等”的评估原则：如果被评估系统会检索和使用工具，评估器也应具备同类能力。框架将通用指标与由工具调用 Agent 动态生成的指标结合，检查时效覆盖、事实依据和系统化推理。",
+      "recommendation": "这篇论文击中了研究型 Agent 的真实难点：引用看似对齐、语言看似流畅，并不意味着事实或推理可靠。它适合作为研究报告产品的评测框架参考，尤其适合用于设计回归测试、时效性测试和事实核验流程。"
+    }
+  ],
+  "signal": {
+    "title": "Harness 正在从“固定能力集合”变成“可学习的协作系统”",
+    "body": "把三篇论文放在一起看，记忆、执行与评估正在同时 Agent 化：记忆不再只是被动存取，操作流程不再只靠预写规则，质量检查也不再局限于静态打分。真正的系统优势，越来越来自多个具有不同职责的策略组件如何协作，以及它们能否在长时间运行中持续修正自己。",
+    "note": "这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
+

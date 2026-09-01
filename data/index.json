@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "issues": [
+    {
+      "date": "2026-09-01",
+      "shortTitle": "Agent 系统的三条进化线",
+      "count": 3,
+      "topics": ["Agent Memory", "Computer Use", "Evaluation"],
+      "path": "data/reports/2026-09-01.json"
+    },
+    {
+      "date": "2026-08-31",
+      "shortTitle": "记忆系统从存储走向组织",
+      "count": 3,
+      "topics": ["Agent Memory", "Personalization", "Evaluation"],
+      "path": "data/reports/2026-08-31.json"
+    }
+  ]
+}
+

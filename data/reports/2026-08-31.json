@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-08-31",
+  "updatedAt": "2026-08-31 08:00 CST",
+  "edition": "NO. 001 · ARCHIVE",
+  "title": "记忆系统从存储走向组织",
+  "subtitle": "三篇关于 Agent 记忆的研究，分别讨论动态知识网络、个性化会话记忆，以及当前评估体系为什么仍不够可靠。",
+  "readingMinutes": 8,
+  "summary": [
+    {
+      "paperId": "a-mem",
+      "headline": "新记忆不只是被放进去，还会改变旧记忆的组织方式",
+      "takeaway": "A-MEM 借鉴卡片盒方法，用动态索引和链接构建可演化的记忆网络。"
+    },
+    {
+      "paperId": "memoria",
+      "headline": "短期摘要与长期用户模型可以成为互补的两层记忆",
+      "takeaway": "Memoria 将会话级总结与加权知识图谱结合，面向持续个性化对话。"
+    },
+    {
+      "paperId": "anatomy",
+      "headline": "记忆架构跑得更复杂，不等于评估就更可信",
+      "takeaway": "综述指出基准饱和、指标错位、骨干模型依赖和系统成本仍是关键盲点。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "a-mem",
+      "title": "A-MEM: Agentic Memory for LLM Agents",
+      "titleZh": "A-MEM：面向大语言模型 Agent 的 Agentic Memory",
+      "type": "研究论文 · arXiv:2502.12110",
+      "authors": "Wujiang Xu、Zujie Liang、Kai Mei、Hang Gao、Juntao Tan、Yongfeng Zhang",
+      "venue": "ARXIV · 2025",
+      "published": "2025年2月17日",
+      "url": "https://arxiv.org/abs/2502.12110",
+      "topics": ["Agent Memory", "Zettelkasten", "Knowledge Network"],
+      "overview": "A-MEM 将卡片盒笔记的组织原则引入 Agent 记忆。系统会为新记忆生成上下文、关键词与标签，并分析它与历史记忆的关系，动态建立链接；新信息还可以触发旧记忆的语义表示和属性更新，使整个记忆网络持续演化。",
+      "recommendation": "它提供了一条区别于纯向量检索的路线：记忆价值不仅取决于相似度，还取决于它在网络中的关系与后续演化。对知识型助手和长期项目 Agent，这种组织视角尤其值得参考。"
+    },
+    {
+      "id": "memoria",
+      "title": "Memoria: A Scalable Agentic Memory Framework for Personalized Conversational AI",
+      "titleZh": "Memoria：用于个性化对话式 AI 的可扩展 Agentic Memory 框架",
+      "type": "研究论文 · arXiv:2512.12686",
+      "authors": "Samarth Sarin、Lovepreet Singh、Bhaskarjit Sarmah、Dhagash Mehta",
+      "venue": "ARXIV · 2025",
+      "published": "2025年12月14日",
+      "url": "https://arxiv.org/abs/2512.12686",
+      "topics": ["Personalization", "Knowledge Graph", "Conversation"],
+      "overview": "Memoria 组合两类记忆：动态会话级摘要负责短期连贯，加权知识图谱则持续记录用户特征、偏好与行为关系。框架强调可解释、上下文丰富和渐进更新，希望在有限上下文窗口内实现跨会话的个性化。",
+      "recommendation": "这篇工作的价值在于把“记住一次对话”和“形成长期用户模型”明确拆开。对办公助手、客户服务或个人助理产品，这种双层结构比把所有历史都塞进同一个向量库更容易治理。"
+    },
+    {
+      "id": "anatomy",
+      "title": "Anatomy of Agentic Memory: Taxonomy and Empirical Analysis of Evaluation and System Limitations",
+      "titleZh": "Agentic Memory 解剖：分类体系、实证评估与系统局限",
+      "type": "综述论文 · arXiv:2602.19320",
+      "authors": "Dongming Jiang、Yi Li、Songtao Wei、Jinxin Yang、Ayushi Kishore、Alysa Zhao 等",
+      "venue": "ARXIV · 2026",
+      "published": "2026年2月22日",
+      "url": "https://arxiv.org/abs/2602.19320",
+      "topics": ["Survey", "Benchmark", "System Cost"],
+      "overview": "这篇综述从四类记忆结构出发，同时分析架构与系统层面的限制。作者指出现有基准规模偏小、评价指标与语义效用错位、结果对骨干模型敏感，而且记忆维护带来的延迟与吞吐成本常被忽略。",
+      "recommendation": "当领域快速出现大量新架构时，这类“泼冷水”的系统性综述很重要。它提醒产品团队把准确率之外的成本、稳定性和评估有效性纳入同一张表，否则更复杂的记忆系统可能只是把问题转移到了线上运行阶段。"
+    }
+  ],
+  "signal": {
+    "title": "下一代记忆系统的核心问题，不是容量，而是治理",
+    "body": "今天的研究把记忆从“能存多少”推进到“如何形成结构、如何持续更新、如何证明它真的有用”。随着记忆开始承载个性化和长期行动，删除策略、错误传播、延迟成本与评估可信度，会和检索命中率一样重要。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
+
