@@ -2,6 +2,13 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-02",
+      "shortTitle": "长期状态正在成为 Agent Runtime 的核心资源",
+      "count": 3,
+      "topics": ["Context Management", "Agent Harness", "Office Agent"],
+      "path": "data/reports/2026-09-02.json"
+    },
+    {
       "date": "2026-09-01",
       "shortTitle": "Agent 系统的三条进化线",
       "count": 3,
@@ -17,4 +24,3 @@
     }
   ]
 }
-
