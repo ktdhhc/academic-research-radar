@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "date": "2026-09-02-test",
-  "updatedAt": "2026-09-02 12:39 CST · 临时验收",
-  "edition": "TEST EDITION · VALIDATION",
-  "title": "测试：Harness 本身正在成为可测量的 Agent 能力",
-  "subtitle": "这次额外一期聚焦 Harness 对 Agent 实际能力的影响：同一模型换 Harness 会显著改变 coding 结果，指令在不同 Harness surface 上也并非等价；同时，个性化 GUI Agent 开始把长期用户记录纳入主动协作。",
+  "date": "2026-09-02-extra",
+  "updatedAt": "2026-09-02 12:39 CST · 今日追加",
+  "edition": "EXTRA EDITION · 追加",
+  "title": "追加：Harness 本身正在成为可测量的 Agent 能力",
+  "subtitle": "今天的追加一期聚焦 Harness 对 Agent 实际能力的影响：同一模型换 Harness 会显著改变 coding 结果，指令在不同 Harness surface 上也并非等价；同时，个性化 GUI Agent 开始把长期用户记录纳入主动协作。",
   "readingMinutes": 8,
   "summary": [
     {
@@ -79,6 +79,6 @@
   "signal": {
     "title": "Agent 能力的评测单位正在从模型转向 model + harness + persistent user state",
     "body": "前两篇把 Harness 从隐形工程细节变成可控、可测的实验变量：context policy 会改变 coding 成功率，不同 instruction surface 也会改变规则遵循。PersonalAlign 则把长期用户状态加入执行闭环，说明面向真实工作的 Agent 还必须把“用户是谁、过去怎么做”纳入系统状态。",
-    "note": "这是本次临时验收期基于三篇论文的编辑判断。"
+    "note": "这是今日追加一期基于三篇论文的编辑判断。"
   }
 }
