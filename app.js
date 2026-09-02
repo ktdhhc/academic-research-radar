@@ -130,6 +130,7 @@ function renderPaper(paper) {
   [
     ["文章信息", paper.type],
     ["作者", paper.authors],
+    ["所属机构", paper.institution || "未确认"],
     ["发表", paper.published]
   ].forEach(([label, value]) => {
     meta.append(element("dt", "", label), element("dd", "", value));
@@ -228,4 +229,3 @@ window.addEventListener("popstate", (event) => {
 });
 
 initialise();
-
