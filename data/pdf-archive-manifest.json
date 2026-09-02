@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-02-extra",
+  "papers": [
+    {
+      "title": "Same Model, Different Harness: Different Coding-Agent Results",
+      "pdfUrl": "https://arxiv.org/pdf/2608.26218.pdf",
+      "path": "papers/2026-09-02/2608.26218 Same Model, Different Harness - Different Coding-Agent Results.pdf"
+    },
+    {
+      "title": "Harness-IF: Evaluating Instruction Following Across Instruction Surfaces in Coding Agents",
+      "pdfUrl": "https://arxiv.org/pdf/2608.11727.pdf",
+      "path": "papers/2026-09-02/2608.11727 Harness-IF.pdf"
+    },
+    {
+      "title": "PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1669.pdf",
+      "path": "papers/2026-09-02/10.18653_v1_2026.acl-long.1669 PersonalAlign.pdf"
+    }
+  ]
+}
