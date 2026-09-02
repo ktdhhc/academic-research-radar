@@ -3,8 +3,8 @@
   "date": "2026-08-31",
   "updatedAt": "2026-09-02 11:00 CST · 重新筛选",
   "edition": "NO. 001 · ARCHIVE",
-  "title": "Agent Harness 的系统化",
-  "subtitle": "按新规则重新筛选：本期推荐 3 篇，全部已被顶会正式收录；不再为三个主题强行配额。",
+  "title": "Context、Tool 与用户交互成为 Harness 的系统层",
+  "subtitle": "从独立的 Memory Runtime，到 Tool Registry 的治理与动态检索，再到关键节点的人机协作，Agent Harness 正在成为一层显式的系统设计。",
   "readingMinutes": 9,
   "summary": [
     {
