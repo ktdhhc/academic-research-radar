@@ -1,67 +1,84 @@
 {
   "schemaVersion": 1,
-  "date": "2026-09-02",
-  "updatedAt": "2026-09-02 10:27 CST",
-  "edition": "NO. 003 · LATEST EDITION",
-  "title": "长期状态正在成为 Agent Runtime 的核心资源",
-  "subtitle": "今天的三篇研究分别从可编程上下文、自我演化 Harness 与办公偏好记忆切入。共同指向的不是更大的上下文窗口，而是如何让 Agent 的长期状态可查询、可演化、可验证。",
-  "readingMinutes": 9,
+  "date": "2026-09-02-test",
+  "updatedAt": "2026-09-02 12:39 CST · 临时验收",
+  "edition": "TEST EDITION · VALIDATION",
+  "title": "测试：Harness 本身正在成为可测量的 Agent 能力",
+  "subtitle": "这次额外一期聚焦 Harness 对 Agent 实际能力的影响：同一模型换 Harness 会显著改变 coding 结果，指令在不同 Harness surface 上也并非等价；同时，个性化 GUI Agent 开始把长期用户记录纳入主动协作。",
+  "readingMinutes": 8,
   "summary": [
-    {"paperId":"scroll-context-environment","headline":"把 Context 从“要压缩的文本”变成可执行环境","takeaway":"Scroll 用 append-only Event Log 与持久 Python kernel 保存完整轨迹，让 Agent 在需要时用程序检索和投影历史，而不是提前决定什么值得保留。"},
-    {"paperId":"prime-agent","headline":"Harness 本身开始成为可持续演化的状态","takeaway":"Prime Agent 将历史、memory、skills、prompts 和 subagent specification 纳入 Continual Harness，使 Harness 能随长期执行持续修正。"},
-    {"paperId":"pearl","headline":"【顶会收录：ACL 2026】办公 Agent 的长期状态最终落到用户偏好","takeaway":"PEARL 在全年日历冲突中持续学习用户偏好，通过外部 preference memory 与强化学习显著降低决策错误率。"}
+    {
+      "paperId": "same-model-different-harness",
+      "headline": "同一个模型，只改 Harness，coding 结果就会显著变化",
+      "takeaway": "在固定模型和任务的对照实验中，Harness 的 context trimming 与 stalled-work handling 明显改变 SWE-bench 结果，直接说明 coding agent 评测不能只报模型名。"
+    },
+    {
+      "paperId": "harness-if",
+      "headline": "Coding Agent 的指令遵循取决于规则被放在哪个 surface",
+      "takeaway": "Harness-IF 把 system prompt、tool description、skill description、project file 和 user instruction 分开评测，并发现模型对逆默认行为的规则普遍更难遵循。"
+    },
+    {
+      "paperId": "personalalign",
+      "headline": "【顶会收录：ACL 2026】个性化 Agent 开始从显式命令走向长期隐式意图",
+      "takeaway": "PersonalAlign 用长期用户记录推断被省略的偏好和日常 routine，并让 GUI Agent 在执行之外提供主动建议。"
+    }
   ],
   "papers": [
     {
-      "id":"scroll-context-environment",
-      "title":"Context as an Environment: Programmatic Context Management for Long-Horizon Agents",
-      "titleZh":"把上下文当作环境：面向长程 Agent 的程序化上下文管理",
-      "type":"Technical Report · arXiv:2608.21690",
-      "authors":"Yin Lin、Elaine Ang、Erkang Zhu、Bolin Ding、Jingren Zhou",
-      "institution":"Alibaba Group、Columbia University",
-      "venue":"ARXIV · 2026",
-      "published":"2026年8月21日",
-      "url":"https://arxiv.org/abs/2608.21690",
-      "codeUrl":"https://github.com/niceIrene/QwenPaw/tree/scroll-research",
-      "doi":"10.48550/arXiv.2608.21690",
-      "status":"预印本 / Technical Report",
-      "topics":["Context Management","Session Environment","Long-Horizon Agent"],
-      "overview":"Scroll 不再把长历史压缩成固定摘要，而是把完整 session 保存为可执行环境。系统使用 append-only Event Log 保留无损轨迹，并用持久、沙箱化的 Python kernel 保存工具输出、历史片段和衍生状态；Agent 通过代码按需检索、计算和投影，只有显式输出的内容进入下一轮模型上下文。工作视图接近预算时，旧内容可以被移出，但仍通过稳定地址重新取回。",
-      "recommendation":"重点：它把 Context Management 从“摘要算法”重新定义成可编程运行时问题。创新点：历史信息不在写入时提前压缩，而是在真正知道当前任务需求后再由 Agent 程序化提取。结论：长程 Agent 的关键可能不是更大的 context window，而是把完整历史变成可查询、可计算的外部状态。"
+      "id": "same-model-different-harness",
+      "title": "Same Model, Different Harness: Different Coding-Agent Results",
+      "titleZh": "同一个模型，不同 Harness：不同的 Coding Agent 结果",
+      "type": "研究论文 · arXiv:2608.26218",
+      "status": "预印本",
+      "authors": "Sydney Lewis",
+      "institution": "Independent researcher",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月26日",
+      "doi": "10.48550/arXiv.2608.26218",
+      "code": "Yuj 软件与研究 artifacts：github.com/sydches/yuj",
+      "url": "https://arxiv.org/abs/2608.26218",
+      "topics": ["Agent Harness", "Coding Agent", "Context Management", "Agent Evaluation"],
+      "overview": "这项研究把模型和任务固定，只改变 coding-agent Harness。对照组按时间顺序提供完整 conversation；处理组在 context 接近上限时机械缩短旧 tool results，并对重复或停滞行为进行处理。在 169 个 SWE-bench Verified 任务、20,480-token 窗口的紧约束实验中，处理组的平均 fail-to-pass fraction 从 28% 升至 49%，完整解决任务数从 43 增至 72；同一套未经针对性调参的处理也在另外三种不同模型上提升结果。宽 context 下部分差异缩小，说明 Harness 影响尤其会在资源受限的真实运行条件中放大。",
+      "recommendation": "重点：它用控制变量实验直接测出了 Harness 的独立贡献。创新点：不是比较不同 Agent 产品，而是在同模型、同任务下只改 context 与 stalled-work policy，因此能把 Harness effect 从模型能力中分离出来。结论：coding agent 的被测 solver 应定义为 model + harness，基准结果若不固定 Harness 配置就不可直接横比。"
     },
     {
-      "id":"prime-agent",
-      "title":"Prime Agent: A Self-Improving RLM Harness",
-      "titleZh":"Prime Agent：一个自我改进的 RLM Harness",
-      "type":"Technical Report · arXiv:2608.23552",
-      "authors":"Seth Karten、Alex L. Zhang、Kevin Thomas、Sebastian Müller、Elie Bakouch、Daniel Auras、Mika Senghaas、Fares Obeid、Konstantin Dunas、Johannes Hagemann、Sami Jaghouar",
-      "institution":"Princeton University、Prime Intellect、MIT",
-      "venue":"ARXIV · 2026",
-      "published":"2026年8月24日（技术报告；项目首次发布于8月5日）",
-      "url":"https://arxiv.org/abs/2608.23552",
-      "codeUrl":"https://github.com/PrimeIntellect-ai/prime-agent",
-      "doi":"10.48550/arXiv.2608.23552",
-      "status":"预印本 / Technical Report",
-      "topics":["Agent Harness","RLM","Continual Harness"],
-      "overview":"Prime Agent 是面向长程评测和 coding workflow 的开源 Harness。它用持久 IPython REPL 支持程序化上下文处理与 test-time compute，并通过 Continual Harness 在多条 trajectory 之间保留和修正 history、memory、skills、prompts 与 subagent specifications。递归子 Agent 可直接通信，共享执行层负责 recovery、verification 和 resource accounting，而具体策略留给模型决定。",
-      "recommendation":"重点：它明确把 Harness Engineering 本身作为研究对象。创新点：不只更新 memory，而是允许 prompt、skill、subagent specification 等整个 Harness state 随经验持续 refinement。结论：固定 Harness 可能逐渐成为模型能力瓶颈，model 与 harness 的共同演化值得作为独立 scaling 方向关注。"
+      "id": "harness-if",
+      "title": "Harness-IF: Evaluating Instruction Following Across Instruction Surfaces in Coding Agents",
+      "titleZh": "Harness-IF：评测 Coding Agent 在不同指令载体上的指令遵循",
+      "type": "研究论文 · arXiv:2608.11727",
+      "status": "预印本",
+      "authors": "Zining Huang、Haoran Que、Hong Zeng、Ge Zhang、Zuo Wang、Jin Chen、Haodong Wang、Zhongfei Hou、Changxin Pu、Shen Yan、Wenhao Huang",
+      "institution": "未确认",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月12日",
+      "doi": "10.48550/arXiv.2608.11727",
+      "code": "未确认公开实现",
+      "url": "https://arxiv.org/abs/2608.11727",
+      "topics": ["Agent Harness", "Instruction Following", "Coding Agent", "Evaluation"],
+      "overview": "Harness-IF 研究 deployed coding agent 真正面对的“指令栈”，而不只测 user prompt。它把规则分别放在 system prompt、tool description、skill description、project file 和 user instruction 五类可配置 surface 上，从 642 条规则库构造 60 个真实多轮 coding items，并对 256 条规则给出 execution-based verdict。作者进一步提出 Against-Prior Accuracy，只统计那些与模型默认行为相冲突的规则，以区分真正遵循指令和恰好做了本来就会做的事。12 个 frontier model 的普通准确率为 72.1%–85.9%，AP-Acc 仅 66.1%–78.6%，且全部模型在 against-prior 规则上下降。",
+      "recommendation": "重点：它把 prompt、project file、tool/skill description 等 Harness surface 变成可独立测量的系统变量。创新点：AP-Acc 用无规则重跑估计模型先验行为，降低“碰巧遵守”的虚高分。结论：指令优先级并不简单服从 prompt 深度，实际 Agent Harness 需要显式验证不同 surface 的规则传播和冲突处理。"
     },
     {
-      "id":"pearl",
-      "title":"PEARL: Self-Evolving Assistant for Time Management with Reinforcement Learning",
-      "titleZh":"PEARL：通过强化学习实现自演化时间管理助手",
-      "type":"Long Paper · ACL 2026",
-      "authors":"Bingxuan Li、Jeonghwan Kim、Cheng Qian、Xiusi Chen、Eitan Anzenberg、Niran Kundapur、Heng Ji",
-      "institution":"University of Illinois Urbana-Champaign、Eightfold.ai",
-      "venue":"ACL · 2026",
-      "published":"2026年7月 · ACL Long Papers",
-      "url":"https://aclanthology.org/2026.acl-long.1547/",
-      "doi":"10.18653/v1/2026.acl-long.1547",
-      "status":"ACL 2026 Main Conference",
-      "topics":["Office Agent","Preference Memory","Reinforcement Learning"],
-      "overview":"PEARL 研究真实办公中的长期日历冲突决策。CalConflictBench 将冲突按轮次铺开到一整个日历年，Agent 需要从过去决策逐步推断参会者、主题、时间和地点等用户偏好。PEARL 使用外部 preference memory 持续保存和更新策略，再通过 round-wise rewards 监督决策正确性、排序质量和 memory usage；论文报告相对最强 baseline 的平均错误率改善 55%。",
-      "recommendation":"重点：这是把 Agent 放进持续一年、偏好不断显现的真实办公逻辑中研究的 ACL 2026 主会论文。创新点：将长期日历管理建模为持续 preference inference + adaptation，并显式训练 memory usage。结论：可靠办公 Agent 不能只理解当前请求，还必须长期形成、更新并正确使用用户偏好模型。"
+      "id": "personalalign",
+      "title": "PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records",
+      "titleZh": "PersonalAlign：利用长期用户记录实现个性化 GUI Agent 的分层隐式意图对齐",
+      "type": "Long Paper · ACL 2026",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Yibo Lyu、Gongwei Chen、Rui Shao、Weili Guan、Liqiang Nie",
+      "institution": "Harbin Institute of Technology, Shenzhen",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers",
+      "doi": "10.18653/v1/2026.acl-long.1669",
+      "code": "官方仓库：github.com/iLearn-Lab/ACL26-PersonalAlign",
+      "url": "https://aclanthology.org/2026.acl-long.1669/",
+      "topics": ["Personalized Agent", "GUI Agent", "Long-term Memory", "Implicit Intent", "Proactive Assistance"],
+      "overview": "PersonalAlign 把 GUI Agent 从执行完整明确指令扩展到两类更贴近真实办公助手的隐式需求：根据长期记录补全用户未说出的 preference，以及依据当前状态识别 routine 并主动提供建议。作者构建 AndroidIntent，从约 20k 条长期用户记录中标注 775 个个性化偏好和 215 个 routine，并提出持续更新、分层组织 preference 与 routine 的 HIM-Agent。实验覆盖 GPT-5、Qwen3-VL、UI-TARS 等 GUI Agent，HIM-Agent 将个性化执行和主动服务表现分别提升 15.7% 和 7.3%。",
+      "recommendation": "重点：这是 ACL 2026 主会正式长论文，直接研究长期用户记录如何进入 Agent 执行与主动协作。创新点：把 preference completion 与 proactive routine suggestion 放进同一个分层 implicit-intent framework，并配套长期 memory agent。结论：真正个性化的办公/GUI Agent 需要把历史记录组织成可持续演化的用户意图模型，而不是只做一次性 profile retrieval。"
     }
   ],
-  "signal":{"title":"长期状态正在从聊天历史变成正式的系统资源","body":"Scroll 把历史变成可执行环境，Prime Agent 让整个 Harness 成为可持续修改的状态，PEARL 则把长期状态落到真实办公中的用户偏好。三者共同说明，下一阶段的 Agent Runtime 重点不只是扩上下文，而是让状态可查询、可演化、可验证。","note":"这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"}
+  "signal": {
+    "title": "Agent 能力的评测单位正在从模型转向 model + harness + persistent user state",
+    "body": "前两篇把 Harness 从隐形工程细节变成可控、可测的实验变量：context policy 会改变 coding 成功率，不同 instruction surface 也会改变规则遵循。PersonalAlign 则把长期用户状态加入执行闭环，说明面向真实工作的 Agent 还必须把“用户是谁、过去怎么做”纳入系统状态。",
+    "note": "这是本次临时验收期基于三篇论文的编辑判断。"
+  }
 }
