@@ -1,0 +1,57 @@
+name: Archive research PDFs
+
+on:
+  push:
+    paths:
+      - 'data/pdf-archive-manifest.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib, urllib.request
+
+          manifest = json.loads(pathlib.Path('data/pdf-archive-manifest.json').read_text())
+          ua = {'User-Agent': 'academic-research-radar/1.0 (+https://github.com/ktdhhc/academic-research-radar)'}
+          for item in manifest.get('papers', []):
+              target = pathlib.Path(item['path'])
+              target.parent.mkdir(parents=True, exist_ok=True)
+              if target.exists() and target.stat().st_size > 10000:
+                  print(f'skip existing: {target}')
+                  continue
+              req = urllib.request.Request(item['pdfUrl'], headers=ua)
+              with urllib.request.urlopen(req, timeout=90) as r:
+                  data = r.read()
+              if not data.startswith(b'%PDF'):
+                  raise RuntimeError(f'not a PDF: {item["pdfUrl"]}')
+              target.write_bytes(data)
+              print(f'archived {target} ({len(data)} bytes)')
+          PY
+
+      - name: Commit PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add papers/
+          if git diff --cached --quiet; then
+            echo 'No new PDFs to commit.'
+            exit 0
+          fi
+          git commit -m 'archive research paper PDFs'
+          git push
