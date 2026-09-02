@@ -92,12 +92,15 @@ function renderReport(report) {
   const summaryList = element("ol", "summary__list");
 
   report.summary.forEach((item) => {
+    const paper = report.papers.find((entry) => entry.id === item.paperId);
     const listItem = element("li", "summary__item");
     const content = element("div", "");
-    content.append(
-      element("h2", "summary__headline", item.headline),
-      element("p", "summary__takeaway", item.takeaway)
-    );
+    const headline = paper
+      ? `${paper.title}（${paper.status || paper.type || "未确认"}）`
+      : item.headline;
+    content.append(element("h2", "summary__headline", headline));
+    if (paper?.titleZh) content.append(element("p", "summary__translation", paper.titleZh));
+    content.append(element("p", "summary__takeaway", item.takeaway));
     listItem.append(content);
     summaryList.append(listItem);
   });
@@ -129,10 +132,13 @@ function renderPaper(paper) {
   const meta = element("dl", "paper__meta");
   [
     ["文章信息", paper.type],
+    ["收录状态", paper.status],
     ["作者", paper.authors],
     ["所属机构", paper.institution || "未确认"],
-    ["发表", paper.published]
-  ].forEach(([label, value]) => {
+    ["发表", paper.published],
+    ["DOI", paper.doi],
+    ["代码 / 数据", paper.code]
+  ].filter(([, value]) => value).forEach(([label, value]) => {
     meta.append(element("dt", "", label), element("dd", "", value));
   });
   content.append(meta);

@@ -307,6 +307,13 @@ select {
   text-wrap: pretty;
 }
 
+.summary__translation {
+  margin: 4px 0 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .summary__takeaway {
   margin: 5px 0 0;
   color: var(--ink-soft);
@@ -701,4 +708,3 @@ select {
     break-inside: avoid;
   }
 }
-

@@ -17,9 +17,9 @@
     },
     {
       "date": "2026-08-31",
-      "shortTitle": "记忆系统从存储走向组织",
+      "shortTitle": "Context、Tool 与用户交互成为 Harness 的系统层",
       "count": 3,
-      "topics": ["Agent Memory", "Personalization", "Evaluation"],
+      "topics": ["Context Management", "Tool Use", "User-in-the-loop"],
       "path": "data/reports/2026-08-31.json"
     }
   ]

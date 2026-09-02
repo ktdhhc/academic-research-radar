@@ -1,73 +1,81 @@
 {
   "schemaVersion": 1,
   "date": "2026-08-31",
-  "updatedAt": "2026-08-31 08:00 CST",
+  "updatedAt": "2026-09-02 11:00 CST · 重新筛选",
   "edition": "NO. 001 · ARCHIVE",
-  "title": "记忆系统从存储走向组织",
-  "subtitle": "三篇关于 Agent 记忆的研究，分别讨论动态知识网络、个性化会话记忆，以及当前评估体系为什么仍不够可靠。",
-  "readingMinutes": 8,
+  "title": "今日学术研究雷达｜2026-08-31",
+  "subtitle": "按新规则重新筛选：本期推荐 3 篇，全部已被顶会正式收录；不再为三个主题强行配额。",
+  "readingMinutes": 9,
   "summary": [
     {
-      "paperId": "a-mem",
-      "headline": "新记忆不只是被放进去，还会改变旧记忆的组织方式",
-      "takeaway": "A-MEM 借鉴卡片盒方法，用动态索引和链接构建可演化的记忆网络。"
+      "paperId": "comem",
+      "takeaway": "把记忆压缩与 Agent 推理解耦为并行运行的模型：小型 Memory Model 异步维护上下文，主 Agent 专注决策。SWE-Bench Verified 上它显著降低延迟，并基本保持任务能力。"
     },
     {
-      "paperId": "memoria",
-      "headline": "短期摘要与长期用户模型可以成为互补的两层记忆",
-      "takeaway": "Memoria 将会话级总结与加权知识图谱结合，面向持续个性化对话。"
+      "paperId": "toolscope",
+      "takeaway": "针对大规模 Tool Registry 中工具过多、功能重叠带来的选择退化，ToolScope 自动合并冗余工具并动态筛选相关工具。工具选择准确率提升 8.38%–38.6%。"
     },
     {
-      "paperId": "anatomy",
-      "headline": "记忆架构跑得更复杂，不等于评估就更可信",
-      "takeaway": "综述指出基准饱和、指标错位、骨干模型依赖和系统成本仍是关键盲点。"
+      "paperId": "appworld-ul",
+      "takeaway": "将 Agent Benchmark 推进到真实 user-in-the-loop 场景：澄清需求、报告不可行，以及高成本操作前请求确认。最强 Agent 的成功率仍只有 48.6%。"
     }
   ],
   "papers": [
     {
-      "id": "a-mem",
-      "title": "A-MEM: Agentic Memory for LLM Agents",
-      "titleZh": "A-MEM：面向大语言模型 Agent 的 Agentic Memory",
-      "type": "研究论文 · arXiv:2502.12110",
-      "authors": "Wujiang Xu、Zujie Liang、Kai Mei、Hang Gao、Juntao Tan、Yongfeng Zhang",
-      "venue": "ARXIV · 2025",
-      "published": "2025年2月17日",
-      "url": "https://arxiv.org/abs/2502.12110",
-      "topics": ["Agent Memory", "Zettelkasten", "Knowledge Network"],
-      "overview": "A-MEM 将卡片盒笔记的组织原则引入 Agent 记忆。系统会为新记忆生成上下文、关键词与标签，并分析它与历史记忆的关系，动态建立链接；新信息还可以触发旧记忆的语义表示和属性更新，使整个记忆网络持续演化。",
-      "recommendation": "它提供了一条区别于纯向量检索的路线：记忆价值不仅取决于相似度，还取决于它在网络中的关系与后续演化。对知识型助手和长期项目 Agent，这种组织视角尤其值得参考。"
+      "id": "comem",
+      "title": "CoMem: Context Management with A Decoupled Long-Context Model",
+      "titleZh": "CoMem：使用解耦长上下文模型进行 Context Management",
+      "type": "ICML 2026 · PMLR 306",
+      "status": "ICML 2026 Main Conference",
+      "authors": "Yuwei Zhang、Chengyu Dong、Shuowei Jin、Changlong Yu、Hejie Cui、Hongye Jin、Xinyang Zhang、Hamed Bonab、Colin Lockard、Jianshu Chen、Zhenyu Shi、Jingbo Shang、Xian Li、Bing Yin",
+      "institution": "UC San Diego Halıcıoğlu Data Science Institute、Amazon",
+      "venue": "ICML · 2026",
+      "published": "2026年5月29日首次公开；2026年 ICML 正式发表",
+      "doi": "10.48550/arXiv.2605.30842（arXiv DOI）",
+      "code": "官方 GitHub",
+      "url": "https://arxiv.org/abs/2605.30842",
+      "topics": ["Context Management", "Memory", "Long-horizon Agent", "Asynchronous Runtime", "Context Compression"],
+      "overview": "CoMem 的核心是：不要让负责复杂推理的大模型同时承担不断增长的历史上下文处理。它引入轻量 Memory Model，把完整 trajectory 压缩为状态表示；主 Agent 只读取压缩状态和最近步骤。Memory Model 采用 k-step-off 异步管线，可以与 Agent 推理并行执行。作者还以 reward-driven training 让压缩结果保留真正影响后续决策的信息，而不是追求文本摘要质量；SWE-Bench Verified 实验显示该架构能明显降低延迟，并在多个 Agent backbone 上维持有竞争力的成功率。",
+      "recommendation": "重点：这是 Harness / Runtime 架构问题，而不只是优化 context window。创新点：将 Memory Management 与 Agent Reasoning 解耦并异步执行，使两部分能够独立扩展和优化。结论：专用的小型 Memory Model 可以同时改善 latency、吞吐和上下文噪声。"
     },
     {
-      "id": "memoria",
-      "title": "Memoria: A Scalable Agentic Memory Framework for Personalized Conversational AI",
-      "titleZh": "Memoria：用于个性化对话式 AI 的可扩展 Agentic Memory 框架",
-      "type": "研究论文 · arXiv:2512.12686",
-      "authors": "Samarth Sarin、Lovepreet Singh、Bhaskarjit Sarmah、Dhagash Mehta",
-      "venue": "ARXIV · 2025",
-      "published": "2025年12月14日",
-      "url": "https://arxiv.org/abs/2512.12686",
-      "topics": ["Personalization", "Knowledge Graph", "Conversation"],
-      "overview": "Memoria 组合两类记忆：动态会话级摘要负责短期连贯，加权知识图谱则持续记录用户特征、偏好与行为关系。框架强调可解释、上下文丰富和渐进更新，希望在有限上下文窗口内实现跨会话的个性化。",
-      "recommendation": "这篇工作的价值在于把“记住一次对话”和“形成长期用户模型”明确拆开。对办公助手、客户服务或个人助理产品，这种双层结构比把所有历史都塞进同一个向量库更容易治理。"
+      "id": "toolscope",
+      "title": "ToolScope: Enhancing LLM Agent Tool Use through Tool Merging and Context-Aware Filtering",
+      "titleZh": "ToolScope：通过工具合并与上下文感知过滤增强 LLM Agent 工具使用",
+      "type": "ACL 2026 Main Conference · Long Papers",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Marianne Menglin Liu、Daniel Garcia、Fjona Parllaku、Vikas Upadhyay、Syed Fahad Allam Shah、Dan Roth",
+      "institution": "Oracle AI",
+      "venue": "ACL · 2026",
+      "published": "2026年7月2日至7日 · ACL 2026",
+      "doi": "10.18653/v1/2026.acl-long.1573",
+      "code": "未确认公开实现",
+      "url": "https://aclanthology.org/2026.acl-long.1573/",
+      "topics": ["Tool Selection", "Tool Registry", "Context Filtering", "Tool Retrieval", "Agent Harness"],
+      "overview": "ToolScope 关注一个很现实的 Harness 问题：Tool 越多，不代表 Agent 能力越强。真实系统中的工具往往名称、描述和能力高度重叠，会增加 Tool Selection 歧义，同时占满 context。ToolScopeMerger 自动检测并合并语义重复工具；ToolScopeRetriever 再根据当前 query 动态筛选少量相关工具。在三种模型、三个公开 Tool Benchmark 上，工具选择准确率提升 8.38%–38.6%。",
+      "recommendation": "重点：它研究 Tool Registry 本身如何治理，而不是继续提升模型调用工具的 reasoning。创新点：将自动 Tool Merge 与 hybrid retrieval 组合，同时解决工具重复和 context 膨胀。结论：大型 Agent 平台不应把全部工具直接塞给模型；Tool abstraction、去重、动态发现和检索应成为 Harness 的核心能力。"
     },
     {
-      "id": "anatomy",
-      "title": "Anatomy of Agentic Memory: Taxonomy and Empirical Analysis of Evaluation and System Limitations",
-      "titleZh": "Agentic Memory 解剖：分类体系、实证评估与系统局限",
-      "type": "综述论文 · arXiv:2602.19320",
-      "authors": "Dongming Jiang、Yi Li、Songtao Wei、Jinxin Yang、Ayushi Kishore、Alysa Zhao 等",
-      "venue": "ARXIV · 2026",
-      "published": "2026年2月22日",
-      "url": "https://arxiv.org/abs/2602.19320",
-      "topics": ["Survey", "Benchmark", "System Cost"],
-      "overview": "这篇综述从四类记忆结构出发，同时分析架构与系统层面的限制。作者指出现有基准规模偏小、评价指标与语义效用错位、结果对骨干模型敏感，而且记忆维护带来的延迟与吞吐成本常被忽略。",
-      "recommendation": "当领域快速出现大量新架构时，这类“泼冷水”的系统性综述很重要。它提醒产品团队把准确率之外的成本、稳定性和评估有效性纳入同一张表，否则更复杂的记忆系统可能只是把问题转移到了线上运行阶段。"
+      "id": "appworld-ul",
+      "title": "AppWorld-UL: Benchmarking Diverse Agent-User Interactions for Tool-Use",
+      "titleZh": "AppWorld-UL：评测工具型 Agent 的多样化人机交互",
+      "type": "ICML 2026 · PMLR 306",
+      "status": "ICML 2026 Main Conference",
+      "authors": "Junzhi Chen、Harsh Trivedi、Jane Pan、Michael JQ Zhang、Tejas Srinivasan、Niranjan Balasubramanian、Ashish Sabharwal",
+      "institution": "New York University、Allen Institute for AI、University of Southern California、Stony Brook University",
+      "venue": "ICML · 2026",
+      "published": "2026年7月10日首次公开；ICML 2026 正式发表",
+      "doi": "10.48550/arXiv.2607.20536（arXiv DOI）",
+      "code": "AppWorld-UL 项目页",
+      "url": "https://arxiv.org/abs/2607.20536",
+      "topics": ["User-in-the-loop", "Tool-use Agent", "Clarification", "Confirmation", "Agent Evaluation"],
+      "overview": "现有 Agent Benchmark 通常假设用户一开始就把任务说得很清楚，但现实办公和消费任务并非如此。AppWorld-UL 构造 516 个任务，系统性覆盖三种交互：需求不完整时主动澄清、任务不可行时反馈、执行高成本动作前请求确认。任务运行在 9 个模拟应用、475+ API 的有状态环境中；即使使用 Claude Opus 4.7，最高 task-level success 也只有 48.6%，在更复杂的组合交互任务中进一步下降。",
+      "recommendation": "重点：它修正了许多 Agent Benchmark 将用户视为一次性 specification provider 的假设。创新点：不仅测最终任务完成，还程序化测量 Agent 是否在正确时间提出正确的问题，并将澄清、不可行与授权确认组合进长程任务。结论：现实 Agent 的难点还包括何时暂停自主执行、重新与人交互；顶级模型在这方面仍有明显缺口。"
     }
   ],
   "signal": {
-    "title": "下一代记忆系统的核心问题，不是容量，而是治理",
-    "body": "今天的研究把记忆从“能存多少”推进到“如何形成结构、如何持续更新、如何证明它真的有用”。随着记忆开始承载个性化和长期行动，删除策略、错误传播、延迟成本与评估可信度，会和检索命中率一样重要。",
+    "title": "成熟 Agent Harness 正在变成显式的系统层",
+    "body": "三篇论文共同指向一个趋势：Context 需要独立的 Memory Runtime，Tool 需要独立的治理与动态检索层，用户也需要成为 execution loop 中可被主动调用的一部分。Agent 的下一轮提升，更可能来自这些 Harness primitives 的系统设计，而不只是换一个更强模型。",
     "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
   }
 }
-
