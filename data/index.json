@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "issues": [
     {
-      "date": "2026-09-02-test",
-      "shortTitle": "测试：Harness 本身正在成为可测量的 Agent 能力",
+      "date": "2026-09-02-extra",
+      "shortTitle": "追加：Harness 本身正在成为可测量的 Agent 能力",
       "count": 3,
       "topics": ["Agent Harness", "Coding Agent", "Personalized Agent"],
       "path": "data/reports/2026-09-02-test.json"
