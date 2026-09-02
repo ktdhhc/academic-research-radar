@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-02",
+  "updatedAt": "2026-09-02 10:27 CST",
+  "edition": "NO. 003 · LATEST EDITION",
+  "title": "长期状态正在成为 Agent Runtime 的核心资源",
+  "subtitle": "今天的三篇研究分别从可编程上下文、自我演化 Harness 与办公偏好记忆切入。共同指向的不是更大的上下文窗口，而是如何让 Agent 的长期状态可查询、可演化、可验证。",
+  "readingMinutes": 9,
+  "summary": [
+    {"paperId":"scroll-context-environment","headline":"把 Context 从“要压缩的文本”变成可执行环境","takeaway":"Scroll 用 append-only Event Log 与持久 Python kernel 保存完整轨迹，让 Agent 在需要时用程序检索和投影历史，而不是提前决定什么值得保留。"},
+    {"paperId":"prime-agent","headline":"Harness 本身开始成为可持续演化的状态","takeaway":"Prime Agent 将历史、memory、skills、prompts 和 subagent specification 纳入 Continual Harness，使 Harness 能随长期执行持续修正。"},
+    {"paperId":"pearl","headline":"【顶会收录：ACL 2026】办公 Agent 的长期状态最终落到用户偏好","takeaway":"PEARL 在全年日历冲突中持续学习用户偏好，通过外部 preference memory 与强化学习显著降低决策错误率。"}
+  ],
+  "papers": [
+    {
+      "id":"scroll-context-environment",
+      "title":"Context as an Environment: Programmatic Context Management for Long-Horizon Agents",
+      "titleZh":"把上下文当作环境：面向长程 Agent 的程序化上下文管理",
+      "type":"Technical Report · arXiv:2608.21690",
+      "authors":"Yin Lin、Elaine Ang、Erkang Zhu、Bolin Ding、Jingren Zhou",
+      "institution":"Alibaba Group、Columbia University",
+      "venue":"ARXIV · 2026",
+      "published":"2026年8月21日",
+      "url":"https://arxiv.org/abs/2608.21690",
+      "codeUrl":"https://github.com/niceIrene/QwenPaw/tree/scroll-research",
+      "doi":"10.48550/arXiv.2608.21690",
+      "status":"预印本 / Technical Report",
+      "topics":["Context Management","Session Environment","Long-Horizon Agent"],
+      "overview":"Scroll 不再把长历史压缩成固定摘要，而是把完整 session 保存为可执行环境。系统使用 append-only Event Log 保留无损轨迹，并用持久、沙箱化的 Python kernel 保存工具输出、历史片段和衍生状态；Agent 通过代码按需检索、计算和投影，只有显式输出的内容进入下一轮模型上下文。工作视图接近预算时，旧内容可以被移出，但仍通过稳定地址重新取回。",
+      "recommendation":"重点：它把 Context Management 从“摘要算法”重新定义成可编程运行时问题。创新点：历史信息不在写入时提前压缩，而是在真正知道当前任务需求后再由 Agent 程序化提取。结论：长程 Agent 的关键可能不是更大的 context window，而是把完整历史变成可查询、可计算的外部状态。"
+    },
+    {
+      "id":"prime-agent",
+      "title":"Prime Agent: A Self-Improving RLM Harness",
+      "titleZh":"Prime Agent：一个自我改进的 RLM Harness",
+      "type":"Technical Report · arXiv:2608.23552",
+      "authors":"Seth Karten、Alex L. Zhang、Kevin Thomas、Sebastian Müller、Elie Bakouch、Daniel Auras、Mika Senghaas、Fares Obeid、Konstantin Dunas、Johannes Hagemann、Sami Jaghouar",
+      "institution":"Princeton University、Prime Intellect、MIT",
+      "venue":"ARXIV · 2026",
+      "published":"2026年8月24日（技术报告；项目首次发布于8月5日）",
+      "url":"https://arxiv.org/abs/2608.23552",
+      "codeUrl":"https://github.com/PrimeIntellect-ai/prime-agent",
+      "doi":"10.48550/arXiv.2608.23552",
+      "status":"预印本 / Technical Report",
+      "topics":["Agent Harness","RLM","Continual Harness"],
+      "overview":"Prime Agent 是面向长程评测和 coding workflow 的开源 Harness。它用持久 IPython REPL 支持程序化上下文处理与 test-time compute，并通过 Continual Harness 在多条 trajectory 之间保留和修正 history、memory、skills、prompts 与 subagent specifications。递归子 Agent 可直接通信，共享执行层负责 recovery、verification 和 resource accounting，而具体策略留给模型决定。",
+      "recommendation":"重点：它明确把 Harness Engineering 本身作为研究对象。创新点：不只更新 memory，而是允许 prompt、skill、subagent specification 等整个 Harness state 随经验持续 refinement。结论：固定 Harness 可能逐渐成为模型能力瓶颈，model 与 harness 的共同演化值得作为独立 scaling 方向关注。"
+    },
+    {
+      "id":"pearl",
+      "title":"PEARL: Self-Evolving Assistant for Time Management with Reinforcement Learning",
+      "titleZh":"PEARL：通过强化学习实现自演化时间管理助手",
+      "type":"Long Paper · ACL 2026",
+      "authors":"Bingxuan Li、Jeonghwan Kim、Cheng Qian、Xiusi Chen、Eitan Anzenberg、Niran Kundapur、Heng Ji",
+      "institution":"University of Illinois Urbana-Champaign、Eightfold.ai",
+      "venue":"ACL · 2026",
+      "published":"2026年7月 · ACL Long Papers",
+      "url":"https://aclanthology.org/2026.acl-long.1547/",
+      "doi":"10.18653/v1/2026.acl-long.1547",
+      "status":"ACL 2026 Main Conference",
+      "topics":["Office Agent","Preference Memory","Reinforcement Learning"],
+      "overview":"PEARL 研究真实办公中的长期日历冲突决策。CalConflictBench 将冲突按轮次铺开到一整个日历年，Agent 需要从过去决策逐步推断参会者、主题、时间和地点等用户偏好。PEARL 使用外部 preference memory 持续保存和更新策略，再通过 round-wise rewards 监督决策正确性、排序质量和 memory usage；论文报告相对最强 baseline 的平均错误率改善 55%。",
+      "recommendation":"重点：这是把 Agent 放进持续一年、偏好不断显现的真实办公逻辑中研究的 ACL 2026 主会论文。创新点：将长期日历管理建模为持续 preference inference + adaptation，并显式训练 memory usage。结论：可靠办公 Agent 不能只理解当前请求，还必须长期形成、更新并正确使用用户偏好模型。"
+    }
+  ],
+  "signal":{"title":"长期状态正在从聊天历史变成正式的系统资源","body":"Scroll 把历史变成可执行环境，Prime Agent 让整个 Harness 成为可持续修改的状态，PEARL 则把长期状态落到真实办公中的用户偏好。三者共同说明，下一阶段的 Agent Runtime 重点不只是扩上下文，而是让状态可查询、可演化、可验证。","note":"这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"}
+}
