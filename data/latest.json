@@ -1,84 +1,20 @@
 {
   "schemaVersion": 1,
-  "date": "2026-09-02-extra",
-  "updatedAt": "2026-09-02 12:39 CST · 今日追加",
-  "edition": "EXTRA EDITION · 追加",
-  "title": "追加：Harness 本身正在成为可测量的 Agent 能力",
-  "subtitle": "今天的追加一期聚焦 Harness 对 Agent 实际能力的影响：同一模型换 Harness 会显著改变 coding 结果，指令在不同 Harness surface 上也并非等价；同时，个性化 GUI Agent 开始把长期用户记录纳入主动协作。",
-  "readingMinutes": 8,
+  "date": "2026-09-03",
+  "updatedAt": "2026-09-03 08:23 CST",
+  "edition": "NO. 004 · LATEST EDITION",
+  "title": "Harness 开始学习，办公 AI 开始显露组织层影响",
+  "subtitle": "今天的三篇研究分别关注 Harness 的经验自适应、真实企业中的生成式 AI 使用变化，以及长程 GUI Agent 的记忆与工具解耦。共同信号是：Agent 系统正在从固定配置走向可适应运行环境与长期任务的系统层。",
+  "readingMinutes": 9,
   "summary": [
-    {
-      "paperId": "same-model-different-harness",
-      "headline": "同一个模型，只改 Harness，coding 结果就会显著变化",
-      "takeaway": "在固定模型和任务的对照实验中，Harness 的 context trimming 与 stalled-work handling 明显改变 SWE-bench 结果，直接说明 coding agent 评测不能只报模型名。"
-    },
-    {
-      "paperId": "harness-if",
-      "headline": "Coding Agent 的指令遵循取决于规则被放在哪个 surface",
-      "takeaway": "Harness-IF 把 system prompt、tool description、skill description、project file 和 user instruction 分开评测，并发现模型对逆默认行为的规则普遍更难遵循。"
-    },
-    {
-      "paperId": "personalalign",
-      "headline": "【顶会收录：ACL 2026】个性化 Agent 开始从显式命令走向长期隐式意图",
-      "takeaway": "PersonalAlign 用长期用户记录推断被省略的偏好和日常 routine，并让 GUI Agent 在执行之外提供主动建议。"
-    }
+    {"paperId":"memoharness","headline":"Harness 不再只是固定配置，而可以从执行经验中学习","takeaway":"MemoHarness 把 context、tool、generation、orchestration、memory、output 六个控制面拆开优化，并在测试时按具体 case 调整 Harness，而不依赖测试标签或额外搜索。"},
+    {"paperId":"genai-workplace-adoption","headline":"真实企业数据表明，生成式 AI 正把工作活动更多推向个体文档生产","takeaway":"基于多家大型企业的 Microsoft M365 数字轨迹，研究发现高频 AI 使用者的生产力类操作增长 21.2%，通信类操作增长 7.1%，工作重心相对向文档与个人生产活动偏移。"},
+    {"paperId":"ui-copilot","headline":"【顶会收录：ACL 2026】长程 GUI Agent 开始把记忆检索和计算显式拆成 Copilot 工具","takeaway":"UI-Copilot 将持续观察从执行 context 中解耦，让主 GUI Agent 按需调用轻量 Copilot 做历史检索或计算，并用 TIPO 联合训练工具选择与长程执行。"}
   ],
   "papers": [
-    {
-      "id": "same-model-different-harness",
-      "title": "Same Model, Different Harness: Different Coding-Agent Results",
-      "titleZh": "同一个模型，不同 Harness：不同的 Coding Agent 结果",
-      "type": "研究论文 · arXiv:2608.26218",
-      "status": "预印本",
-      "authors": "Sydney Lewis",
-      "institution": "Independent researcher",
-      "venue": "ARXIV · 2026",
-      "published": "2026年8月26日",
-      "doi": "10.48550/arXiv.2608.26218",
-      "code": "Yuj 软件与研究 artifacts：github.com/sydches/yuj",
-      "url": "https://arxiv.org/abs/2608.26218",
-      "topics": ["Agent Harness", "Coding Agent", "Context Management", "Agent Evaluation"],
-      "overview": "这项研究把模型和任务固定，只改变 coding-agent Harness。对照组按时间顺序提供完整 conversation；处理组在 context 接近上限时机械缩短旧 tool results，并对重复或停滞行为进行处理。在 169 个 SWE-bench Verified 任务、20,480-token 窗口的紧约束实验中，处理组的平均 fail-to-pass fraction 从 28% 升至 49%，完整解决任务数从 43 增至 72；同一套未经针对性调参的处理也在另外三种不同模型上提升结果。宽 context 下部分差异缩小，说明 Harness 影响尤其会在资源受限的真实运行条件中放大。",
-      "recommendation": "重点：它用控制变量实验直接测出了 Harness 的独立贡献。创新点：不是比较不同 Agent 产品，而是在同模型、同任务下只改 context 与 stalled-work policy，因此能把 Harness effect 从模型能力中分离出来。结论：coding agent 的被测 solver 应定义为 model + harness，基准结果若不固定 Harness 配置就不可直接横比。"
-    },
-    {
-      "id": "harness-if",
-      "title": "Harness-IF: Evaluating Instruction Following Across Instruction Surfaces in Coding Agents",
-      "titleZh": "Harness-IF：评测 Coding Agent 在不同指令载体上的指令遵循",
-      "type": "研究论文 · arXiv:2608.11727",
-      "status": "预印本",
-      "authors": "Zining Huang、Haoran Que、Hong Zeng、Ge Zhang、Zuo Wang、Jin Chen、Haodong Wang、Zhongfei Hou、Changxin Pu、Shen Yan、Wenhao Huang",
-      "institution": "未确认",
-      "venue": "ARXIV · 2026",
-      "published": "2026年8月12日",
-      "doi": "10.48550/arXiv.2608.11727",
-      "code": "未确认公开实现",
-      "url": "https://arxiv.org/abs/2608.11727",
-      "topics": ["Agent Harness", "Instruction Following", "Coding Agent", "Evaluation"],
-      "overview": "Harness-IF 研究 deployed coding agent 真正面对的“指令栈”，而不只测 user prompt。它把规则分别放在 system prompt、tool description、skill description、project file 和 user instruction 五类可配置 surface 上，从 642 条规则库构造 60 个真实多轮 coding items，并对 256 条规则给出 execution-based verdict。作者进一步提出 Against-Prior Accuracy，只统计那些与模型默认行为相冲突的规则，以区分真正遵循指令和恰好做了本来就会做的事。12 个 frontier model 的普通准确率为 72.1%–85.9%，AP-Acc 仅 66.1%–78.6%，且全部模型在 against-prior 规则上下降。",
-      "recommendation": "重点：它把 prompt、project file、tool/skill description 等 Harness surface 变成可独立测量的系统变量。创新点：AP-Acc 用无规则重跑估计模型先验行为，降低“碰巧遵守”的虚高分。结论：指令优先级并不简单服从 prompt 深度，实际 Agent Harness 需要显式验证不同 surface 的规则传播和冲突处理。"
-    },
-    {
-      "id": "personalalign",
-      "title": "PersonalAlign: Hierarchical Implicit Intent Alignment for Personalized GUI Agent with Long-Term User-Centric Records",
-      "titleZh": "PersonalAlign：利用长期用户记录实现个性化 GUI Agent 的分层隐式意图对齐",
-      "type": "Long Paper · ACL 2026",
-      "status": "ACL 2026 Main Conference",
-      "authors": "Yibo Lyu、Gongwei Chen、Rui Shao、Weili Guan、Liqiang Nie",
-      "institution": "Harbin Institute of Technology, Shenzhen",
-      "venue": "ACL · 2026",
-      "published": "2026年7月 · ACL Long Papers",
-      "doi": "10.18653/v1/2026.acl-long.1669",
-      "code": "官方仓库：github.com/iLearn-Lab/ACL26-PersonalAlign",
-      "url": "https://aclanthology.org/2026.acl-long.1669/",
-      "topics": ["Personalized Agent", "GUI Agent", "Long-term Memory", "Implicit Intent", "Proactive Assistance"],
-      "overview": "PersonalAlign 把 GUI Agent 从执行完整明确指令扩展到两类更贴近真实办公助手的隐式需求：根据长期记录补全用户未说出的 preference，以及依据当前状态识别 routine 并主动提供建议。作者构建 AndroidIntent，从约 20k 条长期用户记录中标注 775 个个性化偏好和 215 个 routine，并提出持续更新、分层组织 preference 与 routine 的 HIM-Agent。实验覆盖 GPT-5、Qwen3-VL、UI-TARS 等 GUI Agent，HIM-Agent 将个性化执行和主动服务表现分别提升 15.7% 和 7.3%。",
-      "recommendation": "重点：这是 ACL 2026 主会正式长论文，直接研究长期用户记录如何进入 Agent 执行与主动协作。创新点：把 preference completion 与 proactive routine suggestion 放进同一个分层 implicit-intent framework，并配套长期 memory agent。结论：真正个性化的办公/GUI Agent 需要把历史记录组织成可持续演化的用户意图模型，而不是只做一次性 profile retrieval。"
-    }
+    {"id":"memoharness","title":"MemoHarness: Agent Harnesses That Learn from Experience","titleZh":"MemoHarness：从执行经验中学习的 Agent Harness","type":"研究论文 · arXiv:2607.14159","status":"预印本 / Under review","authors":"Yue Huang、Wenjie Wang、Han Bao、Yuchen Ma、Xiaonan Luo、Yi Nian、Haomin Zhuang、Zheyuan Liu、Yue Zhao、Xiangliang Zhang","institution":"未确认","venue":"ARXIV · 2026","published":"2026年7月14日","doi":"10.48550/arXiv.2607.14159","code":"https://github.com/HowieHwong/MemoHarness","url":"https://arxiv.org/abs/2607.14159","topics":["Agent Harness","Harness Optimization","Test-time Adaptation","Experience Bank","Orchestration"],"overview":"MemoHarness 直接把 Agent Harness 定义为可优化对象，而不是把优化局限在 prompt 或 workflow。它将 Harness 拆成 context assembly、tool interaction、generation control、orchestration、memory management 与 output processing 六个控制面，并维护包含逐 case 诊断和全局模式的双层 experience bank。训练阶段搜索强全局配置，测试阶段再根据输入检索相似成功/失败经验，对当前 case 做一次无反馈的 Harness 自适应。论文报告其在 shell-agent、代码生成和分析推理基准上优于所比较的固定 Harness，并显示对部分未见数据集和底座模型具有迁移收益。","recommendation":"重点：它把“Harness 会不会学习”从工程直觉变成明确研究问题。创新点：不是只演化 prompt，而是联合编辑六类 Harness control surface，并在 test time 针对单个任务做无标签适配。结论：执行轨迹本身可以成为长期优化 Harness 的经验资产，但论文也明确承认更大规模统计稳健性和组件归因仍需进一步验证。"},
+    {"id":"genai-workplace-adoption","title":"Adoption of Generative AI in the Workplace: Increasing and Shifting the Balance of Productivity and Communication Activity","titleZh":"工作场所中的生成式 AI 采用：提升并重塑生产与沟通活动的平衡","type":"研究论文 · arXiv:2608.15550","status":"预印本","authors":"Yulin Yu、Yan Chen、Rui Hu、Siddharth Suri、Scott Counts","institution":"Microsoft Research（团队页面收录；作者逐一 affiliation 未完全确认）","venue":"ARXIV · 2026","published":"2026年8月16日","doi":"10.48550/arXiv.2608.15550","code":"暂无公开代码","url":"https://arxiv.org/abs/2608.15550","topics":["Workplace AI","AI Productivity","Knowledge Work","M365","Human-AI Collaboration"],"overview":"这项研究使用多家大型跨国企业的 Microsoft M365 数字轨迹，分析生成式 AI 采用后信息工作的实际变化。通过 Difference-in-Differences，作者发现，在采用后 20 周内使用 AI 超过 100 次的用户，其生产力类应用操作增加 21.2%，通信类操作增加 7.1%。通信增长较弱并不等同于“整体交流减少”，但相对结构明显转向更多个人、文档导向的活动，其中邮件阅读和整理等行为出现下降。研究因此把 AI 效率问题从自报问卷推进到真实企业行为数据，同时提醒组织需要关注沟通和信息扩散是否被削弱。","recommendation":"重点：它不是测单次任务快了多少，而是研究 AI 进入企业后工作结构怎样改变。创新点：用真实 M365 行为轨迹和准实验方法观察生产与沟通活动的长期相对变化。结论：生成式 AI 可能同时增加工作活动量并把注意力更多推向个人文档生产；效率收益之外，组织层的信息流动值得持续监测。"},
+    {"id":"ui-copilot","title":"UI-Copilot: Advancing Long-Horizon GUI Automation via Tool-Integrated Policy Optimization","titleZh":"UI-Copilot：通过工具集成策略优化推进长程 GUI 自动化","type":"Long Paper · ACL 2026","status":"ACL 2026 Main Conference","authors":"Zhengxi Lu、Fei Tang、Guangyi Liu、Jin Ma、Kaitao Song、Xu Tan、Wenqi Zhang、Weiming Lu、Jun Xiao、Yueting Zhuang、Yongliang Shen","institution":"Zhejiang University、Apple、Tencent（团队机构；作者对应关系未逐一确认）","venue":"ACL · 2026","published":"2026年7月 · ACL Long Papers","doi":"10.18653/v1/2026.acl-long.904","code":"https://github.com/ZJU-REAL/UI-Copilot","url":"https://aclanthology.org/2026.acl-long.904/","topics":["GUI Agent","Long-horizon Agent","Tool Use","Memory Decoupling","Policy Optimization"],"overview":"UI-Copilot 针对长程 GUI Agent 中的 memory degradation、progress confusion 和计算幻觉，将主执行 Agent 与轻量 Copilot 分工。系统把持久观察从短期执行 context 中分离出来，主 Agent 需要历史信息时调用 Retriever，需要数值计算时调用 Calculator。TIPO 将工具选择的单轮训练和任务执行的 on-policy 多轮 rollout 分开优化，使 Agent 学会何时请求外部能力。UI-Copilot-7B 在 MemGUI-Bench 上超过同量级强基线，并在 AndroidWorld 上相对基础 Qwen 模型取得 17.1 个百分点的绝对提升。","recommendation":"重点：这是 ACL 2026 主会论文，核心不是扩大 GUI 模型，而是把长程执行中不适合由主模型硬扛的能力拆出去。创新点：memory decoupling + 按需 Retriever/Calculator + TIPO，让工具调用本身成为可训练策略。结论：可靠长程 Computer-Use Agent 更可能依赖模块化 Harness 与有意识的工具委派，而不是让单个模型永久携带完整轨迹。"}
   ],
-  "signal": {
-    "title": "Agent 能力的评测单位正在从模型转向 model + harness + persistent user state",
-    "body": "前两篇把 Harness 从隐形工程细节变成可控、可测的实验变量：context policy 会改变 coding 成功率，不同 instruction surface 也会改变规则遵循。PersonalAlign 则把长期用户状态加入执行闭环，说明面向真实工作的 Agent 还必须把“用户是谁、过去怎么做”纳入系统状态。",
-    "note": "这是今日追加一期基于三篇论文的编辑判断。"
-  }
+  "signal":{"title":"Agent 的竞争单位继续从模型扩展到会适应的系统层","body":"MemoHarness 让 Harness 根据历史执行经验调整自身，UI-Copilot 则把长期记忆与计算拆成按需工具；两者都在弱化“一个固定 prompt + 一个模型包办所有事情”的设计。与此同时，真实企业数据已经开始显示 AI 对工作结构的长期影响，说明 Agent 与 Copilot 的系统设计最终还要接受组织行为层面的验证。","note":"这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"}
 }
