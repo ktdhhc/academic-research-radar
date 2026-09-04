@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-04",
+  "updatedAt": "2026-09-04 08:33 CST",
+  "edition": "NO. 005 · LATEST EDITION",
+  "title": "Agent 系统开始把状态、失败与环境变化显式化",
+  "subtitle": "今天的三篇研究分别把长程任务状态、coding-agent 中间失败阶段，以及持续变化的 GUI 知识从隐性轨迹中抽离出来。共同方向是：可靠 Agent 正从“让模型自己记住一切”转向可验证、可诊断、可演化的系统状态。",
+  "readingMinutes": 9,
+  "summary": [
+    {
+      "paperId": "longhorizon-harness",
+      "headline": "长程任务的核心问题被重新定义为“可验证的任务状态管理”",
+      "takeaway": "LongHorizon-Harness 用 Manager–Executor–Auditor 循环把任务状态移出不断增长的执行上下文，仅在环境证据验证后更新状态，并在多个真实长程基准上获得稳定提升。"
+    },
+    {
+      "paperId": "swe-rpg",
+      "headline": "Coding Agent 的真正瓶颈往往发生在写代码之前",
+      "takeaway": "SWE-RPG 首次把需求澄清、实施规划与代码生成统一放进 repository-level 诊断评测；163 个任务的实验显示，隐式需求恢复是当前 coding agent 最突出的失败来源之一。"
+    },
+    {
+      "paperId": "magnet",
+      "headline": "【顶会收录：ACL 2026】GUI Agent 开始学习跨界面变化保留“稳定知识”",
+      "takeaway": "MAGNET 用 stationary memory 与 procedural memory 分离稳定功能语义和任务意图，并持续演化记忆，使 Agent 在应用界面和流程变化后仍能迁移已有经验。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "longhorizon-harness",
+      "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
+      "titleZh": "LongHorizon-Harness：推进面向真实任务的长程 Agent",
+      "type": "研究论文 · arXiv:2608.01964",
+      "status": "预印本",
+      "authors": "Ziyu Ma、Hailang Huang、Shun Zou、Yong Wang、Shidong Yang、Yiming Hu、Fei Wei、XiangXiang Chu",
+      "institution": "DreamX Team, Alibaba Group",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月3日",
+      "doi": "10.48550/arXiv.2608.01964",
+      "code": "https://github.com/AMAP-ML/LongHorizon-Harness",
+      "url": "https://arxiv.org/abs/2608.01964",
+      "topics": ["Agent Harness", "Long-Horizon Agent", "Task State", "Verification", "Failure Recovery"],
+      "overview": "LongHorizon-Harness 将长程 Agent 的执行问题重构为显式 task-state management。它使用 Manage–Execute–Audit 循环：Manager 维护任务状态并拆分下一步，Executor 在 fresh context 中执行子任务，Auditor 只读取环境证据并独立验证结果；只有通过验证的事实才会写回持久状态。AgentAdapter 则让不同模型和现有 agent backend 保留原生执行循环。论文报告 Qwen 3.7-Plus 在 WeaveBench 上从 51.8% 提升至 80.7%，Terminal-Bench 2.1 从 69.7% 提升至 77.2%，OSWorld 2.0 的完成率也获得显著提升。",
+      "recommendation": "重点：它没有继续扩展 context，而是把可靠进度从 trajectory 中抽离成外部、可验证状态。创新点：Manager–Executor–Auditor 的角色边界加上 fresh-context execution，使错误的自我完成判断不再直接污染后续执行。结论：长程 Harness 的关键能力可能不是记住更多历史，而是只保存经过环境证据确认的进度，并允许失败后从可信状态恢复。"
+    },
+    {
+      "id": "swe-rpg",
+      "title": "A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents",
+      "titleZh": "面向 Coding Agent 需求澄清、规划与代码生成的统一 Issue Resolution 基准",
+      "type": "研究论文 · arXiv:2608.09072",
+      "status": "预印本",
+      "authors": "Xin Zhou、Chun Yong Chong、Kisub Kim、Yun Peng、Rui Shu、Zihan Wu、Xu Han、Guowen Yuan、Zeyang Zhuang、Jounghoon Kim、Jeongjin Ju、Seongmin Ju、Taein Yoon、David Lo",
+      "institution": "Singapore Management University、Monash University Malaysia、DGIST、The Chinese University of Hong Kong、North Carolina State University、City University of Hong Kong、HKUST、The University of Hong Kong",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月10日",
+      "doi": "10.48550/arXiv.2608.09072",
+      "code": "https://github.com/Xin-Zhou-smu/SWE-RPG-Bench",
+      "url": "https://arxiv.org/abs/2608.09072",
+      "topics": ["Coding Agent", "Agent Evaluation", "Trajectory Diagnosis", "Requirement Clarification", "Planning"],
+      "overview": "SWE-RPG 不再只用最终测试是否通过评价 repository-level coding agent，而是为需求澄清与实施规划建立经过验证的中间 ground truth，并与最终可执行 patch 一起诊断完整轨迹。基准包含来自 31 个 Python/Java 仓库的 163 个任务，涵盖 113 个 bug fix 和 50 个 feature addition。作者评测 Claude Code、Codex、OpenCode 三类 agent 与六个模型后，平均 resolve rate 仅为 31.5%。进一步的阶段归因显示，46.7% 的运行主要失败在需求澄清或规划阶段，其中隐式需求恢复是最突出瓶颈之一。",
+      "recommendation": "重点：它把“为什么 coding agent 失败”从事后猜测变成阶段可对齐的诊断问题。创新点：同时提供隐式需求参考、可复现实施规划与 executable patch evaluation，使 trajectory 能被定位到需求、规划或实现阶段。结论：当前 coding agent 的提升空间不只在代码生成；如果不能从仓库和 issue 中恢复未明确写出的约束，后续计划和 patch 再强也容易建立在错误前提上。"
+    },
+    {
+      "id": "magnet",
+      "title": "MAGNET: Towards Adaptive GUI Agents with Memory-Driven Knowledge Evolution",
+      "titleZh": "MAGNET：通过记忆驱动的知识演化构建自适应 GUI Agent",
+      "type": "Long Paper · ACL 2026",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Libo Sun、Jiwen Zhang、Siyuan Wang、Zhongyu Wei",
+      "institution": "Fudan University、University of Southern California、Shanghai Innovation Institute（团队机构；作者对应关系未完全确认）",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers",
+      "doi": "10.18653/v1/2026.acl-long.1299",
+      "code": "https://github.com/sunlibo2390/MAGNET",
+      "url": "https://aclanthology.org/2026.acl-long.1299/",
+      "topics": ["GUI Agent", "Adaptive Agent", "Agent Memory", "Knowledge Evolution", "Distribution Shift"],
+      "overview": "MAGNET 针对移动应用频繁更新后视觉外观和操作流程变化导致 GUI Agent 失效的问题，区分了更稳定的功能语义与任务意图。系统维护双层记忆：stationary memory 将多样视觉特征映射到稳定功能语义，procedural memory 则保存跨工作流变化仍稳定的任务意图。一个动态 memory evolution 机制根据知识访问情况持续更新两类记忆。AndroidWorld 在线评测和分布偏移下的离线实验均显示，它比 memory-augmented baselines 更能保持性能和泛化。",
+      "recommendation": "重点：这是 ACL 2026 主会正式长论文，直接研究真实软件持续变化时 GUI Agent 如何避免经验快速过期。创新点：它不把历史轨迹整体记住，而是把可跨 UI 变化复用的功能语义与任务意图拆成不同记忆层并持续演化。结论：面向长期部署的 Computer-Use Agent，关键不是记住某个界面长什么样，而是抽取并维护界面变化后仍稳定的功能知识。"
+    }
+  ],
+  "signal": {
+    "title": "可靠 Agent 正把隐性轨迹拆成显式系统状态",
+    "body": "LongHorizon-Harness 把可信进度从执行历史中分离出来，SWE-RPG 把失败过程拆成可诊断阶段，MAGNET 则把会随界面变化失效的表面经验与稳定功能知识分开。三者共同指向一种更工程化的 Agent 观：状态、失败和环境变化都应该被系统显式表示，而不是全部留给模型从长上下文里自行推断。",
+    "note": "这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
