@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-05",
+  "updatedAt": "2026-09-05 08:51 CST",
+  "edition": "NO. 006 · LATEST EDITION",
+  "title": "Agent 交互设计开始围绕注意力、主动性与监督重构",
+  "subtitle": "今天的三篇研究聚焦 Human-AI Interaction：Agent 在后台运行时如何汇报状态、主动式 AI 什么时候介入最合适，以及知识工作者如何在 GenAI 辅助下保持必要的批判性判断。",
+  "readingMinutes": 9,
+  "summary": [
+    {"paperId":"sidekick","headline":"【顶会收录：UIST 2026】Agent 在后台运行时，也需要一套“低打扰但可监督”的沟通层","takeaway":"Sidekick 用环境提示、恢复摘要和前台可视化解释三种反馈模式支持 CUA 多任务协作；30 人实验表明，它能显著减少代理任务中的错误并改善状态感知与追溯。"},
+    {"paperId":"proaide","headline":"主动式 AI 的核心设计变量不是“能不能主动”，而是“什么时候主动”","takeaway":"五天真实 IDE 研究显示，提交代码后的自然工作流边界最容易接受主动建议，而任务中途的干预更容易被忽略；时机直接影响用户对 AI 主动性的容忍度。"},
+    {"paperId":"genai-critical-thinking","headline":"【顶会收录：CHI 2025 · 高影响力历史论文】AI 降低认知负担的同时，也可能削弱必要的批判性参与","takeaway":"319 名知识工作者的 936 个真实案例显示，对 GenAI 越有信心的人越少报告批判性思考；人的认知活动则从信息搜集和直接执行转向验证、整合与任务监督。"}
+  ],
+  "papers": [
+    {
+      "id":"sidekick",
+      "title":"Sidekick: Designing Communication for Effective Multitasking with Computer Use Agents",
+      "titleZh":"Sidekick：为计算机操作 Agent 的有效多任务协作设计沟通机制",
+      "type":"Research Paper · UIST 2026 / arXiv:2607.17527",
+      "status":"UIST 2026 正式论文",
+      "authors":"Ruei-Che Chang、Wenqian Xu、Dingzeyu Li、Bryan Wang、Anhong Guo",
+      "institution":"University of Michigan、Adobe Research",
+      "venue":"UIST · 2026",
+      "published":"2026年7月20日（arXiv）；UIST 2026",
+      "doi":"10.1145/3830398.3830476",
+      "code":"未确认公开代码",
+      "url":"https://arxiv.org/abs/2607.17527",
+      "topics":["Human-Agent Interaction","Computer Use Agent","Multitasking","Ambient Feedback","Transparency"],
+      "overview":"Sidekick 研究当 Computer Use Agent 在后台长期执行时，用户如何在不持续盯着聊天日志的情况下保持对进度、错误与行动轨迹的感知。系统按三种交互阶段设计反馈：后台运行时用环境提示维持低成本 awareness；用户返回时提供多模态行动摘要帮助恢复上下文；前台协作时通过语音和视觉标注解释 Agent 的推理与动作。30 名参与者的多任务实验显示，Sidekick 相比 chat-only 与 peripheral-text baseline 显著减少代理任务错误，并提升进度感知、错误追踪和及时干预能力，同时没有显著增加监控时间。",
+      "recommendation":"重点：它直接回答了自主 Agent 产品最现实的问题之一——用户不可能一直盯着 Agent，但又不能完全失去监督。创新点：不是把更多日志塞进聊天框，而是根据后台、恢复、前台三种注意力状态切换不同强度的多模态反馈。结论：Agent 的可用性不只取决于任务完成率，还取决于系统能否以低注意力成本维持用户的可感知状态、可追溯性与干预能力。"
+    },
+    {
+      "id":"proaide",
+      "title":"Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
+      "titleZh":"主动式 AI 的开发者交互模式：五天真实环境研究",
+      "type":"Research Paper · IUI 2026 / arXiv:2601.10253",
+      "status":"IUI 2026 正式论文",
+      "authors":"Nadine Kuo、Agnia Sergeyuk、Valerie Chen、Maliheh Izadi",
+      "institution":"JetBrains、JetBrains Research、Carnegie Mellon University、Delft University of Technology",
+      "venue":"IUI · 2026",
+      "published":"2026年3月22日",
+      "doi":"10.1145/3742413.3789148",
+      "code":"未确认公开代码",
+      "url":"https://doi.org/10.1145/3742413.3789148",
+      "topics":["Proactive AI","Mixed-Initiative Interaction","Developer UX","Interruption","User Control"],
+      "overview":"作者将主动式 AI 功能 ProAIDE 集成进生产级 IDE，并让 15 名专业开发者在真实工作中连续使用五天，共记录 5,732 个交互点和 229 次主动干预。研究发现，工作流边界的时机非常关键：例如提交代码之后出现的建议参与率达到 52%，而任务中途出现的建议有 62% 被忽略。适时的主动建议平均解释时间约 45.4 秒，而 reactive suggestion 为 101.4 秒。参与者同时表现出对主动程度、建议粒度和控制方式的明显个体差异。",
+      "recommendation":"重点：它把“主动式 AI 应该什么时候出现”从设计直觉变成了真实生产环境中的行为数据。创新点：不是一次性实验，而是在真实 IDE 中持续观察不同 workflow stage 对主动建议接受度的影响。结论：Proactive AI 的好坏不能只由建议质量决定；触发时机、用户当前工作状态以及可控性同样是核心产品变量。"
+    },
+    {
+      "id":"genai-critical-thinking",
+      "title":"The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers",
+      "titleZh":"生成式 AI 对批判性思维的影响：知识工作者的认知努力下降与信心效应",
+      "type":"Research Paper · CHI 2025",
+      "status":"CHI 2025 正式论文",
+      "authors":"Hao-Ping (Hank) Lee、Advait Sarkar、Lev Tankelevitch、Ian Drosos、Sean Rintel、Richard Banks、Nicholas Wilson",
+      "institution":"Carnegie Mellon University、Microsoft Research",
+      "venue":"CHI · 2025",
+      "published":"2025年4月25日",
+      "doi":"10.1145/3706598.3713778",
+      "code":"未确认公开代码",
+      "url":"https://doi.org/10.1145/3706598.3713778",
+      "topics":["Knowledge Work","Critical Thinking","AI Reliance","Human-AI Collaboration","AI UX"],
+      "overview":"研究调查 319 名每周在工作中使用 GenAI 的知识工作者，并收集 936 个第一手工作案例，分析用户何时进行批判性思考以及 GenAI 如何改变认知努力。定量结果显示，在控制任务和用户因素后，对 GenAI 的任务特定信心越高，用户越少报告批判性思考；相反，对自己完成任务能力的信心越高，更容易保持批判性判断。定性分析进一步发现，GenAI 将人的思考活动从信息搜集转向信息验证、从直接问题解决转向 AI 回答整合、从任务执行转向任务监督。ACM 页面截至本次检索显示约 416 次引用和 125,606 次下载。",
+      "recommendation":"重点：它提醒 AI 产品团队，降低用户 effort 并不总是纯收益，因为过度无摩擦也可能让用户减少必要的核验和判断。创新点：把 confidence、critical thinking 与真实知识工作案例联系起来，而不只测效率或满意度。结论：成熟的 AI 产品需要帮助用户更容易检查、质疑、验证和接管 AI，而不是只追求更少点击和更少思考。为何现在仍值得读：自主 Agent 正在进一步替代用户执行过程，这使“用户应在何处保持判断与监督”比论文发表时更重要。"
+    }
+  ],
+  "signal":{"title":"Agent UX 的核心开始从“对话体验”转向“注意力与监督设计”","body":"Sidekick 研究用户不盯着 Agent 时如何保持感知，ProAIDE 研究 AI 主动介入的最佳时机，CHI 2025 的知识工作研究则提醒我们，过强的顺滑体验可能削弱必要判断。三者共同说明，下一阶段 Human-AI Interaction 的核心不只是把聊天做得更自然，而是精细管理用户注意力、主动性边界与监督责任。","note":"这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"}
+}
