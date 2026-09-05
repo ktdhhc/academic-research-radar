@@ -2,6 +2,13 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-05",
+      "shortTitle": "Agent UX 开始围绕注意力、主动性与监督重构",
+      "count": 3,
+      "topics": ["Human-Agent Interaction", "Proactive AI", "Knowledge Work"],
+      "path": "data/reports/2026-09-05.json"
+    },
+    {
       "date": "2026-09-04",
       "shortTitle": "Agent 系统开始把状态、失败与环境变化显式化",
       "count": 3,
