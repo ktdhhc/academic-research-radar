@@ -1,20 +1,20 @@
 {
-  "date": "2026-09-04",
+  "date": "2026-09-05",
   "papers": [
     {
-      "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
-      "pdfUrl": "https://arxiv.org/pdf/2608.01964.pdf",
-      "path": "papers/2026-09-04/2608.01964 LongHorizon-Harness - Advancing Long-Horizon Agents for Real-World Tasks.pdf"
+      "title": "Sidekick: Designing Communication for Effective Multitasking with Computer Use Agents",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17527.pdf",
+      "path": "papers/2026-09-05/2607.17527 Sidekick - Designing Communication for Effective Multitasking with Computer Use Agents.pdf"
     },
     {
-      "title": "A Unified Issue Resolution Benchmark for Requirement Clarification, Planning, and Code Generation for Coding Agents",
-      "pdfUrl": "https://arxiv.org/pdf/2608.09072.pdf",
-      "path": "papers/2026-09-04/2608.09072 SWE-RPG.pdf"
+      "title": "Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
+      "pdfUrl": "https://arxiv.org/pdf/2601.10253.pdf",
+      "path": "papers/2026-09-05/2601.10253 Developer Interaction Patterns with Proactive AI.pdf"
     },
     {
-      "title": "MAGNET: Towards Adaptive GUI Agents with Memory-Driven Knowledge Evolution",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.1299.pdf",
-      "path": "papers/2026-09-04/10.18653_v1_2026.acl-long.1299 MAGNET.pdf"
+      "title": "The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers",
+      "pdfUrl": "https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf",
+      "path": "papers/2026-09-05/10.1145_3706598.3713778 The Impact of Generative AI on Critical Thinking.pdf"
     }
   ]
 }
