@@ -1,20 +1,20 @@
 {
-  "date": "2026-09-05",
+  "date": "2026-09-06",
   "papers": [
     {
-      "title": "Sidekick: Designing Communication for Effective Multitasking with Computer Use Agents",
-      "pdfUrl": "https://arxiv.org/pdf/2607.17527.pdf",
-      "path": "papers/2026-09-05/2607.17527 Sidekick - Designing Communication for Effective Multitasking with Computer Use Agents.pdf"
+      "title": "Controllable Memory Usage: Balancing Anchoring and Innovation in Long-Term Human–Agent Interaction",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.670.pdf",
+      "path": "papers/2026-09-06/10.18653_v1_2026.acl-long.670 Controllable Memory Usage.pdf"
     },
     {
-      "title": "Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
-      "pdfUrl": "https://arxiv.org/pdf/2601.10253.pdf",
-      "path": "papers/2026-09-05/2601.10253 Developer Interaction Patterns with Proactive AI.pdf"
+      "title": "Agent Safety Should Be a Runtime Contract",
+      "pdfUrl": "https://arxiv.org/pdf/2608.11274.pdf",
+      "path": "papers/2026-09-06/2608.11274 Agent Safety Should Be a Runtime Contract.pdf"
     },
     {
-      "title": "The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers",
-      "pdfUrl": "https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf",
-      "path": "papers/2026-09-05/10.1145_3706598.3713778 The Impact of Generative AI on Critical Thinking.pdf"
+      "title": "Human-AI Coordination Zones: A Framework for Designing Human-in-the-Loop Experiences with Agentic AI",
+      "pdfUrl": "https://arxiv.org/pdf/2606.09848.pdf",
+      "path": "papers/2026-09-06/2606.09848 Human-AI Coordination Zones.pdf"
     }
   ]
 }
