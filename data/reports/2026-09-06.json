@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-06",
+  "updatedAt": "2026-09-06 08:47 CST",
+  "edition": "NO. 007 · LATEST EDITION",
+  "title": "Agent 的下一层控制面：记忆、运行时契约与人机协调",
+  "subtitle": "今天三篇分别把控制权放到长期记忆依赖、Harness 运行时安全，以及 Agent 产品中的人机协调结构上：Agent 越自主，越需要把过去隐含在模型或界面里的控制变量显式化。",
+  "readingMinutes": 9,
+  "summary": [
+    {
+      "paperId": "controllable-memory-usage",
+      "headline": "【顶会收录：ACL 2026】长期记忆不应只有“用”或“不用”，用户可以控制 Agent 对过去的依赖程度",
+      "takeaway": "SteeM 将 memory dependence 建模成显式、可调的用户控制维度，在保留个性化的同时减少 Agent 被历史交互“锚定”的问题。"
+    },
+    {
+      "paperId": "agent-safety-runtime-contract",
+      "headline": "Agent 安全开始从模型属性转向 Harness 的 runtime contract",
+      "takeaway": "论文主张用 sandbox、permission gate、trajectory monitor 等阻止危险动作，并用测试、日志、diff、citation grounding 等硬证据决定任务能否被标记为完成。"
+    },
+    {
+      "paperId": "human-ai-coordination-zones",
+      "headline": "Agentic UX 需要比“保持用户控制”更具体的中层设计语言",
+      "takeaway": "作者分析 60 个商业 AI 产品，用 salience、involvement、activity 三个维度以及四类 coordination zone 描述人和 Agent 在一段任务旅程中如何分配主动性与参与度。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "controllable-memory-usage",
+      "title": "Controllable Memory Usage: Balancing Anchoring and Innovation in Long-Term Human–Agent Interaction",
+      "titleZh": "可控记忆使用：在长期人机 Agent 交互中平衡锚定与创新",
+      "type": "Long Paper · ACL 2026 / arXiv:2601.05107",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Zisu Huang、Muzhao Tian、Xiaohua Wang、Jingwen Xu、Zhengkang Guo、Qi Qian、Kaitao Song、Jiakang Yuan、Changze Lv、Xiaoqing Zheng",
+      "institution": "Fudan University、Shanghai Key Laboratory of Intelligent Information Processing",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers",
+      "doi": "10.18653/v1/2026.acl-long.670",
+      "code": "未确认公开代码",
+      "url": "https://aclanthology.org/2026.acl-long.670/",
+      "topics": ["Agent Memory", "Human-Agent Interaction", "User Control", "Personalization", "Long-Term Interaction"],
+      "overview": "长期 Agent 通常把相关历史全部检索进来，但作者发现这会产生 Memory Anchoring：即使用户希望获得新视角，模型仍被过去内容、推理方式和风格牵制。论文先提出行为层面的 memory-dependence metric，用来量化当前输出受历史交互影响的程度；随后提出 Steerable Memory Agent（SteeM），让用户把记忆依赖从 fresh-start 到 high-fidelity 连续调节。实验覆盖研究与辅导等场景，并报告 SteeM 相比普通 prompting 和刚性的 memory masking 能更准确匹配用户希望的依赖程度，同时保持回答质量。",
+      "recommendation": "重点：它把 memory 从后台不可见的系统策略，变成可以由用户显式调节的交互变量。创新点：不是简单开关检索，而是度量并连续控制 Agent 对历史内容、模式与风格的依赖。结论：真正长期个性化的 Agent 需要允许用户决定什么时候‘记住我’，什么时候‘暂时忘掉我’，否则记忆越强反而越可能限制探索与创新。"
+    },
+    {
+      "id": "agent-safety-runtime-contract",
+      "title": "Agent Safety Should Be a Runtime Contract",
+      "titleZh": "Agent 安全应当是一种运行时契约",
+      "type": "Research / Position Paper · arXiv:2608.11274",
+      "status": "预印本",
+      "authors": "Albus W. Ng、Yi Han、Jusheng Zhang、Wenhao Wang",
+      "institution": "Vast Intelligence Lab、Southwest University、Sun Yat-sen University",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月11日",
+      "doi": "10.48550/arXiv.2608.11274",
+      "code": "未确认独立代码仓库；论文附公开补充 JSON 数据",
+      "url": "https://arxiv.org/abs/2608.11274",
+      "topics": ["Agent Harness", "Runtime Safety", "Verification", "Trajectory", "Evidence Gating"],
+      "overview": "论文认为，能执行代码、修改文件、发送消息或操作数据库的 Agent，不能只依赖模型训练阶段的 alignment 来保证安全，而应由 Harness 在运行时执行明确契约。作者把契约分成两面：preventive face 用 sandbox、权限门、输出过滤和 trajectory monitor 在动作发生前或执行中限制风险；evidential face 则要求测试运行、日志、文件 diff、引用查证等外部可核验材料，只有证据链满足预设格式时才接受任务完成。论据来自 52 起公开安全事件、31 个无争议的 false-completion 案例、12 个公开 Agent/Harness 的 trajectory schema 审计，以及 2023–2025 年 ICLR/ICML/NeurIPS 28,560 篇录用论文的标题级统计。",
+      "recommendation": "重点：它把 Agent Harness 的 sandbox、permission、observability、verification 和 completion gate 统一解释成一种 runtime contract。创新点：尤其强调‘阻止坏动作’与‘证明好动作真的发生’是两套互补机制，不能只做前者。结论：面向生产的 Agent，可信执行单位应逐渐从模型输出变成带可检查证据的 trajectory；这对 coding agent、企业自动化和高权限工具调用都具有直接架构意义。"
+    },
+    {
+      "id": "human-ai-coordination-zones",
+      "title": "Human-AI Coordination Zones: A Framework for Designing Human-in-the-Loop Experiences with Agentic AI",
+      "titleZh": "人机协调区：面向 Agentic AI 人在回路体验的设计框架",
+      "type": "Research Framework · arXiv:2606.09848",
+      "status": "预印本",
+      "authors": "James Pierce、Vaiva Kalnikaitė、Siddharth Gupta、Brian Granger",
+      "institution": "Amazon Web Services",
+      "venue": "ARXIV · 2026",
+      "published": "2026年6月10日",
+      "doi": "10.48550/arXiv.2606.09848",
+      "code": "未确认公开代码",
+      "url": "https://arxiv.org/abs/2606.09848",
+      "topics": ["Human-AI Interaction", "Agentic UX", "Human-in-the-loop", "Autonomy", "Interaction Design"],
+      "overview": "作者认为，‘透明’或‘保持用户控制’这类高层原则与具体 UI pattern 之间缺少可用于产品设计的中层语言。基于 60 个商业 AI 应用的 landscape 与 artifact analysis，论文用 salience（AI 多显眼）、involvement（用户需要参与多少）和 activity（AI 实际做多少）三个维度描述人机协调，并提出 done-for-me、done-under-me、done-with-me、done-without-me 四类 coordination zone。框架还用 prompted、sparked、inferred、layered 等输入类型，以及沿 Initiate、Monitor、Update、Complete、Extend 阶段变化的 coordination curve，帮助团队描述一段 Agent 用户旅程中主动性和控制权如何变化。",
+      "recommendation": "重点：这篇论文非常接近‘AI 产品交互设计’本身，而不是把交互问题附着在模型能力评测上。创新点：用一套中层设计变量把后台 Agent activity、用户 involvement 和界面 salience 分开，使团队可以讨论‘Agent 做很多但用户看见很少’这类典型错位。结论：Agentic UX 不应被简化成聊天框加进度条；真正的设计对象是整个任务生命周期中，人和 Agent 如何动态协调、交接和重新取得控制。"
+    }
+  ],
+  "signal": {
+    "title": "Agent 越自主，越需要把控制权从隐性机制变成显式系统变量",
+    "body": "今天三篇分别把控制面放在 memory reliance、runtime contract 和 human-AI coordination 上。共同趋势是：不能再把关键行为留给模型‘自己判断’——用户要能控制记忆依赖，Harness 要能强制权限与证据，界面则要能明确表达人和 Agent 在每个阶段谁在做什么、谁拥有最终控制权。",
+    "note": "这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
