@@ -1,20 +1,20 @@
 {
-  "date": "2026-09-06",
+  "date": "2026-09-07",
   "papers": [
     {
-      "title": "Controllable Memory Usage: Balancing Anchoring and Innovation in Long-Term Human–Agent Interaction",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.670.pdf",
-      "path": "papers/2026-09-06/10.18653_v1_2026.acl-long.670 Controllable Memory Usage.pdf"
+      "title": "StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents",
+      "pdfUrl": "https://arxiv.org/pdf/2608.18050.pdf",
+      "path": "papers/2026-09-07/2608.18050 StagedWorkspace.pdf"
     },
     {
-      "title": "Agent Safety Should Be a Runtime Contract",
-      "pdfUrl": "https://arxiv.org/pdf/2608.11274.pdf",
-      "path": "papers/2026-09-06/2608.11274 Agent Safety Should Be a Runtime Contract.pdf"
+      "title": "MAGMA: A Multi-Graph based Agentic Memory Architecture for AI Agents",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1709.pdf",
+      "path": "papers/2026-09-07/10.18653_v1_2026.acl-long.1709 MAGMA.pdf"
     },
     {
-      "title": "Human-AI Coordination Zones: A Framework for Designing Human-in-the-Loop Experiences with Agentic AI",
-      "pdfUrl": "https://arxiv.org/pdf/2606.09848.pdf",
-      "path": "papers/2026-09-06/2606.09848 Human-AI Coordination Zones.pdf"
+      "title": "A Framework of User Experience Principles for Human-AI Agent Interaction in the Workplace",
+      "pdfUrl": "https://arxiv.org/pdf/2607.19941.pdf",
+      "path": "papers/2026-09-07/2607.19941 Workplace Agent UX Principles.pdf"
     }
   ]
 }
