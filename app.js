@@ -1,5 +1,6 @@
 const REPORT_INDEX_URL = "data/index.json";
 const LATEST_REPORT_URL = "data/latest.json";
+const RATINGS_URL = "data/ratings.json";
 
 const reportElement = document.querySelector("#report");
 const archiveListElement = document.querySelector("#archive-list");
@@ -9,6 +10,7 @@ const currentDateLabelElement = document.querySelector("#current-date-label");
 const updatedAtElement = document.querySelector("#updated-at");
 
 let reportIndex = [];
+let paperRatings = {};
 let activeDate = "";
 
 function element(tag, className, text) {
@@ -40,6 +42,15 @@ async function fetchJson(url) {
 
 function setBusy(isBusy) {
   reportElement.setAttribute("aria-busy", String(isBusy));
+}
+
+function recommendationRating(paperId) {
+  const score = Number(paperRatings[paperId]);
+  if (!Number.isInteger(score) || score < 1 || score > 7) return null;
+  return {
+    score,
+    text: `推荐指数 ${"★".repeat(score)}${"☆".repeat(7 - score)}`
+  };
 }
 
 function renderArchive() {
@@ -98,7 +109,15 @@ function renderReport(report) {
     const headline = paper
       ? `${paper.title}（${paper.status || paper.type || "未确认"}）`
       : item.headline;
-    content.append(element("h2", "summary__headline", headline));
+    const headlineNode = element("h2", "summary__headline");
+    headlineNode.append(document.createTextNode(headline));
+    const rating = recommendationRating(paper?.id || item.paperId);
+    if (rating) {
+      const ratingNode = element("span", "section-label", ` · ${rating.text}`);
+      ratingNode.setAttribute("aria-label", `推荐指数 ${rating.score} / 7`);
+      headlineNode.append(ratingNode);
+    }
+    content.append(headlineNode);
     if (paper?.titleZh) content.append(element("p", "summary__translation", paper.titleZh));
     content.append(element("p", "summary__takeaway", item.takeaway));
     listItem.append(content);
@@ -215,8 +234,12 @@ async function openIssue(date, updateHistory = true) {
 async function initialise() {
   setBusy(true);
   try {
-    const indexData = await fetchJson(REPORT_INDEX_URL);
+    const [indexData, ratingsData] = await Promise.all([
+      fetchJson(REPORT_INDEX_URL),
+      fetchJson(RATINGS_URL).catch(() => ({ ratings: {} }))
+    ]);
     reportIndex = indexData.issues || [];
+    paperRatings = ratingsData.ratings || {};
     const requestedDate = new URLSearchParams(location.search).get("date");
     const requestedIssue = reportIndex.find((issue) => issue.date === requestedDate);
     const report = requestedIssue
