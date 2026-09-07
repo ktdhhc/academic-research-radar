@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-07",
+  "scale": {
+    "min": 1,
+    "max": 7,
+    "center": 4,
+    "method": "relative-normal",
+    "note": "Scores are relative to the full set of papers already published by the radar. The distribution should remain approximately bell-shaped, with 4 as the center and 1/7 reserved for rare tails."
+  },
+  "ratings": {
+    "comem": 6,
+    "toolscope": 4,
+    "appworld-ul": 6,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 4,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 5,
+    "longhorizon-harness": 5,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1
+  }
+}
