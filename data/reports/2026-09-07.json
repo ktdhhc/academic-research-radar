@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-07",
+  "updatedAt": "2026-09-07 08:36 CST",
+  "edition": "NO. 008 · LATEST EDITION",
+  "title": "知识工作 Agent 开始把工作区状态、记忆结构与用户控制显式化",
+  "subtitle": "今天三篇分别把可靠性问题落在版本化工作区、多关系记忆和工作场景 UX 原则上：Agent 要进入真实知识工作，不能只优化模型输出，还要明确管理它看到的状态、依赖的历史，以及人与 Agent 的控制边界。",
+  "readingMinutes": 9,
+  "summary": [
+    {
+      "paperId": "stagedworkspace",
+      "headline": "知识工作 Agent 也需要类似 Git 的 workspace-state contract",
+      "takeaway": "StagedWorkspace 用版本化工作区把可搜索解析视图、原生文件、review diff 和最终提交绑定到同一状态，直接解决文档、表格、幻灯片等非代码任务中的版本漂移。"
+    },
+    {
+      "paperId": "magma-memory",
+      "headline": "【顶会收录：ACL 2026】Agent Memory 从单一向量库转向多关系图结构",
+      "takeaway": "MAGMA 将语义、时间、因果和实体关系拆成独立图，并让 retrieval policy 根据查询在这些关系视图之间遍历，提升长程记忆推理的可解释性和控制力。"
+    },
+    {
+      "paperId": "workplace-agent-ux-principles",
+      "headline": "工作场景 Agent UX 开始形成可执行的设计原则，而不只是抽象的“可信与可控”",
+      "takeaway": "论文通过参与式设计、专家评审、问卷和访谈等多方法研究，归纳八项工作场景 Human-AI Agent UX 原则，为用户控制、透明度、可靠性、上下文感知和生态集成提供可操作的设计护栏。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "stagedworkspace",
+      "title": "StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents",
+      "titleZh": "StagedWorkspace：面向知识工作 Agent 的版本化工作区",
+      "type": "Research Paper · arXiv:2608.18050",
+      "status": "预印本",
+      "authors": "Yining Hua、Hongbin Na、Yifan Zhou、Akshay Kalose、Cyrus Ayubcha、Levi Lian",
+      "institution": "Harvard University、Raycaster AI、University of Technology Sydney、University of Washington、Stanford University",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月18日",
+      "doi": "10.48550/arXiv.2608.18050",
+      "code": "论文说明计划公开 sanitized research implementation；当前未确认公开仓库",
+      "url": "https://arxiv.org/abs/2608.18050",
+      "topics": ["Agent Harness", "Knowledge Work", "Workspace State", "Versioning", "Artifact Editing", "Verification"],
+      "overview": "StagedWorkspace 关注一个很基础但容易被忽略的知识工作 Agent 问题：Agent 搜到的 parsed view、实际编辑的原生文件、review 时看到的 diff，以及最终提交的 artifact 可能来自不同版本。作者将这一问题形式化为 workspace-state contract，并设计版本化工作区，用内容哈希把解析缓存、原生文件、staged changes、review state 和 submission 绑定到同一演化状态。固定 Harness 消融实验显示，parsed + native 双视图在 OfficeQA Pro 上相对受限单视图提升 8.3–12.1 个 Pass@1 百分点，在 APEX-Agents 上平均 rubric score 提升 4.7–9.2 分；57 个文件编辑任务的配对实验还发现，向 Agent 暴露 diff 时得分更高。作者因此主张，知识工作 benchmark 应像软件工程 benchmark 一样，把证据、staged edits 和最终 artifact 视为显式状态转移。",
+      "recommendation": "重点：它把 office/document agent 的可靠性问题从‘模型有没有看懂文件’推进到‘Agent 的所有读、写、审查和提交是否指向同一个版本状态’。创新点：把软件工程中 repository + diff + test 的契约思想推广到 PDF、表格、演示文稿和混合格式项目，并通过 source hash、缓存刷新和 review diff 将这些视图同步。结论：知识工作 Agent 的 Harness 需要一层真正的 workspace runtime；如果状态契约不成立，再强的模型也可能基于旧证据编辑新文件，最后提交一个与自己推理依据不一致的结果。"
+    },
+    {
+      "id": "magma-memory",
+      "title": "MAGMA: A Multi-Graph based Agentic Memory Architecture for AI Agents",
+      "titleZh": "MAGMA：面向 AI Agent 的多图记忆架构",
+      "type": "Long Paper · ACL 2026 / arXiv:2601.03236",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Dongming Jiang、Yi Li、Guanpeng Li、Bingzhe Li",
+      "institution": "University of Texas at Dallas、University of Florida",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers",
+      "doi": "10.18653/v1/2026.acl-long.1709",
+      "code": "官方 GitHub：https://github.com/FredJiang0324/MAGMA",
+      "url": "https://aclanthology.org/2026.acl-long.1709/",
+      "topics": ["Agent Memory", "Multi-Graph Memory", "Long-Horizon Reasoning", "Retrieval Policy", "Context Construction"],
+      "overview": "MAGMA 认为，传统 Agent Memory 将所有历史压进同一个语义向量空间，会把时间、因果和实体关系混在一起，导致 retrieval 难以解释，也很难根据当前问题精确选择证据。它为每条记忆同时建立语义、时间、因果和实体四类关系图，再把 retrieval 变成由策略控制的图遍历过程，根据查询意图在不同关系视图之间选择路径并构造上下文。这样 memory representation 与 retrieval logic 被解耦，检索路径也变得更透明。论文在 LoCoMo 和 LongMemEval 上报告了相对现有 agentic memory 系统的持续提升，并公开了实现。",
+      "recommendation": "重点：这不是简单增加一个更强 embedding 或 reranker，而是在重新定义 Agent Memory 的数据结构。创新点：把不同类型的关系显式分离，再通过 policy-guided traversal 进行 query-adaptive retrieval，使 Agent 能知道自己是沿时间、因果、语义还是实体关系寻找证据。结论：长期记忆系统可能不应是一个统一相似度库，而更像一个可被策略操作的多关系知识结构；这对长期个性化 Agent、研究助手和复杂任务状态追踪都很有价值。"
+    },
+    {
+      "id": "workplace-agent-ux-principles",
+      "title": "A Framework of User Experience Principles for Human-AI Agent Interaction in the Workplace",
+      "titleZh": "工作场景 Human-AI Agent 交互的用户体验原则框架",
+      "type": "HCI Research · arXiv:2607.19941",
+      "status": "arXiv 预印本；作者注明将发表于 Mensch und Computer 2026 proceedings",
+      "authors": "Kathrin Paimann、Elizangela Valarini、Sebastian Juhl",
+      "institution": "SAP SE、Hochschule Fresenius、University of Missouri",
+      "venue": "Mensch und Computer · 2026（作者注明即将发表于 proceedings）",
+      "published": "2026年7月22日公开",
+      "doi": "10.48550/arXiv.2607.19941",
+      "code": "未确认公开代码",
+      "url": "https://arxiv.org/abs/2607.19941",
+      "topics": ["Human-AI Interaction", "Agent UX", "Workplace AI", "User Control", "Transparency", "Human-Centered AI"],
+      "overview": "这项研究试图把工作场景 Agent UX 从抽象价值观转成设计团队可以直接使用的原则和判断标准。作者组合参与式设计 workshop、paper-and-pencil survey、专家评审、meta-analysis 和深入访谈等方法，归纳并验证八项核心 UX 原则，覆盖用户控制、可靠与安全、透明、上下文感知、协作、数据隐私与治理、生态系统集成以及直观响应等维度。其目标不是给出某一种固定界面，而是为企业 Agent 在自主性、信任、隐私和协作之间建立可测量的设计护栏。arXiv 元数据注明论文将发表于 Mensch und Computer 2026 proceedings。",
+      "recommendation": "重点：它非常贴合‘AI 产品交互设计’主题，尤其适合企业 Agent，而不是泛化讨论聊天机器人体验。创新点：通过多方法研究把常见的 human-centered AI 原则重新组织成 Agent 场景中的可执行 UX framework，并强调控制权、透明度、可靠性和 ecosystem integration 必须同时设计。结论：Agent UX 的成熟度不应只看自然语言是否顺滑，而要看用户是否知道 Agent 在做什么、能否控制它、能否理解失败与风险，以及 Agent 是否能在真实企业权限和工具生态中可靠协作。"
+    }
+  ],
+  "signal": {
+    "title": "Agent 进入知识工作后，真正的系统边界正在从模型扩展到 workspace、memory 和 UX",
+    "body": "StagedWorkspace 把文件状态变成 Harness 的显式契约，MAGMA 把记忆关系变成可被策略操纵的数据结构，而工作场景 UX 框架则把人的控制权和透明度变成产品设计原则。三者共同说明，下一阶段 Agent 系统的可靠性越来越取决于‘状态如何被组织和暴露’，而不只是模型如何生成下一步。",
+    "note": "这是基于今日三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
