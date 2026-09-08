@@ -2,6 +2,13 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-08",
+      "shortTitle": "Agent Memory 从单点方案走向可路由基础设施，人机协作开始学习介入时机",
+      "count": 3,
+      "topics": ["Agent Memory", "Agent Harness", "Human-Agent Interaction"],
+      "path": "data/reports/2026-09-08.json"
+    },
+    {
       "date": "2026-09-07",
       "shortTitle": "知识工作 Agent 开始把工作区状态、记忆结构与用户控制显式化",
       "count": 3,
