@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-07",
+  "updatedAt": "2026-09-08",
   "scale": {
     "min": 1,
     "max": 7,
@@ -23,7 +23,7 @@
     "personalalign": 4,
     "memoharness": 3,
     "genai-workplace-adoption": 5,
-    "ui-copilot": 5,
+    "ui-copilot": 4,
     "longhorizon-harness": 5,
     "swe-rpg": 3,
     "magnet": 4,
@@ -35,6 +35,9 @@
     "human-ai-coordination-zones": 2,
     "stagedworkspace": 3,
     "magma-memory": 3,
-    "workplace-agent-ux-principles": 1
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 5,
+    "modeling-human-interaction-web-agents": 5
   }
 }
