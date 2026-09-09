@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-09",
+  "updatedAt": "2026-09-09 08:51 CST",
+  "edition": "NO. 010 · LATEST EDITION",
+  "title": "Agent Runtime 开始同时优化记忆调用、Harness 供给与人类监督",
+  "subtitle": "今天三篇分别研究长期记忆如何真正驱动工具执行、Harness 如何按任务最小充分供给，以及人类监督为何会在高自主 Agent 中被认知负担逐步削弱。共同信号是：成熟 Agent 的关键控制面正在从模型内部推理扩展到运行时资源与人的介入能力。",
+  "readingMinutes": 9,
+  "summary": [
+    {
+      "paperId": "mem2actbench",
+      "headline": "【顶会收录：ACL 2026】长期记忆评测从‘能否回忆’推进到‘能否据此正确行动’",
+      "takeaway": "Mem2ActBench 用 400 个强记忆依赖的工具任务检验 Agent 是否能从长历史中主动找到偏好与状态并正确填入工具参数；七类 memory framework 的结果显示，参数 grounding 仍明显弱于工具选择。"
+    },
+    {
+      "paperId": "task-aware-harness-provisioning",
+      "headline": "Harness 不必永远全量开放：任务本身可以决定最小充分资源集",
+      "takeaway": "论文把 Harness provisioning 建模成任务需求与可用信息/工具之间的匹配问题，并提出 map-guided escalation：先给任务特定的最小配置，失败自检后再升级到完整 Harness。"
+    },
+    {
+      "paperId": "ai-agents-push-humans-out-of-loop",
+      "headline": "Human-in-the-loop 可能只是表面控制：Agent 越自主，人越容易失去真正监督能力",
+      "takeaway": "这篇新 position paper 结合自动化与 HCI 研究指出，持续让人充当被动审批者会产生认知疲劳与能力退化；Agent 产品应把监督者的判断能力当作与 Agent capability 同等重要的设计目标。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "mem2actbench",
+      "title": "Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents",
+      "titleZh": "Mem2ActBench：评测任务型自主 Agent 长期记忆利用能力的基准",
+      "type": "Long Paper · ACL 2026 / arXiv:2601.19935",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Yiting Shen、Kun Li、Wei Zhou、Songlin Hu",
+      "institution": "未确认",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers；2026年1月13日预印本公开",
+      "doi": "10.18653/v1/2026.acl-long.370",
+      "code": "官方代码与数据：https://github.com/Cantaloupe-M/Mem2ActBench",
+      "url": "https://aclanthology.org/2026.acl-long.370/",
+      "topics": ["Agent Memory", "Tool Use", "Memory Utilization", "Parameter Grounding", "Agent Evaluation"],
+      "overview": "Mem2ActBench 关注一个比‘能不能从历史里找回事实’更贴近真实助手的问题：Agent 是否能在用户没有重复说明偏好或任务状态时，主动从长期记忆中找出相关信息，并把它真正用于工具选择和参数 grounding。数据构建流水线融合 ToolACE、BFCL 与 OASST1，形成 2,029 个长对话 session，再逆向生成 400 个 memory-dependent tool-use 任务；人工评估确认其中 91.3% 强依赖历史记忆。对七种 memory framework 的实验显示，当前系统在工具选择上通常较强，但在从分散历史中恢复并准确填入工具参数时仍明显不足；oracle retrieval 与最佳被动检索之间仍存在显著差距。",
+      "recommendation": "重点：它把 Agent Memory 的评测单位从‘回答一个记忆问题’推进到‘让记忆真正改变执行动作’。创新点：通过长、被打断的历史与欠规格用户请求，系统测量 tool selection、parameter grounding 和 end-to-end exact match，而不是只测 retrieval recall。结论：长期个性化 Agent 的瓶颈不只是把信息存进去，而是能否在真正需要行动时识别哪段历史重要，并无损地落到工具参数。"
+    },
+    {
+      "id": "task-aware-harness-provisioning",
+      "title": "Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations",
+      "titleZh": "面向关键基础设施运行的任务感知 LLM Agent Harness 供给",
+      "type": "Research Paper · arXiv:2608.17433",
+      "status": "预印本",
+      "authors": "Liangtao Lin、Qingang Zhang、Zhaomeng Zhu、Tianwei Zhang、Yonggang Wen",
+      "institution": "未确认",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月18日",
+      "doi": "10.48550/arXiv.2608.17433",
+      "code": "未确认公开代码",
+      "url": "https://arxiv.org/abs/2608.17433",
+      "topics": ["Agent Harness", "Harness Provisioning", "Least Privilege", "Resource Routing", "Mission-Critical Infrastructure"],
+      "overview": "这项工作把 Harness 视为可按任务动态供给的资源集合，而不是每次都把全部知识、历史、拓扑和模拟工具暴露给 Agent。作者先按任务的输出类型、时间目标与系统对象建立 task taxonomy，再把 Harness 分成从 model-only 到 static knowledge、temporal observation、system structure/physics、forward simulation 的递增层级，并通过文献统计与受控执行建立 task-to-harness mapping。基于此提出 Map-Guided Escalation：优先给出任务所需的最小配置，如果 Agent 自检失败再升级到完整 Harness。液冷数据中心实验中，该策略把准确率从全量供给的 0.652 提升到 0.715，并以约 48% 更少 token 达到接近 Reflexion 的准确率；电网任务则显示某些任务仍以全量资源最优。",
+      "recommendation": "重点：它把‘给 Agent 什么上下文、什么工具、多少权限’变成显式 Harness provisioning 问题。创新点：不是根据 query 做普通 retrieval，而是先识别任务类别，再选择满足可靠性的最小资源层级，并允许失败后 escalation。结论：Harness 设计可能需要遵循类似 least privilege 的原则——不是信息越多越好，而是在准确率、成本、延迟和暴露面之间寻找任务相关的 Pareto 前沿。"
+    },
+    {
+      "id": "ai-agents-push-humans-out-of-loop",
+      "title": "AI Agents Push Humans Out of the Loop",
+      "titleZh": "AI Agent 正在把人类推出监督回路",
+      "type": "Position Paper · arXiv:2608.23642",
+      "status": "预印本 / Position Paper",
+      "authors": "Margaret Mitchell、Avijit Ghosh、Samir Passi",
+      "institution": "Hugging Face、Data & Society",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月24日",
+      "doi": "10.48550/arXiv.2608.23642",
+      "code": "不适用 / 未确认代码",
+      "url": "https://arxiv.org/abs/2608.23642",
+      "topics": ["Human-Agent Interaction", "Human-in-the-loop", "Oversight", "Cognitive Load", "Agent Autonomy", "AI UX"],
+      "overview": "这篇 position paper 质疑把 human-in-the-loop 当作 Agent 风险的默认答案。作者认为，当前 Agent 往往让人处理大量快速、复杂、多步骤的行动流，用户形式上仍拥有审批权，但持续的被动 review 会造成认知疲劳、rubber-stamping 和关键技能退化，使监督逐渐变成名义上的控制。论文把自动化与 HCI 研究连接到 Agent 场景，提出应显式支持监督者的认知需求，包括 strategic friction、可理解的状态呈现、bounded autonomy 与组织层面的监督协议。核心观点不是降低 Agent autonomy 本身，而是把‘人是否仍具备有效判断能力’作为系统设计目标。",
+      "recommendation": "重点：它指出 Human-in-the-loop 不是一个布尔开关，‘有人点批准’也不代表存在有效监督。创新点：将长期自动化带来的认知退化、approval fatigue 与 Agentic UX 的具体监督机制联系起来。结论：自主 Agent 产品如果只不断减少人的参与步骤，最终可能同时削弱自己赖以兜底的人类能力；成熟的监督界面需要主动维护用户的理解、注意力和接管能力。"
+    }
+  ],
+  "signal": {
+    "title": "Agent 的运行时优化正在从模型推理扩展到资源分配与人的判断能力",
+    "body": "Mem2ActBench 说明长期记忆只有真正进入工具参数才算被利用，Task-Aware Harness Provisioning 说明上下文和工具也应按任务最小充分供给，而 Human-in-the-loop 的新讨论进一步提醒：人的注意力与判断能力同样是有限运行时资源。三者共同指向一种更完整的 Agent Runtime：动态决定该取什么记忆、开放什么 Harness，以及什么时候以什么方式让人重新进入执行闭环。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
