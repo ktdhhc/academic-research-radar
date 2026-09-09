@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-08",
+  "updatedAt": "2026-09-09",
   "scale": {
     "min": 1,
     "max": 7,
@@ -38,6 +38,9 @@
     "workplace-agent-ux-principles": 1,
     "hela-mem": 4,
     "harness-the-memory": 5,
-    "modeling-human-interaction-web-agents": 5
+    "modeling-human-interaction-web-agents": 5,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 5,
+    "ai-agents-push-humans-out-of-loop": 4
   }
 }
