@@ -1,20 +1,20 @@
 {
-  "date": "2026-09-08",
+  "date": "2026-09-09",
   "papers": [
     {
-      "title": "HeLa-Mem: Hebbian Learning and Associative Memory for LLM Agents",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.625.pdf",
-      "path": "papers/2026-09-08/10.18653_v1_2026.acl-long.625 HeLa-Mem.pdf"
+      "title": "Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.370.pdf",
+      "path": "papers/2026-09-09/10.18653_v1_2026.acl-long.370 Mem2ActBench.pdf"
     },
     {
-      "title": "Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents",
-      "pdfUrl": "https://arxiv.org/pdf/2608.15008.pdf",
-      "path": "papers/2026-09-08/2608.15008 Harness the Memory.pdf"
+      "title": "Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations",
+      "pdfUrl": "https://arxiv.org/pdf/2608.17433.pdf",
+      "path": "papers/2026-09-09/2608.17433 Task-Aware Harness Provisioning.pdf"
     },
     {
-      "title": "Modeling Distinct Human Interaction in Web Agents",
-      "pdfUrl": "https://arxiv.org/pdf/2602.17588.pdf",
-      "path": "papers/2026-09-08/2602.17588 Modeling Distinct Human Interaction in Web Agents.pdf"
+      "title": "AI Agents Push Humans Out of the Loop",
+      "pdfUrl": "https://arxiv.org/pdf/2608.23642.pdf",
+      "path": "papers/2026-09-09/2608.23642 AI Agents Push Humans Out of the Loop.pdf"
     }
   ]
 }
