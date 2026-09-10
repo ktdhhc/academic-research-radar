@@ -2,81 +2,28 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-10",
+      "shortTitle": "Harness 演进强调行为级验证，Agent 知识工作影响进入真实生产数据阶段",
+      "count": 3,
+      "topics": ["Agent Harness", "Agent Memory", "Knowledge Work"],
+      "path": "data/reports/2026-09-10.json"
+    },
+    {
       "date": "2026-09-09",
       "shortTitle": "Agent Runtime 开始同时优化记忆调用、Harness 供给与人类监督",
       "count": 3,
       "topics": ["Agent Memory", "Agent Harness", "Human-Agent Interaction"],
       "path": "data/reports/2026-09-09.json"
     },
-    {
-      "date": "2026-09-08",
-      "shortTitle": "Agent Memory 从单点方案走向可路由基础设施，人机协作开始学习介入时机",
-      "count": 3,
-      "topics": ["Agent Memory", "Agent Harness", "Human-Agent Interaction"],
-      "path": "data/reports/2026-09-08.json"
-    },
-    {
-      "date": "2026-09-07",
-      "shortTitle": "知识工作 Agent 开始把工作区状态、记忆结构与用户控制显式化",
-      "count": 3,
-      "topics": ["Agent Harness", "Agent Memory", "Human-AI Interaction"],
-      "path": "data/reports/2026-09-07.json"
-    },
-    {
-      "date": "2026-09-06",
-      "shortTitle": "Agent 的下一层控制面：记忆、运行时契约与人机协调",
-      "count": 3,
-      "topics": ["Agent Memory", "Agent Harness", "Human-AI Interaction"],
-      "path": "data/reports/2026-09-06.json"
-    },
-    {
-      "date": "2026-09-05",
-      "shortTitle": "Agent UX 开始围绕注意力、主动性与监督重构",
-      "count": 3,
-      "topics": ["Human-Agent Interaction", "Proactive AI", "Knowledge Work"],
-      "path": "data/reports/2026-09-05.json"
-    },
-    {
-      "date": "2026-09-04",
-      "shortTitle": "Agent 系统开始把状态、失败与环境变化显式化",
-      "count": 3,
-      "topics": ["Agent Harness", "Coding Agent Evaluation", "Adaptive GUI Agent"],
-      "path": "data/reports/2026-09-04.json"
-    },
-    {
-      "date": "2026-09-03",
-      "shortTitle": "Harness 开始学习，办公 AI 开始显露组织层影响",
-      "count": 3,
-      "topics": ["Agent Harness", "Workplace AI", "GUI Agent"],
-      "path": "data/reports/2026-09-03.json"
-    },
-    {
-      "date": "2026-09-02-extra",
-      "shortTitle": "追加：Harness 本身正在成为可测量的 Agent 能力",
-      "count": 3,
-      "topics": ["Agent Harness", "Coding Agent", "Personalized Agent"],
-      "path": "data/reports/2026-09-02-test.json"
-    },
-    {
-      "date": "2026-09-02",
-      "shortTitle": "长期状态正在成为 Agent Runtime 的核心资源",
-      "count": 3,
-      "topics": ["Context Management", "Agent Harness", "Office Agent"],
-      "path": "data/reports/2026-09-02.json"
-    },
-    {
-      "date": "2026-09-01",
-      "shortTitle": "Agent 系统的三条进化线",
-      "count": 3,
-      "topics": ["Agent Memory", "Computer Use", "Evaluation"],
-      "path": "data/reports/2026-09-01.json"
-    },
-    {
-      "date": "2026-08-31",
-      "shortTitle": "Context、Tool 与用户交互成为 Harness 的系统层",
-      "count": 3,
-      "topics": ["Context Management", "Tool Use", "User-in-the-loop"],
-      "path": "data/reports/2026-08-31.json"
-    }
+    {"date":"2026-09-08","shortTitle":"Agent Memory 从单点方案走向可路由基础设施，人机协作开始学习介入时机","count":3,"topics":["Agent Memory","Agent Harness","Human-Agent Interaction"],"path":"data/reports/2026-09-08.json"},
+    {"date":"2026-09-07","shortTitle":"知识工作 Agent 开始把工作区状态、记忆结构与用户控制显式化","count":3,"topics":["Agent Harness","Agent Memory","Human-AI Interaction"],"path":"data/reports/2026-09-07.json"},
+    {"date":"2026-09-06","shortTitle":"Agent 的下一层控制面：记忆、运行时契约与人机协调","count":3,"topics":["Agent Memory","Agent Harness","Human-AI Interaction"],"path":"data/reports/2026-09-06.json"},
+    {"date":"2026-09-05","shortTitle":"Agent UX 开始围绕注意力、主动性与监督重构","count":3,"topics":["Human-Agent Interaction","Proactive AI","Knowledge Work"],"path":"data/reports/2026-09-05.json"},
+    {"date":"2026-09-04","shortTitle":"Agent 系统开始把状态、失败与环境变化显式化","count":3,"topics":["Agent Harness","Coding Agent Evaluation","Adaptive GUI Agent"],"path":"data/reports/2026-09-04.json"},
+    {"date":"2026-09-03","shortTitle":"Harness 开始学习，办公 AI 开始显露组织层影响","count":3,"topics":["Agent Harness","Workplace AI","GUI Agent"],"path":"data/reports/2026-09-03.json"},
+    {"date":"2026-09-02-extra","shortTitle":"追加：Harness 本身正在成为可测量的 Agent 能力","count":3,"topics":["Agent Harness","Coding Agent","Personalized Agent"],"path":"data/reports/2026-09-02-test.json"},
+    {"date":"2026-09-02","shortTitle":"长期状态正在成为 Agent Runtime 的核心资源","count":3,"topics":["Context Management","Agent Harness","Office Agent"],"path":"data/reports/2026-09-02.json"},
+    {"date":"2026-09-01","shortTitle":"Agent 系统的三条进化线","count":3,"topics":["Agent Memory","Computer Use","Evaluation"],"path":"data/reports/2026-09-01.json"},
+    {"date":"2026-08-31","shortTitle":"Context、Tool 与用户交互成为 Harness 的系统层","count":3,"topics":["Context Management","Tool Use","User-in-the-loop"],"path":"data/reports/2026-08-31.json"}
   ]
 }
