@@ -1,20 +1,84 @@
 {
   "schemaVersion": 1,
-  "date": "2026-09-09",
-  "updatedAt": "2026-09-09 08:51 CST",
-  "edition": "NO. 010 · LATEST EDITION",
-  "title": "Agent Runtime 开始同时优化记忆调用、Harness 供给与人类监督",
-  "subtitle": "今天三篇分别研究长期记忆如何真正驱动工具执行、Harness 如何按任务最小充分供给，以及人类监督为何会在高自主 Agent 中被认知负担逐步削弱。共同信号是：成熟 Agent 的关键控制面正在从模型内部推理扩展到运行时资源与人的介入能力。",
-  "readingMinutes": 9,
+  "date": "2026-09-10",
+  "updatedAt": "2026-09-10 08:26 CST",
+  "edition": "NO. 011 · LATEST EDITION",
+  "title": "Harness 演进开始强调行为级验证，Agent 对知识工作的影响进入真实生产数据阶段",
+  "subtitle": "今天三篇分别研究长期记忆中的时间冲突解析、Harness 自我演进如何避免无效验证，以及自主 Agent 如何在真实生产使用中改变知识工作的效率与任务边界。共同信号是：Agent 系统正在从单点能力优化走向可验证的运行时演进与真实工作效果测量。",
+  "readingMinutes": 10,
   "summary": [
-    {"paperId":"mem2actbench","headline":"【顶会收录：ACL 2026】长期记忆评测从‘能否回忆’推进到‘能否据此正确行动’","takeaway":"Mem2ActBench 用 400 个强记忆依赖的工具任务检验 Agent 是否能从长历史中主动找到偏好与状态并正确填入工具参数；七类 memory framework 的结果显示，参数 grounding 仍明显弱于工具选择。"},
-    {"paperId":"task-aware-harness-provisioning","headline":"Harness 不必永远全量开放：任务本身可以决定最小充分资源集","takeaway":"论文把 Harness provisioning 建模成任务需求与可用信息/工具之间的匹配问题，并提出 map-guided escalation：先给任务特定的最小配置，失败自检后再升级到完整 Harness。"},
-    {"paperId":"ai-agents-push-humans-out-of-loop","headline":"Human-in-the-loop 可能只是表面控制：Agent 越自主，人越容易失去真正监督能力","takeaway":"这篇新 position paper 结合自动化与 HCI 研究指出，持续让人充当被动审批者会产生认知疲劳与能力退化；Agent 产品应把监督者的判断能力当作与 Agent capability 同等重要的设计目标。"}
+    {
+      "paperId": "apex-mem",
+      "headline": "【顶会收录：ACL 2026】长期记忆不再覆盖旧事实，而是在查询时解析时间冲突",
+      "takeaway": "APEX-MEM 用属性图、append-only 历史与多工具 retrieval agent 保留事实的完整演化，在 LOCOMO 与 LongMemEval 上分别达到 88.88% 与 86.2%。"
+    },
+    {
+      "paperId": "harnesslens",
+      "headline": "Harness 自我演进的瓶颈开始从‘怎么改’转向‘改完应该验证哪些行为’",
+      "takeaway": "HarnessLens 不再让每个候选修改都跑同一套固定任务，而是根据受影响行为、组件和回归风险动态选择验证任务；跨 OpenCode、Codex、Pi 的实验显示可在更少 rollout 下获得更高 held-out performance。"
+    },
+    {
+      "paperId": "agents-reshape-knowledge-work",
+      "headline": "真实生产数据开始显示：Agent 不只是加速既有任务，还会改变用户愿意尝试的工作范围",
+      "takeaway": "基于 Perplexity Search 与 Computer 的生产使用数据，研究发现自主执行显著延长机器实际工作时间，并把用户后续活动推向验证、扩展和跨职业边界任务；但结果来自供应商自身产品数据，因果与外部有效性需谨慎解读。"
+    }
   ],
   "papers": [
-    {"id":"mem2actbench","title":"Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents","titleZh":"Mem2ActBench：评测任务型自主 Agent 长期记忆利用能力的基准","type":"Long Paper · ACL 2026 / arXiv:2601.19935","status":"ACL 2026 Main Conference","authors":"Yiting Shen、Kun Li、Wei Zhou、Songlin Hu","institution":"未确认","venue":"ACL · 2026","published":"2026年7月 · ACL Long Papers；2026年1月13日预印本公开","doi":"10.18653/v1/2026.acl-long.370","code":"官方代码与数据：https://github.com/Cantaloupe-M/Mem2ActBench","url":"https://aclanthology.org/2026.acl-long.370/","topics":["Agent Memory","Tool Use","Memory Utilization","Parameter Grounding","Agent Evaluation"],"overview":"Mem2ActBench 关注一个比‘能不能从历史里找回事实’更贴近真实助手的问题：Agent 是否能在用户没有重复说明偏好或任务状态时，主动从长期记忆中找出相关信息，并把它真正用于工具选择和参数 grounding。数据构建流水线融合 ToolACE、BFCL 与 OASST1，形成 2,029 个长对话 session，再逆向生成 400 个 memory-dependent tool-use 任务；人工评估确认其中 91.3% 强依赖历史记忆。对七种 memory framework 的实验显示，当前系统在工具选择上通常较强，但在从分散历史中恢复并准确填入工具参数时仍明显不足；oracle retrieval 与最佳被动检索之间仍存在显著差距。","recommendation":"重点：它把 Agent Memory 的评测单位从‘回答一个记忆问题’推进到‘让记忆真正改变执行动作’。创新点：通过长、被打断的历史与欠规格用户请求，系统测量 tool selection、parameter grounding 和 end-to-end exact match，而不是只测 retrieval recall。结论：长期个性化 Agent 的瓶颈不只是把信息存进去，而是能否在真正需要行动时识别哪段历史重要，并无损地落到工具参数。"},
-    {"id":"task-aware-harness-provisioning","title":"Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations","titleZh":"面向关键基础设施运行的任务感知 LLM Agent Harness 供给","type":"Research Paper · arXiv:2608.17433","status":"预印本","authors":"Liangtao Lin、Qingang Zhang、Zhaomeng Zhu、Tianwei Zhang、Yonggang Wen","institution":"未确认","venue":"ARXIV · 2026","published":"2026年8月18日","doi":"10.48550/arXiv.2608.17433","code":"未确认公开代码","url":"https://arxiv.org/abs/2608.17433","topics":["Agent Harness","Harness Provisioning","Least Privilege","Resource Routing","Mission-Critical Infrastructure"],"overview":"这项工作把 Harness 视为可按任务动态供给的资源集合，而不是每次都把全部知识、历史、拓扑和模拟工具暴露给 Agent。作者先按任务的输出类型、时间目标与系统对象建立 task taxonomy，再把 Harness 分成从 model-only 到 static knowledge、temporal observation、system structure/physics、forward simulation 的递增层级，并通过文献统计与受控执行建立 task-to-harness mapping。基于此提出 Map-Guided Escalation：优先给出任务所需的最小配置，如果 Agent 自检失败再升级到完整 Harness。液冷数据中心实验中，该策略把准确率从全量供给的 0.652 提升到 0.715，并以约 48% 更少 token 达到接近 Reflexion 的准确率；电网任务则显示某些任务仍以全量资源最优。","recommendation":"重点：它把‘给 Agent 什么上下文、什么工具、多少权限’变成显式 Harness provisioning 问题。创新点：不是根据 query 做普通 retrieval，而是先识别任务类别，再选择满足可靠性的最小资源层级，并允许失败后 escalation。结论：Harness 设计可能需要遵循类似 least privilege 的原则——不是信息越多越好，而是在准确率、成本、延迟和暴露面之间寻找任务相关的 Pareto 前沿。"},
-    {"id":"ai-agents-push-humans-out-of-loop","title":"AI Agents Push Humans Out of the Loop","titleZh":"AI Agent 正在把人类推出监督回路","type":"Position Paper · arXiv:2608.23642","status":"预印本 / Position Paper","authors":"Margaret Mitchell、Avijit Ghosh、Samir Passi","institution":"Hugging Face、Data & Society","venue":"ARXIV · 2026","published":"2026年8月24日","doi":"10.48550/arXiv.2608.23642","code":"不适用 / 未确认代码","url":"https://arxiv.org/abs/2608.23642","topics":["Human-Agent Interaction","Human-in-the-loop","Oversight","Cognitive Load","Agent Autonomy","AI UX"],"overview":"这篇 position paper 质疑把 human-in-the-loop 当作 Agent 风险的默认答案。作者认为，当前 Agent 往往让人处理大量快速、复杂、多步骤的行动流，用户形式上仍拥有审批权，但持续的被动 review 会造成认知疲劳、rubber-stamping 和关键技能退化，使监督逐渐变成名义上的控制。论文把自动化与 HCI 研究连接到 Agent 场景，提出应显式支持监督者的认知需求，包括 strategic friction、可理解的状态呈现、bounded autonomy 与组织层面的监督协议。核心观点不是降低 Agent autonomy 本身，而是把‘人是否仍具备有效判断能力’作为系统设计目标。","recommendation":"重点：它指出 Human-in-the-loop 不是一个布尔开关，‘有人点批准’也不代表存在有效监督。创新点：将长期自动化带来的认知退化、approval fatigue 与 Agentic UX 的具体监督机制联系起来。结论：自主 Agent 产品如果只不断减少人的参与步骤，最终可能同时削弱自己赖以兜底的人类能力；成熟的监督界面需要主动维护用户的理解、注意力和接管能力。"}
+    {
+      "id": "apex-mem",
+      "title": "APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI",
+      "titleZh": "APEX-MEM：面向长期对话 AI 的具备时间推理能力的 Agent 半结构化记忆",
+      "type": "Long Paper · ACL 2026 / arXiv:2604.14362",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Pratyay Banerjee、Masud Moshtaghi、Shivashankar Subramanian、Amita Misra、Ankit Chadha",
+      "institution": "未确认",
+      "venue": "ACL · 2026",
+      "published": "2026年7月 · ACL Long Papers；2026年4月15日预印本公开",
+      "doi": "10.18653/v1/2026.acl-long.749",
+      "code": "未确认公开代码",
+      "url": "https://aclanthology.org/2026.acl-long.749/",
+      "topics": ["Agent Memory", "Temporal Reasoning", "Property Graph", "Long-Term Interaction", "Retrieval Agent"],
+      "overview": "APEX-MEM 针对长期对话中事实会随时间变化的问题，把记忆组织成以实体和时间事件为核心的 property graph，并采用 append-only 存储而不是用新事实覆盖旧事实。查询时由 multi-tool retrieval agent 根据时间、实体与关系解析冲突和演化信息，再生成紧凑上下文，因此‘什么是真的’可以依赖查询所指向的时间点，而不是在写入时被永久决定。论文在 LOCOMO 上报告 88.88% 准确率，在 LongMemEval 上达到 86.2%，说明结构化时间记忆对长期一致性有明显价值。",
+      "recommendation": "重点：它处理的是长期个性化 Agent 必然遇到的‘用户信息会变’问题。创新点：保留完整历史，把冲突消解从 ingestion 推迟到 retrieval，并让 Agent 通过多工具查询图结构。结论：成熟 Agent Memory 不应只有 current profile，还需要可追溯的时间演化与 query-time resolution；这对偏好、职位、项目状态等持续变化的信息尤其重要。"
+    },
+    {
+      "id": "harnesslens",
+      "title": "Verify Smarter, Evolve Further: Efficient Harness Evolution through Behavior-Aware Verification",
+      "titleZh": "更聪明地验证，进一步地演进：通过行为感知验证实现高效 Harness 演进",
+      "type": "Research Paper · arXiv:2608.27311",
+      "status": "预印本",
+      "authors": "Jinghan Xu、Yikai Zhang、Aili Chen、Weiyuan Li、Jiaqing Liang、Deqing Yang",
+      "institution": "Fudan University、Shanghai Key Laboratory of Data Science",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月27日",
+      "doi": "10.48550/arXiv.2608.27311",
+      "code": "官方代码：https://github.com/jhxu5214/HarnessLens",
+      "url": "https://arxiv.org/abs/2608.27311",
+      "topics": ["Agent Harness", "Harness Evolution", "Verification", "Trajectory Diagnosis", "Regression Testing"],
+      "overview": "HarnessLens 关注自动 Harness 演进中的验证成本：现有 propose-and-verify 方法通常让所有候选修改跑同一组任务，即使修改只影响少数行为，既浪费 rollout，也可能让 aggregate score 掩盖局部回归。它先探索任务与可配置组件，再从 trajectory 中诊断可复用经验和缺陷，最后根据修改所影响的行为、组件、支持证据和回归风险动态选择验证任务，并用 attributable-evidence gate 判断候选是否真的产生预期行为。实验覆盖 OpenCode、Codex、Pi 三种 Harness 与四个 benchmark，held-out performance 平均提升 7.6%–13.6%，同时显著减少联合 rollout 与分析预算。",
+      "recommendation": "重点：Harness 自动优化不只是生成更好的 prompt、skill 或 tool 配置，还需要知道每次修改究竟应该回归测试什么。创新点：把 verification batch 从固定测试集变成 modification-specific、behavior-aware 的动态集合，并复用历史 trajectory 作为可归因证据。结论：未来 self-evolving Harness 的关键基础设施很可能类似软件工程中的增量测试与影响分析——修改范围决定验证范围，而不是每次都全量重跑。"
+    },
+    {
+      "id": "agents-reshape-knowledge-work",
+      "title": "How AI Agents Reshape Knowledge Work: Autonomy, Efficiency, and Scope",
+      "titleZh": "AI Agent 如何重塑知识工作：自主性、效率与工作范围",
+      "type": "Research Paper · arXiv:2606.07489",
+      "status": "预印本 / 生产数据研究",
+      "authors": "Jeremy Yang、Kate Zyskowski、Noah Yonack、Jerry Ma",
+      "institution": "Harvard Business School / Perplexity",
+      "venue": "ARXIV · 2026",
+      "published": "2026年6月5日",
+      "doi": "10.48550/arXiv.2606.07489",
+      "code": "未确认公开代码或数据",
+      "url": "https://arxiv.org/abs/2606.07489",
+      "topics": ["Knowledge Work", "AI Productivity", "Agent Autonomy", "Workplace AI", "Human-AI Collaboration"],
+      "overview": "研究使用 Perplexity Search 与 Computer 的真实生产使用数据，并利用初始 query 高度相似的 session pair 近似比较同类任务。Computer 每个 session 平均执行约 26 分钟自主工作，而 Search 约为 33 秒；在匹配任务中，作者估计完成时间从 269 分钟降至 36 分钟，估计成本下降 94%，每 query 的中高不满意率也降低 55%。更值得关注的是任务结构变化：Agent 用户更常提交跨职业边界、需要更高阶认知、涉及更广知识域和多个相互依赖子任务的工作，后续 query 也更多转向验证和扩展。由于数据与产品均来自 Perplexity，且论文尚未同行评审，这些幅度应视为强烈但仍需独立复现的生产证据。",
+      "recommendation": "重点：它少见地用真实生产行为研究 Agent 相比传统 AI assistant 到底改变了什么，而不是只做实验室 benchmark。创新点：不仅测速度，还测用户工作范围、认知层级和后续行为的变化。结论：Agent 的价值可能不只是把既有流程做快，而是降低端到端执行成本后，让用户开始尝试以前不会交给 AI、甚至不会自己尝试的复合型工作。为何现在仍值得读：它提供了当前 Agent × 知识工作讨论中较少见的大规模真实使用证据，但供应商自有数据带来的利益相关与外部有效性限制必须同时保留。"
+    }
   ],
-  "signal": {"title":"Agent 的运行时优化正在从模型推理扩展到资源分配与人的判断能力","body":"Mem2ActBench 说明长期记忆只有真正进入工具参数才算被利用，Task-Aware Harness Provisioning 说明上下文和工具也应按任务最小充分供给，而 Human-in-the-loop 的新讨论进一步提醒：人的注意力与判断能力同样是有限运行时资源。三者共同指向一种更完整的 Agent Runtime：动态决定该取什么记忆、开放什么 Harness，以及什么时候以什么方式让人重新进入执行闭环。","note":"这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"}
+  "signal": {
+    "title": "Agent 系统正在从‘能力更强’走向‘运行时可演进、效果可验证、工作影响可测量’",
+    "body": "APEX-MEM 把变化中的用户事实保留为可查询的时间历史，HarnessLens 把 Harness 修改后的验证范围绑定到实际受影响行为，而知识工作研究则把评估尺度进一步推到真实生产环境中的时间、成本与任务范围。三者共同说明，Agent 下一阶段的关键问题越来越像系统工程：状态如何演化、修改如何回归验证，以及自主性最终是否在真实工作中创造可测量价值。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
 }
