@@ -1,20 +1,8 @@
 {
-  "date": "2026-09-09",
+  "date": "2026-09-10",
   "papers": [
-    {
-      "title": "Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.370.pdf",
-      "path": "papers/2026-09-09/10.18653_v1_2026.acl-long.370 Mem2ActBench.pdf"
-    },
-    {
-      "title": "Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations",
-      "pdfUrl": "https://arxiv.org/pdf/2608.17433.pdf",
-      "path": "papers/2026-09-09/2608.17433 Task-Aware Harness Provisioning.pdf"
-    },
-    {
-      "title": "AI Agents Push Humans Out of the Loop",
-      "pdfUrl": "https://arxiv.org/pdf/2608.23642.pdf",
-      "path": "papers/2026-09-09/2608.23642 AI Agents Push Humans Out of the Loop.pdf"
-    }
+    {"title":"APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI","pdfUrl":"https://aclanthology.org/2026.acl-long.749.pdf","path":"papers/2026-09-10/10.18653_v1_2026.acl-long.749 APEX-MEM.pdf"},
+    {"title":"Verify Smarter, Evolve Further: Efficient Harness Evolution through Behavior-Aware Verification","pdfUrl":"https://arxiv.org/pdf/2608.27311.pdf","path":"papers/2026-09-10/2608.27311 HarnessLens.pdf"},
+    {"title":"How AI Agents Reshape Knowledge Work: Autonomy, Efficiency, and Scope","pdfUrl":"https://arxiv.org/pdf/2606.07489.pdf","path":"papers/2026-09-10/2606.07489 How AI Agents Reshape Knowledge Work.pdf"}
   ]
 }
