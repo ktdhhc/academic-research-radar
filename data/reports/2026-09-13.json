@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-13",
+  "updatedAt": "2026-09-13 08:00 CST",
+  "edition": "NO. 014",
+  "title": "Agent Memory 走向高阶结构，人机委派与群体协作开始显露个体和群体差异",
+  "subtitle": "今天三篇分别研究超图长期记忆、混合 GUI+Agent 界面的委派行为，以及 AI Agent 进入群体后的共识变化。共同信号是：内部状态结构与外部控制权分配都在从统一策略走向更细粒度的建模。",
+  "readingMinutes": 10,
+  "summary": [
+    {
+      "paperId": "hypermem",
+      "headline": "【顶会收录：ACL 2026】长期记忆从 pairwise graph 进一步走向高阶超图关系",
+      "takeaway": "HyperMem 用 Topic → Episode → Fact 三层超图与 coarse-to-fine retrieval 保存多个事件和事实之间的联合关系，并在 LoCoMo 上取得强结果。"
+    },
+    {
+      "paperId": "delegating-or-doing",
+      "headline": "用户是否愿意委派给 Agent，更多取决于‘这个人是谁’，而不是 CRUD 操作类型",
+      "takeaway": "73 人实验显示 GUI+Agent 混合界面显著降低交互操作量，但任务时间无显著差异；个体差异解释了约一半的 Agent 使用方差。"
+    },
+    {
+      "paperId": "ai-agents-consensus",
+      "headline": "Agent 数量变化会非线性地改变人类群体如何形成共识",
+      "takeaway": "少量 Agent 有助于 human-led consensus，中等比例干扰收敛，高比例又形成强共识，但共同语言开始转向 Agent 主导和更抽象的表达。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "hypermem",
+      "title": "HyperMem: Hypergraph Memory for Long-Term Conversations",
+      "titleZh": "HyperMem：面向长期对话的超图记忆",
+      "type": "Long Paper · ACL 2026 / arXiv:2604.08256",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Juwei Yue、Chuanrui Hu、Jiawei Sheng、Zuyi Zhou、Wenyuan Zhang、Tingwen Liu、Li Guo、Yafeng Deng",
+      "institution": "Institute of Information Engineering, Chinese Academy of Sciences；School of Cyber Security, University of Chinese Academy of Sciences；EverMind AI",
+      "venue": "ACL · 2026",
+      "published": "2026年7月；2026年4月9日预印本公开",
+      "doi": "10.18653/v1/2026.acl-long.1627",
+      "code": "官方代码：https://github.com/EverMind-AI/HyperMem",
+      "url": "https://aclanthology.org/2026.acl-long.1627/",
+      "topics": ["Agent Memory", "Hypergraph Memory", "Long-Term Interaction", "Retrieval", "Context Management"],
+      "overview": "HyperMem 针对普通 RAG 与 pairwise graph memory 难以表达多个事件和事实之间高阶联合关系的问题，将长期记忆组织为 Topic、Episode、Fact 三层，并利用 hyperedge 同时关联多个节点。检索从 topic 开始逐层缩小到 episode 与 fact，并混合 lexical 与 dense retrieval。论文在 LoCoMo 上报告 92.73% LLM-as-a-judge accuracy，官方仓库提供复现实验流程。",
+      "recommendation": "重点：它重新思考长期 Memory 应该使用什么数据结构保存历史。创新点：hyperedge 能把一组相关 episode/fact 作为联合关系处理，比普通 graph 的 pairwise edge 更贴近真实长程对话。结论：随着长期状态变复杂，memory substrate 本身可能越来越决定 reasoning 上限，但对连续工具执行与任务状态管理的泛化仍需更多验证。"
+    },
+    {
+      "id": "delegating-or-doing",
+      "title": "Delegating or Doing? Understanding User Behavior in Hybrid Human-Agent Interfaces",
+      "titleZh": "委派还是亲自操作？理解混合 Human-Agent 界面中的用户行为",
+      "type": "Research Paper · arXiv:2608.19551",
+      "status": "预印本",
+      "authors": "Gavin Raine Dizon、Tyrone Justin Sta Maria、Jordan Aiko Deja、Yasuyuki Sumi",
+      "institution": "De La Salle University；其余机构未完全确认",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月20日",
+      "doi": "10.48550/arXiv.2608.19551",
+      "code": "未确认公开代码",
+      "url": "https://arxiv.org/abs/2608.19551",
+      "topics": ["Human-Agent Interaction", "Delegation", "Hybrid Interface", "MCP", "User Control"],
+      "overview": "作者构建通过 Model Context Protocol 连接后端的 CMS，让用户既可直接用 GUI，也可让聊天 Agent 执行相同 CRUD 操作。73 名参与者被分到 Traditional-Only、AI-First 与 Hybrid 条件完成 16 种任务。AI 辅助显著减少点击、页面导航与滚动，但完成时间没有显著差异；更重要的是 CRUD 类型并未显著预测委派行为，而参与者个体差异约解释一半的 Agent 使用方差（ICC=0.50）。",
+      "recommendation": "重点：它直接观察当自己操作与让 Agent 做同时可用时，用户实际如何选择。创新点：通过真实 GUI+Agent 系统记录行为，而不只询问主观偏好。结论：Agent autonomy 不应只做统一开关，也不能简单按操作风险写死；产品很可能需要学习个人 autonomy preference，同时把交互成本与任务速度作为两个不同 UX 指标。"
+    },
+    {
+      "id": "ai-agents-consensus",
+      "title": "AI agents reshape consensus formation in human groups",
+      "titleZh": "AI Agent 重塑人类群体中的共识形成",
+      "type": "Research Paper · arXiv:2609.02122",
+      "status": "预印本",
+      "authors": "Lin Chen、Ziyi Liu、Xia Hu、Yong Li",
+      "institution": "Network Science Institute, Northeastern University；Tsinghua University / BNRist；Shanghai Artificial Intelligence Laboratory",
+      "venue": "ARXIV · 2026",
+      "published": "2026年9月2日",
+      "doi": "10.48550/arXiv.2609.02122",
+      "code": "未确认公开代码或数据",
+      "url": "https://arxiv.org/abs/2609.02122",
+      "topics": ["Human-AI Interaction", "Human-Agent Collaboration", "Group Consensus", "Collective Behavior", "Agent Governance"],
+      "overview": "研究让人类与 LLM Agent 组成 24 人群体，在 collaborative description game 中反复随机配对并形成共享描述。随着 Agent 比例变化，作者观察到三个 regime：低占比促进 human-led consensus，中等比例干扰群体收敛，高比例重新产生强共识但转为 agent-led。人类主导表达更具体并使用现实类比，Agent 主导表达更抽象、更几何化且信息密度更低。",
+      "recommendation": "重点：它把 Human-Agent Interaction 从一人一 Agent 扩展到群体级影响。创新点：连续改变 AI 在混合群体中的占比，因此观察到少量、中量和大量 Agent 的非线性协调结果。结论：多人 Agentic Workplace 的设计变量不仅包括 Agent 能力，还包括 Agent 数量、AI 身份暴露以及如何避免多个同质 Agent 无意间主导团队规范。"
+    }
+  ],
+  "signal": {
+    "title": "内部状态结构与外部控制权分配都在从统一策略走向细粒度建模",
+    "body": "HyperMem 说明长期能力越来越依赖 Memory substrate，委派实验显示用户的 autonomy preference 高度个体化，群体实验则进一步表明 Agent 的数量与同质性会改变团队规范。下一阶段 Agent 产品可能需要同时具备结构化长期状态、个人化 autonomy policy，以及多人协作中的 participation governance。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
