@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-12",
+  "updatedAt": "2026-09-12 08:00 CST",
+  "edition": "NO. 013",
+  "title": "Agent 自主性开始被拆成置信、训练环境与主动介入三类控制问题",
+  "subtitle": "今天三篇分别研究工具型 Agent 的置信校准、Harness 内的 Agentic RL，以及写作场景中的主动式交互。共同信号是：证据、运行环境和人的注意力都正在成为 Harness 的显式控制资源。",
+  "readingMinutes": 10,
+  "summary": [
+    {
+      "paperId": "confidence-dichotomy",
+      "headline": "【顶会收录：ACL 2026】调用工具并不等于更值得相信，工具类型会以不同方向影响置信校准",
+      "takeaway": "论文区分 evidence tool 与 verification tool，并提出 Calibration Agentic RL，让任务正确性与置信可靠性共同进入训练目标。"
+    },
+    {
+      "paperId": "agent-lightning-v1",
+      "headline": "Agent 后训练开始直接发生在真实 Harness 中",
+      "takeaway": "Agent Lightning v1.0 保留现有工具、上下文与控制流，通过 endpoint proxy 将 RL 接入真实 Harness；约 6K 训练样本将 Qwen3.5-9B 在 SWE-bench Verified 上从 41.8% 提升到 56.4%。"
+    },
+    {
+      "paperId": "proactive-thought-partners-writing",
+      "headline": "主动式 AI 的重点不是更频繁地主动，而是让介入轻量、可忽略且可由用户配置",
+      "takeaway": "一周真实使用研究显示，用户偏好可控制角色与主动程度的 thought partner，并希望建议不会打断当前思路。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "confidence-dichotomy",
+      "title": "The Confidence Dichotomy: Analyzing and Mitigating Miscalibration in Tool-Use Agents",
+      "titleZh": "置信二分：分析并缓解工具型 Agent 的失校准",
+      "type": "Long Paper · ACL 2026",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Weihao Xuan、Qingcheng Zeng、Heli Qi、Yunze Xiao、Junjue Wang、Naoto Yokoya",
+      "institution": "The University of Tokyo、RIKEN AIP、Northwestern University、Waseda University、Carnegie Mellon University",
+      "venue": "ACL · 2026",
+      "published": "2026年7月；2026年1月12日预印本公开",
+      "doi": "10.18653/v1/2026.acl-long.520",
+      "code": "未确认公开代码",
+      "url": "https://aclanthology.org/2026.acl-long.520/",
+      "topics": ["Tool-Use Agent", "Calibration", "Uncertainty", "Agent Reliability", "Human-AI Trust"],
+      "overview": "论文系统研究 tool-use agent 的 verbalized calibration。作者发现明显的 confidence dichotomy：Web Search 等 evidence tools 会引入混杂证据并加剧过度自信，而 code interpreter 等 verification tools 能产生相对确定的反馈并改善校准。为缓解这一问题，作者提出 Calibration Agentic RL（CAR），将任务正确性与置信可靠性同时纳入强化学习目标，并在搜索、问答与数学推理环境中验证。",
+      "recommendation": "重点：它直接研究 Agent 什么时候应该表达不确定。创新点：不把所有 tool use 当成同一种能力，而是区分提供证据与验证结论的工具。结论：未来 Harness 与产品界面中的 confidence 应结合证据来源、验证程度和工具类型，而不是把‘搜索到内容’等同于‘已经证明正确’。"
+    },
+    {
+      "id": "agent-lightning-v1",
+      "title": "Agent Lightning v1.0: Towards Harnessed Agentic RL",
+      "titleZh": "Agent Lightning v1.0：走向 Harnessed Agentic RL",
+      "type": "Research Paper · arXiv:2608.17528",
+      "status": "预印本",
+      "authors": "Zhiyuan He、Siwei Zhang、Zhiwen Zhou、Yuqing Yang、Yu Kang、Yuge Zhang、Luna K. Qiu、Tin Yan Tsui、Jiahang Xu、Chong Luo",
+      "institution": "Microsoft、Fudan University、Zhejiang University、University of Edinburgh",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月18日",
+      "doi": "10.48550/arXiv.2608.17528",
+      "code": "官方代码：https://github.com/microsoft/agent-lightning",
+      "url": "https://arxiv.org/abs/2608.17528",
+      "topics": ["Agent Harness", "Agentic RL", "Coding Agent", "Training Infrastructure", "Sandbox"],
+      "overview": "Agent Lightning v1.0 提出 harnessed agentic RL：真实部署 Harness 继续负责环境循环、tool use、context management 与控制流，训练系统通过 LLM endpoint proxy 获取模型请求与响应。这样无需把真实 Agent 重写进某个 RL framework，但会引入 retokenization、动态 trajectory 合并、advantage assignment、loss normalization 和调度等新基础设施问题。论文报告使用约 6K 条训练数据，将 Qwen3.5-9B 在 SWE-bench Verified 上从 41.8% 提升到 56.4%。",
+      "recommendation": "重点：它把 Harness 从 inference-time engineering 推向 training-time infrastructure。创新点：让 RL 连接已经存在的真实 Harness，因此保留原有工具、sandbox、context policy 与控制流。结论：如果 Agent 能力是模型 × Harness 的结果，只针对裸模型训练可能与真实部署环境产生结构性错位。"
+    },
+    {
+      "id": "proactive-thought-partners-writing",
+      "title": "Designing Proactive Thought Partners for Writing",
+      "titleZh": "为写作设计主动式思维伙伴",
+      "type": "Research Paper · arXiv:2609.01588",
+      "status": "预印本",
+      "authors": "Chao Zhang、Abe Davis、Chih-Wei Chen、Chin-Chia Hsu",
+      "institution": "Cornell University、Google DeepMind",
+      "venue": "ARXIV · 2026",
+      "published": "2026年9月1日",
+      "doi": "10.48550/arXiv.2609.01588",
+      "code": "未确认公开代码",
+      "url": "https://arxiv.org/abs/2609.01588",
+      "topics": ["Proactive AI", "Writing Assistant", "Human-AI Interaction", "Knowledge Work", "User Control"],
+      "overview": "作者构建 proactive writing technology probe，让用户自行创建不同 thought partner 并设定角色和主动程度；系统持续观察写作上下文，在判断合适的时候主动提出建议。16 名参与者连续使用一周后，用户会把配置 partner 当作 prospective planning，也会利用建议进行 idea generation 和 self-monitoring。用户尤其偏好轻量视觉提示、非命令式表达，以及无需额外交互即可忽略的建议。",
+      "recommendation": "重点：它直接研究 AI 什么时候应该主动说话，以及怎样主动才不会打扰人。创新点：把角色、主动程度、介入时机与表达方式作为共同设计空间，并进行一周真实部署。结论：优秀 proactive AI 不应追求 intervention rate 最大化，而应让用户预先表达需要的认知支持，并确保介入低摩擦、可忽略且不削弱用户控制权。"
+    }
+  ],
+  "signal": {
+    "title": "Agent 自主性正在被拆成可治理的运行时变量",
+    "body": "今天三篇分别处理 Agent 何时有资格相信自己的结论、训练时应运行在哪套真实系统里，以及什么时候有资格打断用户。uncertainty calibration 很可能会和 permission、verification、handoff 一样，逐渐成为 Harness 的一等控制面。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
