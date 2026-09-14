@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-11",
+  "updatedAt": "2026-09-11 08:00 CST",
+  "edition": "NO. 012",
+  "title": "Agent Runtime 开始主动管理记忆成本与长程 Harness 适配",
+  "subtitle": "今天两篇分别研究轻量化长期记忆与长程 Coding Agent 的自适应 Harness。共同信号是：随着任务持续时间增长，系统优势越来越依赖何时使用什么资源，而不是简单拥有更多模型、工具或上下文。",
+  "readingMinutes": 7,
+  "summary": [
+    {
+      "paperId": "lightmem",
+      "headline": "【顶会收录：ACL 2026】长期记忆开始把准确率、延迟与维护成本同时纳入设计目标",
+      "takeaway": "LightMem 用专用小模型、分层存储与 online/offline 解耦降低长期 Memory 的在线成本，在 LoCoMo 上相较 A-MEM 平均 F1 提升约 2.5，并报告较低检索与端到端延迟。"
+    },
+    {
+      "paperId": "openjiuwen",
+      "headline": "长程 Coding Agent 的 Harness 从固定编排走向运行时自适应",
+      "takeaway": "openJiuwen 把 Structural Composability 与 Runtime Adaptivity 作为核心设计目标，让 context、feedback 与 task control 根据执行证据持续变化。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "lightmem",
+      "title": "Lightweight LLM Agent Memory with Small Language Models",
+      "titleZh": "使用小语言模型构建轻量级 LLM Agent Memory",
+      "type": "Long Paper · ACL 2026",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Jiaquan Zhang、Chaoning Zhang、Shuxu Chen、Zhenzhen Huang、Pengcheng Zheng、Zhicheng Wang、Ping Guo、Fan Mo、Sung-Ho Bae、Jie Zou、Jiwei Wei、Yang Yang",
+      "institution": "未确认",
+      "venue": "ACL · 2026",
+      "published": "2026年7月；2026年4月9日预印本公开",
+      "doi": "10.18653/v1/2026.acl-long.588",
+      "code": "未确认公开代码",
+      "url": "https://aclanthology.org/2026.acl-long.588/",
+      "topics": ["Agent Memory", "Small Language Model", "Memory Consolidation", "Retrieval", "Latency"],
+      "overview": "LightMem 将长期记忆拆成短期、中期和长期三层，并把检索、写入和 consolidation 模块化。在线阶段在固定 retrieval budget 下做向量粗检索与 semantic consistency reranking，更重的知识抽象与长期整合则放到离线阶段。论文报告相较 A-MEM 在 LoCoMo 上平均 F1 提升约 2.5，同时给出 83 ms 检索中位延迟与 581 ms 端到端中位延迟。",
+      "recommendation": "重点：它把在线延迟与长期维护成本正式纳入 Agent Memory 的系统目标。创新点：采用专用小模型、分层存储和 online/offline 解耦，而不是让一个大模型处理整个 memory lifecycle。结论：生产级长期 Memory 很可能需要模型异构化与异步维护，否则记忆本身会成为 Runtime 的成本瓶颈。"
+    },
+    {
+      "id": "openjiuwen",
+      "title": "openJiuwen: Beyond Static Harnesses for Long-Horizon Coding Agents",
+      "titleZh": "openJiuwen：超越长程 Coding Agent 的静态 Harness",
+      "type": "Research Paper · arXiv:2608.27969",
+      "status": "预印本",
+      "authors": "openJiuwen Team、Tao Yu、Xinyu Zhang、Qianqian Chen、Xiaoneng Xiang、Chia Kwangyang、Xingchen Huang、Ran Chen、Yangkai Ding、Zheng Wang、Yeo Boon Hong、Bingzheng Gan、Enrui Hu、Shuo Cheng、Deyang Li、Ruifeng Shi、Hongbo Wang、Qi Ye、Xuefeng Jin、Zhangchun Zhao",
+      "institution": "未确认",
+      "venue": "ARXIV · 2026",
+      "published": "2026年8月28日",
+      "doi": "10.48550/arXiv.2608.27969",
+      "code": "项目：https://github.com/openJiuwen-ai/",
+      "url": "https://arxiv.org/abs/2608.27969",
+      "topics": ["Agent Harness", "Coding Agent", "Runtime Adaptivity", "Multi-Agent", "Orchestration"],
+      "overview": "openJiuwen 将长程 Coding Agent Harness 的核心问题归纳为 Structural Composability 与 Runtime Adaptivity。前者通过共享执行基座和 Rail-based capability composition 统一单 Agent、delegated sub-agent 与 Swarm Flow，后者让 semantic diagnostics、执行结果、任务进度和 context relevance 等运行时证据持续影响后续 context、feedback 与 task control。论文报告在 SWE-bench Verified 与 Terminal-Bench 2.1 上取得强结果，但属于完整系统级比较，不能把全部提升归因于 Harness 本身。",
+      "recommendation": "重点：它把 Harness 定位为执行期间持续变化的 adaptive runtime，而不是任务开始前写死的 workflow。创新点：统一单 Agent、子 Agent 与 swarm 的执行语义，并让 trajectory evidence 实时改变后续控制。结论：长程 Agent 的核心竞争力会越来越取决于 Runtime 能否动态决定此刻暴露哪些 context、能力与反馈。"
+    }
+  ],
+  "signal": {
+    "title": "Agent Runtime 开始主动管理有限资源",
+    "body": "LightMem 管理的是模型调用、检索与长期记忆维护成本，openJiuwen 管理的是 context、capability 与运行时控制。两者共同指向同一趋势：随着任务越来越长，系统优势越来越取决于什么时候使用什么资源，而不是简单拥有更多工具和更大的 context。",
+    "note": "这是基于本期论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
