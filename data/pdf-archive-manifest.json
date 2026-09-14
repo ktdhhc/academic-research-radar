@@ -1,8 +1,16 @@
 {
-  "date": "2026-09-10",
+  "date": "2026-09-14",
   "papers": [
-    {"title":"APEX-MEM: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational AI","pdfUrl":"https://aclanthology.org/2026.acl-long.749.pdf","path":"papers/2026-09-10/10.18653_v1_2026.acl-long.749 APEX-MEM.pdf"},
-    {"title":"Verify Smarter, Evolve Further: Efficient Harness Evolution through Behavior-Aware Verification","pdfUrl":"https://arxiv.org/pdf/2608.27311.pdf","path":"papers/2026-09-10/2608.27311 HarnessLens.pdf"},
-    {"title":"How AI Agents Reshape Knowledge Work: Autonomy, Efficiency, and Scope","pdfUrl":"https://arxiv.org/pdf/2606.07489.pdf","path":"papers/2026-09-10/2606.07489 How AI Agents Reshape Knowledge Work.pdf"}
+    {"title":"Lightweight LLM Agent Memory with Small Language Models","pdfUrl":"https://aclanthology.org/2026.acl-long.588.pdf","path":"papers/2026-09-11/10.18653_v1_2026.acl-long.588 LightMem.pdf"},
+    {"title":"openJiuwen: Beyond Static Harnesses for Long-Horizon Coding Agents","pdfUrl":"https://arxiv.org/pdf/2608.27969.pdf","path":"papers/2026-09-11/2608.27969 openJiuwen.pdf"},
+    {"title":"The Confidence Dichotomy: Analyzing and Mitigating Miscalibration in Tool-Use Agents","pdfUrl":"https://aclanthology.org/2026.acl-long.520.pdf","path":"papers/2026-09-12/10.18653_v1_2026.acl-long.520 Confidence Dichotomy.pdf"},
+    {"title":"Agent Lightning v1.0: Towards Harnessed Agentic RL","pdfUrl":"https://arxiv.org/pdf/2608.17528.pdf","path":"papers/2026-09-12/2608.17528 Agent Lightning v1.0.pdf"},
+    {"title":"Designing Proactive Thought Partners for Writing","pdfUrl":"https://arxiv.org/pdf/2609.01588.pdf","path":"papers/2026-09-12/2609.01588 Designing Proactive Thought Partners for Writing.pdf"},
+    {"title":"HyperMem: Hypergraph Memory for Long-Term Conversations","pdfUrl":"https://aclanthology.org/2026.acl-long.1627.pdf","path":"papers/2026-09-13/10.18653_v1_2026.acl-long.1627 HyperMem.pdf"},
+    {"title":"Delegating or Doing? Understanding User Behavior in Hybrid Human-Agent Interfaces","pdfUrl":"https://arxiv.org/pdf/2608.19551.pdf","path":"papers/2026-09-13/2608.19551 Delegating or Doing.pdf"},
+    {"title":"AI agents reshape consensus formation in human groups","pdfUrl":"https://arxiv.org/pdf/2609.02122.pdf","path":"papers/2026-09-13/2609.02122 AI agents reshape consensus formation.pdf"},
+    {"title":"HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?","pdfUrl":"https://arxiv.org/pdf/2609.01437.pdf","path":"papers/2026-09-14/2609.01437 HarnessDev.pdf"},
+    {"title":"Efficient Test-Time Adaptation through Human-AI Interaction","pdfUrl":"https://arxiv.org/pdf/2609.04141.pdf","path":"papers/2026-09-14/2609.04141 TAHI.pdf"},
+    {"title":"Current Agents Fail to Leverage World Model as Tool for Foresight","pdfUrl":"https://aclanthology.org/2026.acl-long.623.pdf","path":"papers/2026-09-14/10.18653_v1_2026.acl-long.623 World Model Foresight.pdf"}
   ]
 }
