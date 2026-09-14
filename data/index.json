@@ -1,20 +1,12 @@
 {
   "schemaVersion": 1,
   "issues": [
-    {
-      "date": "2026-09-10",
-      "shortTitle": "Harness 演进强调行为级验证，Agent 知识工作影响进入真实生产数据阶段",
-      "count": 3,
-      "topics": ["Agent Harness", "Agent Memory", "Knowledge Work"],
-      "path": "data/reports/2026-09-10.json"
-    },
-    {
-      "date": "2026-09-09",
-      "shortTitle": "Agent Runtime 开始同时优化记忆调用、Harness 供给与人类监督",
-      "count": 3,
-      "topics": ["Agent Memory", "Agent Harness", "Human-Agent Interaction"],
-      "path": "data/reports/2026-09-09.json"
-    },
+    {"date":"2026-09-14","shortTitle":"Agent Runtime 转向持续适配：Harness、个体化学习与工具治理","count":3,"topics":["Agent Harness","Human-AI Interaction","Tool Use"],"path":"data/reports/2026-09-14.json"},
+    {"date":"2026-09-13","shortTitle":"Memory 高阶结构与人机控制权从统一策略走向细粒度建模","count":3,"topics":["Agent Memory","Human-Agent Interaction","Collective Behavior"],"path":"data/reports/2026-09-13.json"},
+    {"date":"2026-09-12","shortTitle":"Agent 自主性拆分为置信校准、真实 Harness 训练与主动介入","count":3,"topics":["Agent Reliability","Agent Harness","Proactive AI"],"path":"data/reports/2026-09-12.json"},
+    {"date":"2026-09-11","shortTitle":"Agent Runtime 开始主动管理记忆成本与长程 Harness 适配","count":2,"topics":["Agent Memory","Agent Harness"],"path":"data/reports/2026-09-11.json"},
+    {"date":"2026-09-10","shortTitle":"Harness 演进强调行为级验证，Agent 知识工作影响进入真实生产数据阶段","count":3,"topics":["Agent Harness","Agent Memory","Knowledge Work"],"path":"data/reports/2026-09-10.json"},
+    {"date":"2026-09-09","shortTitle":"Agent Runtime 开始同时优化记忆调用、Harness 供给与人类监督","count":3,"topics":["Agent Memory","Agent Harness","Human-Agent Interaction"],"path":"data/reports/2026-09-09.json"},
     {"date":"2026-09-08","shortTitle":"Agent Memory 从单点方案走向可路由基础设施，人机协作开始学习介入时机","count":3,"topics":["Agent Memory","Agent Harness","Human-Agent Interaction"],"path":"data/reports/2026-09-08.json"},
     {"date":"2026-09-07","shortTitle":"知识工作 Agent 开始把工作区状态、记忆结构与用户控制显式化","count":3,"topics":["Agent Harness","Agent Memory","Human-AI Interaction"],"path":"data/reports/2026-09-07.json"},
     {"date":"2026-09-06","shortTitle":"Agent 的下一层控制面：记忆、运行时契约与人机协调","count":3,"topics":["Agent Memory","Agent Harness","Human-AI Interaction"],"path":"data/reports/2026-09-06.json"},
