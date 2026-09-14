@@ -1,0 +1,59 @@
+name: Publish radar bundle
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - 'data/inbox/*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect bundle
+        id: bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            bundle=$(find data/inbox -maxdepth 1 -type f -name '*.json' | sort | tail -n1)
+          else
+            before="${{ github.event.before }}"
+            if [ "$before" = "0000000000000000000000000000000000000000" ]; then
+              bundle=$(git ls-tree -r --name-only HEAD -- data/inbox | tail -n1)
+            else
+              bundle=$(git diff --name-only "$before" "${{ github.sha }}" -- 'data/inbox/*.json' | tail -n1)
+            fi
+          fi
+          test -n "${bundle:-}"
+          echo "path=$bundle" >> "$GITHUB_OUTPUT"
+
+      - name: Publish bundle and archive PDFs
+        run: python scripts/publish_radar_bundle.py "${{ steps.bundle.outputs.path }}"
+
+      - name: Commit published radar
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/ papers/ || true
+          if git diff --cached --quiet; then
+            echo 'No publish changes to commit.'
+            exit 0
+          fi
+          git commit -m 'publish scheduled research radar'
+          git push
