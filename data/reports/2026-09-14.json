@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-14",
+  "updatedAt": "2026-09-14 08:00 CST",
+  "edition": "NO. 015 · LATEST EDITION",
+  "title": "Agent 开始学习自身 Harness、具体用户与外部工具的正确使用方式",
+  "subtitle": "今天三篇分别研究 Harness 自主创建与演进、基于真实人机交互的测试时适配，以及 Agent 对 world-model tool 的前瞻使用失败。共同信号是：Runtime 正从固定执行循环变成持续适配的控制层。",
+  "readingMinutes": 10,
+  "summary": [
+    {
+      "paperId": "harnessdev",
+      "headline": "LLM 开始被直接评估能否创建、维护并演进 Agent Harness",
+      "takeaway": "HarnessDev 把评测对象从一次任务答案改成持久可运行的 Harness；模型在部分领域已能生成有竞争力系统，但在代码、搜索与研究上仍明显落后成熟人工 Harness。"
+    },
+    {
+      "paperId": "tahi",
+      "headline": "长期人机协作中的计划修改、直接编辑和评价标准修订可以直接变成个体化学习信号",
+      "takeaway": "TAHI 在 30 名用户、600 个写作与视觉任务中显示，仅几十次交互就能显著提高个人任务成功率，并让评价 rubrics 逐渐贴近用户专业标准。"
+    },
+    {
+      "paperId": "world-model-foresight",
+      "headline": "【顶会收录：ACL 2026】给 Agent 一个能模拟未来的工具，并不会自动产生更好的前瞻规划",
+      "takeaway": "当前 Agent 经常不知道何时模拟、如何解释 rollout，以及怎样把模拟结果融入真实行动；强制调用 world model 有时反而降低表现。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "harnessdev",
+      "title": "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?",
+      "titleZh": "HarnessDev：LLM 能否创建并演进自己的 Agent Harness？",
+      "type": "Research Paper · arXiv:2609.01437",
+      "status": "预印本",
+      "authors": "Yuhao Wu、Jingyuan Zhang、Jiajun Shi、Xinping Lei、Qingshui Gu、Yuxuan Zhang、Zexuan Wang、Chen He、Chen Huang、Maojia Song、Zhiyuan Zeng、Shaowen Wang、Jinkai Liu、Yunfeng Shi、Jiaheng Liu、Shen Yan、Wenhao Huang、Ge Zhang、Wenxuan Zhang",
+      "institution": "ByteDance Seed、Singapore University of Technology and Design、Georgia Institute of Technology、M-A-P、TokenWave.AI",
+      "venue": "ARXIV · 2026",
+      "published": "2026年9月1日",
+      "doi": "10.48550/arXiv.2609.01437",
+      "code": "未确认独立代码仓库",
+      "url": "https://arxiv.org/abs/2609.01437",
+      "topics": ["Agent Harness", "Harness Evolution", "Self-Improving Agents", "Agent Evaluation", "Runtime Infrastructure"],
+      "overview": "HarnessDev 包含 Creation 与 Evolution 两阶段：模型先从弱但可运行的 seed 和少量开发案例创建完整 Harness，再利用下游任务反馈修改这个持久系统。实验覆盖 6 种 creator LLM、4 个领域、5 个 benchmark 和 2,207 个下游实例，同时评估任务能力与 execution-token cost。生成 Harness 在写作和机器学习实验任务上可匹配或超过所选人工参考，但在代码、搜索和研究上仍明显落后；Evolution 也存在收益不稳定与跨任务、跨 runtime model 迁移衰减。",
+      "recommendation": "重点：它直接把 LLM 当作 Harness engineer 来评估。创新点：评测对象是持续存在的 runnable infrastructure，并同时考察创建、迭代、执行成本与跨模型迁移。结论：Harness intelligence 可能成为独立于基础模型的一层能力，但目前 LLM 离稳定自主维护复杂 Agent 基础设施仍有明显距离，而且 Harness 效果高度依赖实际 runtime model。"
+    },
+    {
+      "id": "tahi",
+      "title": "Efficient Test-Time Adaptation through Human-AI Interaction",
+      "titleZh": "通过人机交互实现高效测试时适配",
+      "type": "Research Paper · arXiv:2609.04141",
+      "status": "预印本",
+      "authors": "Zora Zhiruo Wang、Apurva Gandhi、Rulin Shao、Aspen Chen、Jonas Mueller、Zhiqi Liang、Jett Chen、Michael Ryan、Qianou Ma、Luxi He、Zhoujun Cheng、Andre He、Seungone Kim、Jiayi Geng、Mingqian Zheng、Weiwei Sun、Zheyuan Zhang、Xinran Zhao、Yike Wang、Abe Hou、Liwei Jiang、Pang Wei Koh、Diyi Yang、Graham Neubig、Daniel Fried",
+      "institution": "Carnegie Mellon University、University of Washington、Handshake AI、Stanford University、Princeton University、University of California San Diego",
+      "venue": "ARXIV · 2026",
+      "published": "2026年9月3日",
+      "doi": "10.48550/arXiv.2609.04141",
+      "code": "研究基于 Open-Claude-Cowork；未确认独立官方仓库",
+      "url": "https://arxiv.org/abs/2609.04141",
+      "topics": ["Human-AI Interaction", "Personalized Agent", "Test-Time Adaptation", "Knowledge Work", "Agent Evaluation"],
+      "overview": "TAHI 允许用户通过修改任务计划、直接编辑 Agent 产物、发送文字反馈与修改自动 verifier rubrics 四类渠道持续传递信号。系统把这些跨 session 信号转成 factual/procedural context，或进一步通过 LoRA 与 DPO 做 weight adaptation；rubric module 也从用户行为中归纳更贴近个人专业标准的评价规则。30 名用户在写作与视觉创作两个领域完成 600 个任务，context 与 weight adaptation 在约 20 个任务内带来 4.5%–20.9% 的个人任务成功率提升。",
+      "recommendation": "重点：它把 Human-AI Interaction 从体验层提升成 Agent 的持续学习基础设施。创新点：不仅学习用户说了什么，也学习用户怎样改计划、直接修正产物和否决自动评价。结论：专业型 Agent 的个性化可能主要来自长期共同工作；可编辑计划、产物、memory/skill 与验证规则会同时成为交互控件和 learning signal。"
+    },
+    {
+      "id": "world-model-foresight",
+      "title": "Current Agents Fail to Leverage World Model as Tool for Foresight",
+      "titleZh": "当前 Agent 无法有效利用世界模型作为前瞻工具",
+      "type": "Long Paper · ACL 2026",
+      "status": "ACL 2026 Main Conference",
+      "authors": "Cheng Qian、Emre Can Acikgoz、Bingxuan Li、Xiusi Chen、Yuji Zhang、Bingxiang He、Qinyu Luo、Gokhan Tur、Dilek Hakkani-Tür、Yunzhu Li、Heng Ji",
+      "institution": "University of Illinois Urbana-Champaign、Tsinghua University、Johns Hopkins University、Columbia University",
+      "venue": "ACL · 2026",
+      "published": "2026年7月；2026年1月预印本公开",
+      "doi": "10.18653/v1/2026.acl-long.623",
+      "code": "未确认独立代码仓库",
+      "url": "https://aclanthology.org/2026.acl-long.623/",
+      "topics": ["Tool Use", "Planning", "World Model", "Agent Evaluation", "Long-Horizon Agent"],
+      "overview": "论文把 world model 暴露给 Agent 作为可主动调用的外部模拟器，并比较可选调用、不提供与强制模拟条件。即使使用近乎完美的 cloned-environment simulator，Agent 仍系统性失败：不知道什么时候应该模拟、查询表达不当、错误解释预测结果，或无法把模拟证据整合进真实行动。部分设置中的模拟调用率低于 1%，实际调用后约 15% 存在误用；强制所有步骤先模拟也没有解决问题，某些实验反而造成最高约 5% 性能下降。",
+      "recommendation": "重点：它反驳‘只要接入强工具，Agent 自然会正确使用’这一常见 Harness 假设。创新点：把工具无效拆成 invocation、interpretation 与 integration 三个环节，并用 ground-truth simulator 排除工具本身不准这一解释。结论：成熟 Harness 需要显式 tool governance，包括何时值得模拟、如何检查冲突，以及怎样把外部模拟真正转化为行动证据。"
+    }
+  ],
+  "signal": {
+    "title": "Agent Runtime 正从固定执行循环变成持续适配的控制层",
+    "body": "HarnessDev 让 Agent 学习怎样配置自身运行环境，TAHI 让 Agent 学习怎样适配具体用户，而 world-model 研究说明 Agent 还必须学习什么时候以及怎样使用外部能力。共同趋势是：拥有多少 Memory、Skill 与 Tool 正逐渐不如能否针对任务和用户正确调度它们重要。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}
