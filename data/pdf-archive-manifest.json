@@ -1,8 +1,20 @@
 {
-  "date": "2026-09-14",
+  "date": "2026-09-15",
   "papers": [
-    {"title":"HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?","pdfUrl":"https://arxiv.org/pdf/2609.01437.pdf","path":"papers/2026-09-14/2609.01437 HarnessDev.pdf"},
-    {"title":"Efficient Test-Time Adaptation through Human-AI Interaction","pdfUrl":"https://arxiv.org/pdf/2609.04141.pdf","path":"papers/2026-09-14/2609.04141 TAHI.pdf"},
-    {"title":"Current Agents Fail to Leverage World Model as Tool for Foresight","pdfUrl":"https://aclanthology.org/2026.acl-long.623.pdf","path":"papers/2026-09-14/10.18653_v1_2026.acl-long.623 World Model Foresight.pdf"}
+    {
+      "title": "When Should Users Check? Modeling Confirmation Frequency in Multi-Step Agentic AI Tasks",
+      "pdfUrl": "https://arxiv.org/pdf/2510.05307.pdf",
+      "path": "papers/2026-09-15/2510.05307 When Should Users Check.pdf"
+    },
+    {
+      "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+      "pdfUrl": "https://arxiv.org/pdf/2608.25593.pdf",
+      "path": "papers/2026-09-15/2608.25593 JIT-Agent.pdf"
+    },
+    {
+      "title": "Scanning the Harness: An Empirical Study of Supply-Chain Defects in AI Coding-Agent Configurations",
+      "pdfUrl": "https://arxiv.org/pdf/2609.07360.pdf",
+      "path": "papers/2026-09-15/2609.07360 Scanning the Harness.pdf"
+    }
   ]
 }
