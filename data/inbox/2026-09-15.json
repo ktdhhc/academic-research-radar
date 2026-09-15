@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-15",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-09-15",
+    "updatedAt": "2026-09-15 12:23 CST · 补发",
+    "edition": "NO. 016 · LATEST EDITION",
+    "title": "Agent Harness 走向即时生成与供应链治理，人机确认时机开始可计算",
+    "subtitle": "今天三篇分别研究多步 Agent 的确认点如何最优安排、Harness 如何按任务即时生成，以及 skills/MCP/hooks 这层配置供应链中真实存在的安全缺陷。共同信号是：Agent Runtime 的下一阶段不仅要更强，还要动态适配、可监督并具备工程治理能力。",
+    "readingMinutes": 10,
+    "summary": [
+      {
+        "paperId": "when-should-users-check",
+        "headline": "【顶会收录：CHI 2026】什么时候该让用户确认，可以从“产品直觉”变成一个可优化的调度问题",
+        "takeaway": "研究从 8 人形成性实验归纳出 Confirmation–Diagnosis–Correction–Redo 模式，再建立决策模型选择中间确认点；48 人实验中，81% 的参与者更偏好中间确认，任务完成时间降低 13.54%。"
+      },
+      {
+        "paperId": "jit-agent",
+        "headline": "Harness 不再必须提前设计好：JIT-Agent 针对每个任务即时生成可执行 Harness",
+        "takeaway": "JIT-Agent 把 memory、planning、action 与 capability orchestration 统一成机器可生成协议，并训练 27B meta-agent 完成定制、修复和在线演进；同一执行模型在多个 Agent benchmark 上获得显著提升。"
+      },
+      {
+        "paperId": "scanning-the-harness",
+        "headline": "Skills、Hooks、MCP 配置正在形成新的 Agent 供应链，而现实仓库已经出现可量化的安全缺陷",
+        "takeaway": "对 3,171 个公开 GitHub 仓库的验证性审计发现，16.0% 的多组件 Harness setup 携带确认的安全缺陷；未固定版本的 MCP server、伪装成受限权限的任意执行授权和 skill 中预授权 shell 是三类主要问题。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "when-should-users-check",
+        "title": "When Should Users Check? Modeling Confirmation Frequency in Multi-Step Agentic AI Tasks",
+        "titleZh": "用户应该什么时候确认？多步 Agentic AI 任务中的确认频率建模",
+        "type": "Research Article · CHI 2026 / arXiv:2510.05307",
+        "status": "CHI 2026 正式论文",
+        "authors": "Jieyu Zhou、Aryan Roy、Sneh Gupta、Daniel Weitekamp、Christopher J. MacLellan",
+        "institution": "Georgia Institute of Technology",
+        "venue": "CHI · 2026",
+        "published": "2026年4月13日正式发表",
+        "doi": "10.1145/3772318.3790655",
+        "code": "未确认公开代码",
+        "url": "https://doi.org/10.1145/3772318.3790655",
+        "topics": ["Human-Agent Interaction", "Confirmation", "Mixed-Initiative Interaction", "User Control", "Error Recovery"],
+        "overview": "这项研究把多步 Agent 中‘什么时候应该打断用户确认’建模为最小化总交互时间的调度问题。作者先通过 8 人形成性研究观察到 Confirmation–Diagnosis–Correction–Redo（CDCR）模式：确认太晚会让错误级联并增加诊断、纠正与重做成本，但每一步都确认又会造成高频打断。基于这一模式，论文构建决策理论模型，为不同任务和错误风险选择中间确认点。随后在 48 人 within-subjects 实验中，81% 的参与者更偏好中间确认策略，相比只在末尾确认，任务完成时间降低 13.54%。这给 Agent 产品中的 approval / checkpoint 设计提供了比固定‘每步确认’或‘最终确认’更可计算的基础。",
+        "recommendation": "重点：它直接回答 Agent 产品最核心的交互问题之一——什么时候应该继续自主执行，什么时候应该把控制权交回用户。创新点：不是依靠风险等级或设计师经验写死确认点，而是把确认、诊断、纠错和重做成本放进决策模型，并用真实用户实验验证。结论：Human-in-the-loop 的关键不是增加确认次数，而是把确认放在能够最大幅度降低未来回滚成本的位置；成熟 Agent 的 permission/approval policy 应当随任务结构与错误传播风险动态变化。"
+      },
+      {
+        "id": "jit-agent",
+        "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+        "titleZh": "JIT-Agent：通过即时 Harness 演进扩展 Harness Intelligence",
+        "type": "Research Paper · arXiv:2608.25593",
+        "status": "预印本",
+        "authors": "Guibin Zhang、Leo Lu、Fangzhou Xie、Kang Zhu、Junhao Wang、Zhifei Xie、Zhaochen Yu、Zihang Liu、Zhongxiang Sun、Qiankun Li、Yue Liao、Heng Chang、Xiaobin Hu、Qibing Ren、Wangchunshu Zhou、Shuicheng Yan",
+        "institution": "National University of Singapore（LV-NUS Lab）",
+        "venue": "ARXIV · 2026",
+        "published": "2026年8月26日",
+        "doi": "10.48550/arXiv.2608.25593",
+        "code": "官方代码：https://github.com/bingreeky/JIT",
+        "url": "https://arxiv.org/abs/2608.25593",
+        "topics": ["Agent Harness", "Harness Intelligence", "Just-in-Time Synthesis", "Harness Evolution", "Meta-Agent"],
+        "overview": "JIT-Agent 质疑当前自动 Harness 优化普遍采用的 ahead-of-time 假设：先在一批任务上演进出一个持久 Harness，再希望它迁移到未来不同任务。作者认为搜索、终端操作、深度研究和 workspace 任务需要的 memory、planning、action protocol 与 tool/skill orchestration 本来就不同，因此将 Harness 形式化为这四类模块组成的可执行、机器可生成对象。JIT-Agent-27B 通过三阶段训练学习任务条件化定制、从编译/接口/运行失败中做受限修复，以及用 Evo-GDPO 超越已有 Harness archive 的 frontier。实验中，DeepSeek-V4-Flash 配合 JIT-Agent 在 DeepSearchQA 与 OdysseyBench 上分别超过 GPT-5.6 9.1 和 4.3 分，GLM-5.2 在部分任务上也获得明显绝对提升；生成 Harness 同时能与 OpenCode、Claude Code 等成熟 runtime 形成有竞争力的性能/成本点。",
+        "recommendation": "重点：它把 Harness Engineering 从‘搜索一个更好的固定外壳’推进到‘训练一个会为每个任务现场写 Harness 的模型’。创新点：通过统一四模块协议约束生成空间，再把定制、失败修复和 test-time evolution 都训练成 meta-agent 的原生能力，而不是外部启发式搜索。结论：如果任务结构高度异质，未来通用 Agent 平台可能不会维护一套万能 Harness，而会维护可验证的 primitives 与接口，让 Harness 在运行前甚至运行中按任务即时合成。"
+      },
+      {
+        "id": "scanning-the-harness",
+        "title": "Scanning the Harness: An Empirical Study of Supply-Chain Defects in AI Coding-Agent Configurations",
+        "titleZh": "扫描 Harness：AI Coding Agent 配置供应链缺陷的实证研究",
+        "type": "Research Paper · arXiv:2609.07360",
+        "status": "预印本",
+        "authors": "Benjamin Kapner、Carmel Soceanu、Alicia Petrunin、Hofni Gartner",
+        "institution": "Red Hat、Ben-Gurion University of the Negev（团队机构；作者对应关系未完全确认）",
+        "venue": "ARXIV · 2026",
+        "published": "2026年9月7日",
+        "doi": "10.48550/arXiv.2609.07360",
+        "code": "Harness-Eval：https://github.com/redhat-community-ai-tools/harness-eval；数据与脚本：https://github.com/Benkapner/harness-eval-experiments",
+        "url": "https://arxiv.org/abs/2609.07360",
+        "topics": ["Agent Harness", "Coding Agent", "Supply-Chain Security", "MCP", "Agent Skills"],
+        "overview": "论文把 instruction files、skills、hooks、MCP server declarations 与 subagents 视为 Coding Agent 的新型依赖层：这些组件从 marketplace 和公开仓库安装，以开发者权限运行，却通常没有 lockfile、安装时检查或统一权限语义。作者扫描 3,171 个公开 GitHub 仓库，其中包括 2,660 个多组件 setup 和 511 个 skill collection，并只统计能从静态字节可靠判定、且会导致安全暴露、不可运行配置或规范偏离的规则。为降低误报，每个发现都由独立实现重新推导，分歧经过释放 prompt 的模型裁决，并由另一次独立模型会话复核。最终 16.0% 的 setup 携带确认的安全缺陷：9.8% 使用未锁定版本的 MCP server，3.1% 在看似受限的授权后实际预批准任意执行，3.8% 携带会为安装者预授权 shell 的 skill；研究未确认任何凭据外泄路径，并公开 scanner、corpus manifest、prompt 和逐项 verdict。",
+        "recommendation": "重点：它第一次用大规模真实仓库数据把 Agent Harness 的 skill/MCP/hook 配置当作软件供应链来审计，而不是只讨论 prompt injection 或模型安全。创新点：研究把扫描器误报控制放在方法核心，通过 pinned commit、双实现、模型裁决和二次复核形成可审计的证据链，并公开 instrument 与 verdict。结论：当 Agent Skills 和 MCP 组件可以直接获得开发者权限时，Harness 生态需要逐步补齐传统依赖管理已有的版本锁定、安装时 lint、权限声明和 marketplace 扫描机制；安全边界不能只放在模型或 sandbox 上。"
+      }
+    ],
+    "signal": {
+      "title": "Harness 正从‘运行外壳’变成同时需要动态生成、用户监督与供应链治理的一等系统层",
+      "body": "CHI 研究说明人类确认点可以依据错误传播和回滚成本动态调度，JIT-Agent 则把 Harness 本身变成按任务即时生成的可执行对象，而供应链审计证明 skills、hooks 与 MCP 已经形成现实的配置依赖风险。三者合在一起意味着：下一阶段 Agent Harness 不只负责让模型会做事，还必须决定何时请求人、怎样按任务组装能力，以及这些能力组件是否可信、可追踪、可复现。",
+      "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-09-15",
+    "shortTitle": "Harness 走向即时生成与供应链治理，人机确认时机开始可计算",
+    "count": 3,
+    "topics": ["Human-Agent Interaction", "Agent Harness", "Agent Security"],
+    "path": "data/reports/2026-09-15.json"
+  },
+  "ratings": {
+    "comem": 6,
+    "toolscope": 4,
+    "appworld-ul": 6,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 4,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 5,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 5,
+    "modeling-human-interaction-web-agents": 5,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 5,
+    "ai-agents-push-humans-out-of-loop": 4,
+    "apex-mem": 4,
+    "harnesslens": 5,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 4,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 5,
+    "proactive-thought-partners-writing": 5,
+    "hypermem": 4,
+    "delegating-or-doing": 5,
+    "ai-agents-consensus": 4,
+    "harnessdev": 4,
+    "tahi": 5,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 5,
+    "scanning-the-harness": 4
+  },
+  "pdfs": [
+    {
+      "title": "When Should Users Check? Modeling Confirmation Frequency in Multi-Step Agentic AI Tasks",
+      "pdfUrl": "https://arxiv.org/pdf/2510.05307.pdf",
+      "path": "papers/2026-09-15/2510.05307 When Should Users Check.pdf"
+    },
+    {
+      "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
+      "pdfUrl": "https://arxiv.org/pdf/2608.25593.pdf",
+      "path": "papers/2026-09-15/2608.25593 JIT-Agent.pdf"
+    },
+    {
+      "title": "Scanning the Harness: An Empirical Study of Supply-Chain Defects in AI Coding-Agent Configurations",
+      "pdfUrl": "https://arxiv.org/pdf/2609.07360.pdf",
+      "path": "papers/2026-09-15/2609.07360 Scanning the Harness.pdf"
+    }
+  ]
+}
