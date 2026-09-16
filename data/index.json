@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-16",
+      "shortTitle": "真实操作轨迹开始沉淀为可复用 Skill 与 Agent 可观测数据",
+      "count": 2,
+      "topics": [
+        "Agent Skills",
+        "Coding Agent",
+        "Trajectory Observability"
+      ],
+      "path": "data/reports/2026-09-16.json"
+    },
+    {
       "date": "2026-09-15",
       "shortTitle": "Harness 走向即时生成与供应链治理，人机确认时机开始可计算",
       "count": 3,

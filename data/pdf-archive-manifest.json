@@ -1,20 +1,15 @@
 {
-  "date": "2026-09-15",
+  "date": "2026-09-16",
   "papers": [
     {
-      "title": "When Should Users Check? Modeling Confirmation Frequency in Multi-Step Agentic AI Tasks",
-      "pdfUrl": "https://arxiv.org/pdf/2510.05307.pdf",
-      "path": "papers/2026-09-15/2510.05307 When Should Users Check.pdf"
+      "title": "Inducing Task Models from Computer-Use Traces",
+      "pdfUrl": "https://arxiv.org/pdf/2608.20319",
+      "path": "papers/2026-09-16/2608.20319 Inducing Task Models from Computer-Use Traces.pdf"
     },
     {
-      "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
-      "pdfUrl": "https://arxiv.org/pdf/2608.25593.pdf",
-      "path": "papers/2026-09-15/2608.25593 JIT-Agent.pdf"
-    },
-    {
-      "title": "Scanning the Harness: An Empirical Study of Supply-Chain Defects in AI Coding-Agent Configurations",
-      "pdfUrl": "https://arxiv.org/pdf/2609.07360.pdf",
-      "path": "papers/2026-09-15/2609.07360 Scanning the Harness.pdf"
+      "title": "AgentLogs: A Dataset for Opening the Black Box of GitHub's Cloud Agent",
+      "pdfUrl": "https://arxiv.org/pdf/2608.29204",
+      "path": "papers/2026-09-16/2608.29204 AgentLogs.pdf"
     }
   ]
 }
