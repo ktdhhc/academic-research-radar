@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-16",
+  "date": "2026-09-17",
   "papers": [
     {
-      "title": "Inducing Task Models from Computer-Use Traces",
-      "pdfUrl": "https://arxiv.org/pdf/2608.20319",
-      "path": "papers/2026-09-16/2608.20319 Inducing Task Models from Computer-Use Traces.pdf"
+      "title": "Value of Information: A Framework for Human–Agent Communication",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1987.pdf",
+      "path": "papers/2026-09-17/2026.acl-long.1987 Value of Information.pdf"
     },
     {
-      "title": "AgentLogs: A Dataset for Opening the Black Box of GitHub's Cloud Agent",
-      "pdfUrl": "https://arxiv.org/pdf/2608.29204",
-      "path": "papers/2026-09-16/2608.29204 AgentLogs.pdf"
+      "title": "ReCreate: Reasoning and Creating Domain Agents Driven by Experience",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1432.pdf",
+      "path": "papers/2026-09-17/2026.acl-long.1432 ReCreate.pdf"
     }
   ]
 }

@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-17",
+      "shortTitle": "Agent 用信息价值决定何时提问，并从执行经验中持续改造 Harness",
+      "count": 2,
+      "topics": [
+        "Human-Agent Interaction",
+        "Agent Harness",
+        "Experience Learning"
+      ],
+      "path": "data/reports/2026-09-17.json"
+    },
+    {
       "date": "2026-09-16",
       "shortTitle": "真实操作轨迹开始沉淀为可复用 Skill 与 Agent 可观测数据",
       "count": 2,
