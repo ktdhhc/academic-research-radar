@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-18",
+      "shortTitle": "Mobile Agent 开始学习何时主动请求人类确认",
+      "count": 1,
+      "topics": [
+        "Human-Agent Interaction",
+        "Mobile Agent",
+        "Proactive Inquiry"
+      ],
+      "path": "data/reports/2026-09-18.json"
+    },
+    {
       "date": "2026-09-17",
       "shortTitle": "Agent 用信息价值决定何时提问，并从执行经验中持续改造 Harness",
       "count": 2,

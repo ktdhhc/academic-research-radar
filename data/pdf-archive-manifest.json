@@ -1,15 +1,10 @@
 {
-  "date": "2026-09-17",
+  "date": "2026-09-18",
   "papers": [
     {
-      "title": "Value of Information: A Framework for Human–Agent Communication",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.1987.pdf",
-      "path": "papers/2026-09-17/2026.acl-long.1987 Value of Information.pdf"
-    },
-    {
-      "title": "ReCreate: Reasoning and Creating Domain Agents Driven by Experience",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.1432.pdf",
-      "path": "papers/2026-09-17/2026.acl-long.1432 ReCreate.pdf"
+      "title": "InquireMobile: Teaching VLM-based Mobile Agent to Request Human Assistance via Reinforcement Fine-Tuning",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1487.pdf",
+      "path": "papers/2026-09-18/2026.acl-long.1487 InquireMobile.pdf"
     }
   ]
 }
