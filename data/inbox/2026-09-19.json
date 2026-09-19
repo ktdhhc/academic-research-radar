@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-19",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-09-19",
+    "updatedAt": "2026-09-19 08:00 CST",
+    "edition": "NO. 020 · LATEST EDITION",
+    "title": "Agent 开始通过强化学习主动决定何时、获取什么外部知识",
+    "subtitle": "今天聚焦 ACL 2026 主会论文 KARL：它把知识检索从被动 RAG 组件推进为 Agent 在多轮执行中可通过强化学习优化的主动决策策略。",
+    "summary": [
+      {
+        "paperId": "karl-agent",
+        "headline": "【顶会收录：ACL 2026】把知识获取本身训练成 Agent 的长程策略",
+        "takeaway": "KARL 让 Agent 在多轮知识密集任务中自主决定何时调用外部知识、检索什么，并用 curiosity-driven reward shaping 联合优化知识探索与工具使用；论文在六个结构化知识 benchmark 上报告了强于多种闭源强模型的结果。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "karl-agent",
+        "title": "KARL: Reinforcement Learning for LLM Agents on Multi-Turn Knowledge-Intensive Agentic Tasks",
+        "titleZh": "KARL：面向多轮知识密集型 Agent 任务的 LLM Agent 强化学习",
+        "type": "Research Article · ACL 2026",
+        "status": "ACL 2026 主会长论文",
+        "authors": "Xueqiao Sun、Xiao Liu、Bowen Lv、Hanchen Zhang、Bohao Jing、Zehan Qi、Yifan Xu、Yuxiao Dong、Jie Tang",
+        "institution": "未确认",
+        "venue": "ACL · 2026",
+        "published": "2026年7月",
+        "doi": "10.18653/v1/2026.acl-long.2196",
+        "code": "https://github.com/THUDM/KARL",
+        "url": "https://aclanthology.org/2026.acl-long.2196/",
+        "topics": [
+          "Agentic RL",
+          "Tool Use",
+          "Knowledge Exploration",
+          "Long-horizon Agent",
+          "Structured Knowledge"
+        ],
+        "overview": "KARL 研究知识密集型 Agent 在多轮执行中如何主动获取外部知识，而不是把检索当作固定、被动的 RAG 前处理。框架让 Agent 自主决定何时以及检索什么结构化知识，并通过在线强化学习端到端优化多轮工具调用；其中 curiosity-driven reward shaping 显式奖励有价值的知识探索，以缓解只依赖最终任务奖励时探索信号不足的问题。作者在知识图谱与数据库等六个结构化知识 benchmark 上评测，报告基于 Qwen2.5-14B 的 KARL Agent 在多项任务上显著超过 GPT-4o、Claude-4 与 o4-mini。官方代码公开了基于 verl 的多轮 RL 训练框架、异步 rollout、GRPO 训练以及知识图谱和数据库任务环境。",
+        "recommendation": "重点：它把‘什么时候查资料、查什么’从 Harness 中预设的 retrieval policy 推进为 Agent 可以通过长期奖励学习的决策能力。创新点：将在线多轮 RL、结构化知识工具和 curiosity-driven reward shaping 结合，使知识探索与任务执行在同一策略中端到端优化。结论：未来 Agent Harness 的 retrieval 层可能不只是静态 top-k 检索器，而会逐步演化成受预算、任务状态和预期信息收益约束的主动知识获取策略；KARL 提供了一个较完整且开源的训练范式。"
+      }
+    ],
+    "signal": {
+      "title": "Agent 的主动性开始从‘何时问人’扩展到‘何时向环境获取知识’",
+      "body": "最近几期集中在 Agent 何时确认、澄清和请求用户介入，而 KARL 展示了同一类控制问题的另一面：面对知识缺口，Agent 也需要动态判断何时调用外部信息以及探索到什么程度。主动交互与主动检索正在逐渐汇合为统一的 runtime policy 问题。",
+      "note": "这是基于本期论文的编辑判断，不代表论文作者的原文结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-09-19",
+    "shortTitle": "Agent 用强化学习主动决定何时获取外部知识",
+    "count": 1,
+    "topics": ["Agentic RL", "Tool Use", "Knowledge Exploration"],
+    "path": "data/reports/2026-09-19.json"
+  },
+  "ratings": {
+    "comem": 6,
+    "toolscope": 4,
+    "appworld-ul": 6,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 4,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 5,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 5,
+    "modeling-human-interaction-web-agents": 5,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 5,
+    "ai-agents-push-humans-out-of-loop": 4,
+    "apex-mem": 4,
+    "harnesslens": 5,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 4,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 5,
+    "proactive-thought-partners-writing": 5,
+    "hypermem": 4,
+    "delegating-or-doing": 5,
+    "ai-agents-consensus": 4,
+    "harnessdev": 4,
+    "tahi": 5,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 5,
+    "scanning-the-harness": 4,
+    "task-model-induction": 6,
+    "agentlogs": 5,
+    "value-of-information-human-agent": 6,
+    "recreate": 5,
+    "inquiremobile": 5,
+    "karl-agent": 5
+  },
+  "pdfs": [
+    {
+      "title": "KARL: Reinforcement Learning for LLM Agents on Multi-Turn Knowledge-Intensive Agentic Tasks",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.2196.pdf",
+      "path": "papers/2026-09-19/2026.acl-long.2196 KARL.pdf"
+    }
+  ]
+}
