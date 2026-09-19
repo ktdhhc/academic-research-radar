@@ -1,10 +1,10 @@
 {
-  "date": "2026-09-18",
+  "date": "2026-09-19",
   "papers": [
     {
-      "title": "InquireMobile: Teaching VLM-based Mobile Agent to Request Human Assistance via Reinforcement Fine-Tuning",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.1487.pdf",
-      "path": "papers/2026-09-18/2026.acl-long.1487 InquireMobile.pdf"
+      "title": "KARL: Reinforcement Learning for LLM Agents on Multi-Turn Knowledge-Intensive Agentic Tasks",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.2196.pdf",
+      "path": "papers/2026-09-19/2026.acl-long.2196 KARL.pdf"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-18",
+  "updatedAt": "2026-09-19",
   "scale": {
     "min": 1,
     "max": 7,
@@ -63,6 +63,7 @@
     "agentlogs": 5,
     "value-of-information-human-agent": 6,
     "recreate": 5,
-    "inquiremobile": 5
+    "inquiremobile": 5,
+    "karl-agent": 5
   }
 }
