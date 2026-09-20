@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-20",
+      "shortTitle": "长程 Agent 评测进入百万 Token、小时级执行与 Scaffold 联合评估",
+      "count": 1,
+      "topics": [
+        "Agent Evaluation",
+        "Long-horizon Agent",
+        "Agent Harness"
+      ],
+      "path": "data/reports/2026-09-20.json"
+    },
+    {
       "date": "2026-09-19",
       "shortTitle": "Agent 用强化学习主动决定何时获取外部知识",
       "count": 1,
