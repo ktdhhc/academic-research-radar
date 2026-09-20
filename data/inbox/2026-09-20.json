@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-20",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-09-20",
+    "updatedAt": "2026-09-20 08:00 CST",
+    "edition": "NO. 021 · LATEST EDITION",
+    "title": "真实长程 Agent 评测进入百万 Token、数小时执行与 Scaffold 联合评估阶段",
+    "subtitle": "AgencyBench 把 Agent benchmark 从短程单能力任务推进到 32 个真实场景、138 个顺序任务，并同时测量工具调用、反馈自纠错、资源效率与 Scaffold 适配。",
+    "summary": [
+      {
+        "paperId": "agencybench",
+        "headline": "【顶会收录：ACL 2026】AgencyBench 用百万 Token、约 90 次工具调用和数小时执行测试真实长程 Agent",
+        "takeaway": "AgencyBench 覆盖游戏、前端、后端、代码、研究和 MCP 六类能力；实验不仅显示闭源与开源 Agent 仍有明显差距，还发现同一模型在不同 agentic scaffold 下存在显著的“主场优势”。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "agencybench",
+        "title": "AgencyBench: Benchmarking the Frontiers of Autonomous Agents in 1M-Token Real-World Contexts",
+        "titleZh": "AgencyBench：在百万 Token 真实世界上下文中评测自主 Agent 的能力前沿",
+        "type": "Research Article · ACL 2026 Main Conference Long Paper",
+        "status": "ACL 2026 主会长论文",
+        "authors": "Keyu Li、Junhao Shi、Yang Xiao、Mohan Jiang、Jie Sun、Yunze Wu、Dayuan Fu、Shijie Xia、Xiaojie Cai、Tianze Xu、Weiye Si、Wenjie Li、Dequan Wang、Pengfei Liu",
+        "institution": "未确认",
+        "venue": "ACL · 2026",
+        "published": "2026年7月正式发表；2026年1月16日首次公开",
+        "doi": "10.18653/v1/2026.acl-long.337",
+        "code": "https://github.com/GAIR-NLP/AgencyBench",
+        "url": "https://aclanthology.org/2026.acl-long.337/",
+        "topics": ["Agent Evaluation", "Long-horizon Agent", "Agent Harness", "Tool Use", "Human-Agent Feedback"],
+        "overview": "AgencyBench 试图把 Agent 评测从短程、单能力 benchmark 推进到接近真实项目的长程执行。它由 20 名专家构建 32 个真实场景、138 个顺序任务，覆盖游戏、前端、后端、代码、深度研究和 MCP 六类能力；单个场景平均约需 90 次工具调用、百万 Token 级上下文和数小时执行。为避免真实人类反馈成为规模化评测瓶颈，系统使用 user-simulation agent 在失败后返回未满足 rubric 的反馈，并在 Docker sandbox 中执行视觉与功能检查，再由规则或 LLM/VLM judge 完成 rubric-based evaluation。实验中闭源模型平均得分 48.4%，开源模型平均 32.1%；GPT-5.2 总分最高为 56.5%。论文还观察到明显的 scaffold 效应：不同模型在不同执行框架中的表现差异显著，说明 Agent 能力不能只用底层模型名称解释。",
+        "recommendation": "重点：它评测的是持续数小时、百万 Token、近百次工具调用的真实长程执行，而不是把 Agent 能力压缩成几轮工具调用。创新点：将顺序任务、用户反馈模拟、Docker 可执行环境、视觉/功能 rubric 和资源效率指标组合成可自动复现的完整评测基础设施，并显式比较 agentic scaffold 的影响。结论：当前前沿 Agent 即使在最强配置下也远未解决真实长程任务；模型与 Harness 的适配、反馈驱动自纠错以及 Token/时间效率已经成为与模型能力本身同等重要的评测维度。"
+      }
+    ],
+    "signal": {
+      "title": "Agent benchmark 正从模型能力测试转向 Model × Harness × Environment 的系统级评测",
+      "body": "AgencyBench 的重要信号不是单纯把 context 做到 1M，而是把长程状态、工具执行、用户反馈、可运行交付物和 scaffold 差异放进同一评测闭环。随着 Agent 任务持续时间进入小时级，仅比较底层模型分数越来越不足以解释真实产品表现；Harness 适配、自纠错能力和资源效率会成为独立的系统能力。",
+      "note": "这是基于本期论文的编辑判断，不代表论文作者的原文结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-09-20",
+    "shortTitle": "长程 Agent 评测进入百万 Token、小时级执行与 Scaffold 联合评估",
+    "count": 1,
+    "topics": ["Agent Evaluation", "Long-horizon Agent", "Agent Harness"],
+    "path": "data/reports/2026-09-20.json"
+  },
+  "ratings": {
+    "comem": 6,
+    "toolscope": 4,
+    "appworld-ul": 6,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 4,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 5,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 5,
+    "modeling-human-interaction-web-agents": 5,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 5,
+    "ai-agents-push-humans-out-of-loop": 4,
+    "apex-mem": 4,
+    "harnesslens": 5,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 4,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 5,
+    "proactive-thought-partners-writing": 5,
+    "hypermem": 4,
+    "delegating-or-doing": 5,
+    "ai-agents-consensus": 4,
+    "harnessdev": 4,
+    "tahi": 5,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 5,
+    "scanning-the-harness": 4,
+    "task-model-induction": 6,
+    "agentlogs": 5,
+    "value-of-information-human-agent": 6,
+    "recreate": 5,
+    "inquiremobile": 5,
+    "karl-agent": 5,
+    "agencybench": 6
+  },
+  "pdfs": [
+    {
+      "title": "AgencyBench: Benchmarking the Frontiers of Autonomous Agents in 1M-Token Real-World Contexts",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.337.pdf",
+      "path": "papers/2026-09-20/2026.acl-long.337 AgencyBench.pdf"
+    }
+  ]
+}
