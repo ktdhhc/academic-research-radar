@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-21",
+      "shortTitle": "Context Compression 从 Harness 启发式进入端到端 Agent RL",
+      "count": 1,
+      "topics": [
+        "Context Management",
+        "Agentic RL",
+        "Long-horizon Agent"
+      ],
+      "path": "data/reports/2026-09-21.json"
+    },
+    {
       "date": "2026-09-20",
       "shortTitle": "长程 Agent 评测进入百万 Token、小时级执行与 Scaffold 联合评估",
       "count": 1,
