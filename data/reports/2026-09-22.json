@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-22",
+  "updatedAt": "2026-09-22 08:03 CST",
+  "edition": "NO. 023 · LATEST EDITION",
+  "title": "Agent 进入知识工作后，交付结构与人机对齐都需要显式中间表示",
+  "subtitle": "PosterForest 用层级 Poster Tree 协调内容与版式生成；DoubleAgents 则用可视化状态、用户可编辑策略和 stop hooks 把隐式偏好逐步沉淀为可复用的人机对齐资产。",
+  "summary": [
+    {
+      "paperId": "posterforest",
+      "headline": "【顶会收录：ACL 2026】科学海报生成从一次性排版转向层级内容—布局联合推理",
+      "takeaway": "PosterForest 以 Poster Tree 保存论文的层级语义与视觉结构，让内容和布局 Agent 从全局组织到局部构图递归协作；自动与人工评测均优于既有方法，并直接产出可编辑 PPTX。"
+    },
+    {
+      "paperId": "doubleagents",
+      "headline": "【HCOMP 2026 收录】真实协作中的 Agent 对齐不是一次性写好偏好，而是把用户修改持续转成 policy、模板和 stop hooks",
+      "takeaway": "DoubleAgents 将协调 Agent、可解释 dashboard 与策略模块组合起来，在两日实验、三次真实部署和技术评估中观察到用户更愿意逐步委派任务，但在边缘情况和上下文依赖决策处仍要求保留控制权。"
+    }
+  ],
+  "papers": [
+    {
+      "id": "posterforest",
+      "title": "PosterForest: Hierarchical Multi-Agent Collaboration for Scientific Poster Generation",
+      "titleZh": "PosterForest：面向科学海报生成的层级多 Agent 协作",
+      "type": "Research Article · ACL 2026 Main Conference Long Paper",
+      "status": "ACL 2026 主会长论文",
+      "authors": "Jiho Choi、Seojeong Park、Seongjong Song、Hyunjung Shim",
+      "institution": "KAIST Graduate School of Artificial Intelligence；Yonsei University School of Integrated Technology",
+      "venue": "ACL · 2026",
+      "published": "2026年7月正式发表",
+      "doi": "10.18653/v1/2026.acl-long.15",
+      "code": "https://github.com/kaist-cvml/poster-forest",
+      "url": "https://aclanthology.org/2026.acl-long.15/",
+      "topics": [
+        "Office Agent",
+        "Document Generation",
+        "Multi-Agent",
+        "Structured Representation",
+        "Visual Layout"
+      ],
+      "overview": "PosterForest 研究从论文 PDF 自动生成可编辑科学海报的问题。作者指出，平铺式摘要或把内容选择与布局优化割裂开来，容易造成信息损失、逻辑断裂和视觉失衡，因此提出 Poster Tree 作为层级中间表示，同时编码文档结构与视觉—文本语义。内容 Agent 与布局 Agent 围绕这一表示进行层级推理和递归 refinement，从全局章节组织逐步下钻到局部构图；整个框架无需额外训练或领域监督。论文在自动指标和人工评测中均报告优于既有方法，官方实现可直接从论文 PDF 生成可编辑的 poster.pptx。",
+      "recommendation": "重点：它把办公/知识工作中的生成任务从‘让模型直接写最终文档’转成‘先构建可检查的结构，再让多个专门 Agent 围绕结构协作’。创新点：Poster Tree 同时承担内容层级和视觉布局的共享状态，使内容与版式不是两个串行黑箱，而能从全局到局部联合优化。结论：对于 PPT、报告、海报等复杂办公产物，显式中间表示可能比继续堆叠 prompt 更重要；它既能降低跨 Agent 信息损失，也让最终产物保持可编辑、可迭代。"
+    },
+    {
+      "id": "doubleagents",
+      "title": "DoubleAgents: Human-Agent Alignment in a Socially Embedded Workflow",
+      "titleZh": "DoubleAgents：社会嵌入式工作流中的人机对齐",
+      "type": "Research Article · HCOMP 2026 / arXiv:2509.12626v4",
+      "status": "HCOMP 2026 收录；2026年9月14日更新 v4",
+      "authors": "Tao Long、Xuanming Zhang、Sitong Wang、Zhou Yu、Lydia B. Chilton",
+      "institution": "Columbia University",
+      "venue": "HCOMP · 2026",
+      "published": "2025年9月16日首次公开；2026年9月14日更新 v4",
+      "doi": "10.48550/arXiv.2509.12626",
+      "code": "未确认公开代码",
+      "url": "https://arxiv.org/abs/2509.12626",
+      "topics": [
+        "Human-Agent Interaction",
+        "Human-Agent Alignment",
+        "Knowledge Work",
+        "User Control",
+        "Agent UX"
+      ],
+      "overview": "DoubleAgents 面向真实协调工作：用户偏好往往隐式、会变化，而且常常只有看到 Agent 的具体行为后才知道自己想改什么。系统包含三个相互配合的部分：维护状态并提出计划与行动的 coordination agent；把状态和推理外显给用户检查的 dashboard；以及把用户编辑沉淀为 coordination policies、email templates 和 stop hooks 的 policy module。作者通过两日实验室交互模拟研究（n=10）、三次真实部署和技术评估进行验证。随着使用推进，参与者对任务委派的舒适度和依赖度提高，但在边缘情况识别以及强上下文依赖的动作上仍要求保留控制权。",
+      "recommendation": "重点：它研究的不是一次交互里如何让 Agent 更听话，而是长期工作关系中如何让用户偏好通过实际修改逐步进入系统。创新点：将状态可视化、用户修改和可执行对齐资产连成闭环，让 feedback 不只停留在当前对话，而能变成后续任务可复用的 policy、模板和 stop hook。结论：企业 Agent 的个性化与对齐很可能需要‘可见状态 + 可编辑策略 + 明确停止点’三类机制共同存在；自动化程度提高并不意味着用户控制权应单调减少，而应集中到不确定和情境敏感的节点。"
+    }
+  ],
+  "signal": {
+    "title": "复杂 Agent 产品正在用显式中间表示连接自动化与人类可控性",
+    "body": "PosterForest 的 Poster Tree 让多个生成 Agent 围绕同一结构协作，DoubleAgents 则把用户修改沉淀为可复用 policy 和 stop hooks。两者虽然分别面向文档生成与社会协作，却共同说明：当任务变长、参与者变多时，仅靠隐式上下文维持一致性会越来越脆弱；可检查、可编辑、可持久化的中间表示正在成为 Harness 与 Agent UX 的共同基础。",
+    "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
+  }
+}

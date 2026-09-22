@@ -1,10 +1,15 @@
 {
-  "date": "2026-09-21",
+  "date": "2026-09-22",
   "papers": [
     {
-      "title": "Beyond the Context Window: Scaling Agentic RL via End-to-end Optimized Context Compression",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.966.pdf",
-      "path": "papers/2026-09-21/2026.acl-long.966 Beyond the Context Window.pdf"
+      "title": "PosterForest: Hierarchical Multi-Agent Collaboration for Scientific Poster Generation",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.15.pdf",
+      "path": "papers/2026-09-22/2026.acl-long.15 PosterForest.pdf"
+    },
+    {
+      "title": "DoubleAgents: Human-Agent Alignment in a Socially Embedded Workflow",
+      "pdfUrl": "https://arxiv.org/pdf/2509.12626",
+      "path": "papers/2026-09-22/2509.12626 DoubleAgents.pdf"
     }
   ]
 }
