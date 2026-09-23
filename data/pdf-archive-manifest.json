@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-22",
+  "date": "2026-09-23",
   "papers": [
     {
-      "title": "PosterForest: Hierarchical Multi-Agent Collaboration for Scientific Poster Generation",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.15.pdf",
-      "path": "papers/2026-09-22/2026.acl-long.15 PosterForest.pdf"
+      "title": "Harness-Zero: Harness Distillation via Agent-as-Harness",
+      "pdfUrl": "https://arxiv.org/pdf/2609.24974",
+      "path": "papers/2026-09-23/2609.24974 Harness-Zero.pdf"
     },
     {
-      "title": "DoubleAgents: Human-Agent Alignment in a Socially Embedded Workflow",
-      "pdfUrl": "https://arxiv.org/pdf/2509.12626",
-      "path": "papers/2026-09-22/2509.12626 DoubleAgents.pdf"
+      "title": "Towards Robust Real-World Spreadsheet Understanding with Multi-Agent Multi-Format Reasoning",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.86.pdf",
+      "path": "papers/2026-09-23/2026.acl-long.86 SpreadsheetAgent.pdf"
     }
   ]
 }
