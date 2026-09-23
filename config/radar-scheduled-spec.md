@@ -64,3 +64,10 @@ For the final 1–3 recommended papers only, locate legal public PDFs and upload
 
 ## Scheduled result
 The Scheduled task must also post the complete daily radar result back into its ChatGPT scheduled-task conversation after finishing. It must explicitly state whether the GitHub inbox write succeeded, whether the GitHub Actions publishing workflow succeeded, and whether the Library PDF archive succeeded.
+
+## Daily message link (required)
+At the VERY END of every daily Scheduled result in this conversation, AFTER the report and all GitHub/Pages/PDF status notes, append exactly one clickable website entry:
+
+**学术研究雷达：** [打开网站](https://ktdhhc.github.io/academic-research-radar/)
+
+Include the site link even when GitHub publishing is delayed, blocked, or fails. It must be the final line of the Scheduled response so the user can open the radar directly.
