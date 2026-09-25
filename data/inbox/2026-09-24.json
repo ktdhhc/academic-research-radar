@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-09-24",
+    "updatedAt": "2026-09-24 CST",
+    "edition": "NO. 025 · LATEST EDITION",
+    "title": "Agent Harness 的 Context Assembly 成为安全边界，SWE Agent 验证转向代码库上下文化 Rubric",
+    "subtitle": "Context Privilege Escalation 系统揭示真实 Agent Harness 的上下文装配攻击面；Agentic Rubrics 则用主动探索代码库生成可解释验证标准，降低对完整测试执行的依赖。",
+    "summary": [
+      {
+        "paperId": "context-privilege-escalation",
+        "headline": "真实 Agent Harness 的上下文装配本身就是权限边界：12 个 Harness 中发现 16 类可利用攻击向量",
+        "takeaway": "研究提出 Message-Role 与 Cross-Scope Context Privilege Escalation 两类攻击，覆盖 memory、skills、环境信息、markup 与 context refresh 等机制，并在 Claude Code、Codex、Cline、Gemini 等真实 Harness 上展示从持久污染到远程代码执行的后果。"
+      },
+      {
+        "paperId": "agentic-rubrics",
+        "headline": "【顶会收录：ACL 2026】SWE Agent 的 verifier 不一定要先跑完整测试：可以让专家 Agent 先探索代码库并生成任务特定 Rubric",
+        "takeaway": "Agentic Rubrics 通过 repository-grounded checklist 评估候选 patch；在 SWE-Bench Verified 的并行 Test-Time Scaling 中，Qwen3-Coder-30B-A3B 达到 54.2%，Qwen3-32B 达到 40.6%，较论文最强对比基线至少提升 3.5 个百分点。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "context-privilege-escalation",
+        "title": "What's in Your Agent's Context? Context Privilege Escalation Attacks against AI Agent Harness",
+        "titleZh": "你的 Agent 上下文里有什么？针对 AI Agent Harness 的上下文权限提升攻击",
+        "type": "Research Paper · arXiv:2609.01222",
+        "status": "预印本",
+        "authors": "Zichuan Li、Jian Cui、Ashley Chen、Xiaojing Liao、Luyi Xing",
+        "institution": "University of Illinois Urbana-Champaign",
+        "venue": "ARXIV · 2026",
+        "published": "2026年9月1日首次提交；9月2日修订",
+        "doi": "10.48550/arXiv.2609.01222",
+        "code": "未确认公开代码",
+        "url": "https://arxiv.org/abs/2609.01222",
+        "topics": [
+          "Agent Harness",
+          "Context Engineering",
+          "Agent Security",
+          "Memory & Skills",
+          "Runtime Security"
+        ],
+        "overview": "该研究把 Agent 安全问题从模型提示词进一步推进到 Harness 的 context assembly：真实运行时会自动从 memory 文件、skills、目录结构、Git 元数据、环境状态等异构来源拼装上下文，而这些来源的权限、作用域和装载顺序往往并不透明。作者提出两类 Context Privilege Escalation：M-CPE 指低权限攻击者内容被装配进更高权限 message role；X-CPE 指攻击影响跨越原始作用域并在后续目录、会话或项目中持续。研究系统分析 12 个真实 Agent Harness，归纳出 16 类攻击向量，覆盖 context source、markup 与 assembly logic，并给出 Claude Code、Codex、Cline、Gemini 等端到端案例。结果说明 memory/skill discovery、上下文刷新、优先级覆盖以及可执行 markup 不只是便利功能，也会形成新的信任边界。",
+        "recommendation": "重点：它直接研究 Agent Harness 最基础但长期被忽视的控制面——谁能进入 context、以什么角色进入、能持续多久。创新点：不是泛泛讨论 prompt injection，而是把 context assembly 形式化为权限与作用域问题，并对 12 个真实 Harness 做系统性攻击面分析。结论：未来 Harness 的 Context Manager 需要像操作系统权限系统一样显式维护 source、role、scope 与 provenance；Context Manifest、严格的信任边界和跨作用域污染控制值得成为运行时基础设施。"
+      },
+      {
+        "id": "agentic-rubrics",
+        "title": "Agentic Rubrics as Contextual Verifiers for SWE Agents",
+        "titleZh": "Agentic Rubrics：面向 SWE Agent 的上下文化验证器",
+        "type": "Research Article · ACL 2026 Main Conference Long Paper",
+        "status": "ACL 2026 主会长论文",
+        "authors": "Mohit Raghavendra、Anisha Gunjal、Bing Liu、Yunzhong He",
+        "institution": "Scale AI",
+        "venue": "ACL · 2026",
+        "published": "2026年7月正式发表；预印本首次公开于2026年1月7日",
+        "doi": "10.18653/v1/2026.acl-long.697",
+        "code": "未确认公开代码",
+        "url": "https://aclanthology.org/2026.acl-long.697/",
+        "topics": [
+          "SWE Agent",
+          "Verification",
+          "Agent Evaluation",
+          "Test-Time Scaling",
+          "Codebase Context"
+        ],
+        "overview": "Agentic Rubrics 针对 SWE Agent 的验证瓶颈：完整执行测试通常最可靠，但环境搭建昂贵、难以大规模用于训练和 Test-Time Scaling；纯 patch classifier 又缺少代码库上下文。方法让一个专家 Agent 主动浏览 repository，围绕具体 issue 生成结构化 rubric checklist，再由 verifier 按这些任务特定标准评估候选 patch，而不要求执行测试。在 SWE-Bench Verified 的 K=16 并行 Test-Time Scaling 中，Qwen3-Coder-30B-A3B 达到 54.2%，Qwen3-32B 达到 40.6%，相对论文最强非 agentic verifier 至少提高 3.5 个百分点。Rubric 分数与真实测试结果具有较强一致性，同时能指出测试未覆盖的问题；消融实验表明，主动代码库探索是生成清晰、任务特定标准的关键。",
+        "recommendation": "重点：它把 verifier 从一个固定 judge 变成了先获取环境上下文、再生成验证标准的 Agent。创新点：验证标准不是通用 prompt，而是通过 repository interaction 动态构建的可解释中间产物，因此可以在不执行完整测试的情况下提供细粒度信号。结论：Agent Runtime 的 verification layer 可能逐渐形成“环境探索 → 生成 rubric → 多候选验证 → 必要时再执行”的分层结构，把昂贵执行留给最需要确认的候选。"
+      }
+    ],
+    "signal": {
+      "title": "Agent Harness 的下一层基础设施正在从执行编排走向“信任边界 + 验证边界”",
+      "body": "今天两篇分别从输入与输出两端补齐 Harness：Context Privilege Escalation 说明进入模型的上下文必须有明确 provenance、role 与 scope；Agentic Rubrics 则说明 Agent 产出的动作或 patch 需要基于环境上下文生成动态验证标准。两者共同指向一个更系统的 Runtime：不仅管理 context 和 tools，还要显式管理信息权限与可验证性。",
+      "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-09-24",
+    "shortTitle": "Harness 的 Context Assembly 成为安全边界，SWE Agent 验证转向上下文化 Rubric",
+    "count": 2,
+    "topics": [
+      "Agent Harness",
+      "Agent Security",
+      "Verification"
+    ],
+    "path": "data/reports/2026-09-24.json"
+  },
+  "ratings": {
+    "comem": 6,
+    "toolscope": 4,
+    "appworld-ul": 6,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 4,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 5,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 5,
+    "modeling-human-interaction-web-agents": 5,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 5,
+    "ai-agents-push-humans-out-of-loop": 4,
+    "apex-mem": 4,
+    "harnesslens": 5,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 4,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 5,
+    "proactive-thought-partners-writing": 5,
+    "hypermem": 4,
+    "delegating-or-doing": 5,
+    "ai-agents-consensus": 4,
+    "harnessdev": 4,
+    "tahi": 5,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 5,
+    "scanning-the-harness": 4,
+    "task-model-induction": 6,
+    "agentlogs": 5,
+    "value-of-information-human-agent": 6,
+    "recreate": 5,
+    "inquiremobile": 5,
+    "karl-agent": 5,
+    "agencybench": 6,
+    "supo-context-compression": 6,
+    "posterforest": 5,
+    "doubleagents": 6,
+    "spreadsheetagent": 5,
+    "harness-zero": 5,
+    "context-privilege-escalation": 6,
+    "agentic-rubrics": 5
+  },
+  "pdfs": [
+    {
+      "title": "What's in Your Agent's Context? Context Privilege Escalation Attacks against AI Agent Harness",
+      "pdfUrl": "https://arxiv.org/pdf/2609.01222",
+      "path": "papers/2026-09-24/2609.01222 Context Privilege Escalation.pdf"
+    },
+    {
+      "title": "Agentic Rubrics as Contextual Verifiers for SWE Agents",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.697.pdf",
+      "path": "papers/2026-09-24/2026.acl-long.697 Agentic Rubrics.pdf"
+    }
+  ]
+}
