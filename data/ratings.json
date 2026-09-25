@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-23",
+  "updatedAt": "2026-09-24",
   "scale": {
     "min": 1,
     "max": 7,
@@ -70,6 +70,8 @@
     "posterforest": 5,
     "doubleagents": 6,
     "spreadsheetagent": 5,
-    "harness-zero": 5
+    "harness-zero": 5,
+    "context-privilege-escalation": 6,
+    "agentic-rubrics": 5
   }
 }

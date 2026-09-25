@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-24",
+      "shortTitle": "Harness 的 Context Assembly 成为安全边界，SWE Agent 验证转向上下文化 Rubric",
+      "count": 2,
+      "topics": [
+        "Agent Harness",
+        "Agent Security",
+        "Verification"
+      ],
+      "path": "data/reports/2026-09-24.json"
+    },
+    {
       "date": "2026-09-23",
       "shortTitle": "Harness 能力向模型权重回流，Spreadsheet Agent 用结构化局部读取处理真实表格",
       "count": 2,
