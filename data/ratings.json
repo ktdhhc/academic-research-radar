@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-09-25",
   "scale": {
     "min": 1,
     "max": 7,
@@ -72,6 +72,8 @@
     "spreadsheetagent": 5,
     "harness-zero": 5,
     "context-privilege-escalation": 6,
-    "agentic-rubrics": 5
+    "agentic-rubrics": 5,
+    "harness-as-language-jaz": 5,
+    "agentask": 5
   }
 }

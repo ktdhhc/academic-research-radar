@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-25",
+      "shortTitle": "极简 Harness 将编排压缩为语言原语，多 Agent 在消息边缘主动澄清",
+      "count": 2,
+      "topics": [
+        "Agent Harness",
+        "Multi-Agent",
+        "Clarification"
+      ],
+      "path": "data/reports/2026-09-25.json"
+    },
+    {
       "date": "2026-09-24",
       "shortTitle": "Harness 的 Context Assembly 成为安全边界，SWE Agent 验证转向上下文化 Rubric",
       "count": 2,

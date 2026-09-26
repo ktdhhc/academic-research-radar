@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-24",
+  "date": "2026-09-25",
   "papers": [
     {
-      "title": "What's in Your Agent's Context? Context Privilege Escalation Attacks against AI Agent Harness",
-      "pdfUrl": "https://arxiv.org/pdf/2609.01222",
-      "path": "papers/2026-09-24/2609.01222 Context Privilege Escalation.pdf"
+      "title": "Harness as a Language: A Minimalist Agent Framework With Maximal Expressivity",
+      "pdfUrl": "https://arxiv.org/pdf/2609.26891",
+      "path": "papers/2026-09-25/2609.26891 Harness as a Language.pdf"
     },
     {
-      "title": "Agentic Rubrics as Contextual Verifiers for SWE Agents",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.697.pdf",
-      "path": "papers/2026-09-24/2026.acl-long.697 Agentic Rubrics.pdf"
+      "title": "AgentAsk: Multi-Agent Systems Need to Ask",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1294.pdf",
+      "path": "papers/2026-09-25/2026.acl-long.1294 AgentAsk.pdf"
     }
   ]
 }
