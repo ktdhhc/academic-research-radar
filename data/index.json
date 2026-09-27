@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-26",
+      "shortTitle": "Agent 日志完整性暴露信任边界，MCP 工具权限转向预测式运行时治理",
+      "count": 2,
+      "topics": [
+        "Agent Security",
+        "Agent Harness",
+        "MCP"
+      ],
+      "path": "data/reports/2026-09-26.json"
+    },
+    {
       "date": "2026-09-25",
       "shortTitle": "极简 Harness 将编排压缩为语言原语，多 Agent 在消息边缘主动澄清",
       "count": 2,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25",
+  "updatedAt": "2026-09-26",
   "scale": {
     "min": 1,
     "max": 7,
@@ -74,6 +74,8 @@
     "context-privilege-escalation": 6,
     "agentic-rubrics": 5,
     "harness-as-language-jaz": 5,
-    "agentask": 5
+    "agentask": 5,
+    "trace-tampering-agents": 6,
+    "safemcp": 5
   }
 }
