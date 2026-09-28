@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-26",
+  "date": "2026-09-27",
   "papers": [
     {
-      "title": "LLM Agents Can Easily Tamper With Their Own Traces",
-      "pdfUrl": "https://arxiv.org/pdf/2609.30266",
-      "path": "papers/2026-09-26/2609.30266 LLM Agents Can Easily Tamper With Their Own Traces.pdf"
+      "title": "WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks",
+      "pdfUrl": "https://arxiv.org/pdf/2609.23806",
+      "path": "papers/2026-09-27/2609.23806 WorkWorlds.pdf"
     },
     {
-      "title": "SafeMCP: Proactive Power Regulation for LLM Agent Defense via Environment-Grounded Look-Ahead Reasoning",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.522.pdf",
-      "path": "papers/2026-09-26/2026.acl-long.522 SafeMCP.pdf"
+      "title": "OCR-Memory: Optical Context Retrieval for Long-Horizon Agent Memory",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.474.pdf",
+      "path": "papers/2026-09-27/2026.acl-long.474 OCR-Memory.pdf"
     }
   ]
 }

@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-09-27",
+      "shortTitle": "知识工作 Agent 的瓶颈转向证据定位，长程记忆开始压缩寻找过程",
+      "count": 2,
+      "topics": [
+        "Knowledge Work",
+        "Agent Memory",
+        "Context Management"
+      ],
+      "path": "data/reports/2026-09-27.json"
+    },
+    {
       "date": "2026-09-26",
       "shortTitle": "Agent 日志完整性暴露信任边界，MCP 工具权限转向预测式运行时治理",
       "count": 2,
