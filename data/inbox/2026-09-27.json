@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-27",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-09-27",
+    "updatedAt": "2026-09-28 10:13 CST · 补发",
+    "edition": "NO. 028 · BACKFILL",
+    "title": "知识工作 Agent 的瓶颈转向证据定位，长程记忆开始压缩“寻找过程”而非事实本身",
+    "subtitle": "WorkWorlds 把完整工作区中的证据发现重新纳入企业 Agent 评测；OCR-Memory 则用视觉索引定位长轨迹，再从原始日志逐字取回证据。两者共同指向 Context Manager 从压缩器走向信息定位与证据保真层。",
+    "readingMinutes": 8,
+    "summary": [
+      {
+        "paperId": "workworlds",
+        "headline": "完整工作区会显著暴露知识工作 Agent 的证据定位瓶颈",
+        "takeaway": "WorkWorlds 在 192 组匹配实验中发现，把任务预选上下文换成同一员工真实可见的完整工作区后，证据访问率从 90.4% 降至 74.5%，criterion pass 从 79.4% 降至 68.2%；主要损失发生在 Agent 找到足够证据之前。"
+      },
+      {
+        "paperId": "ocr-memory",
+        "headline": "【顶会收录：ACL 2026】长程 Memory 可以压缩“去哪里找”，同时保留原始证据逐字回取",
+        "takeaway": "OCR-Memory 把历史 trajectory 渲染成带视觉锚点的图像，用视觉模型定位相关片段，再根据 identifier 从原始日志确定性取回 verbatim text，把高密度检索与证据保真拆成两个步骤。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "workworlds",
+        "title": "WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks",
+        "titleZh": "WorkWorlds：面向工作场景任务的 AI Agent 评测基础设施",
+        "type": "Research Paper · arXiv:2609.23806",
+        "status": "预印本",
+        "authors": "Yining Hua、Levi Lian",
+        "institution": "未确认",
+        "venue": "ARXIV · 2026",
+        "published": "2026年9月20日",
+        "doi": "10.48550/arXiv.2609.23806",
+        "code": "未确认公开代码",
+        "url": "https://arxiv.org/abs/2609.23806",
+        "topics": [
+          "Knowledge Work",
+          "Agent Evaluation",
+          "Workplace Agent",
+          "Information Retrieval",
+          "Agent Harness"
+        ],
+        "overview": "WorkWorlds 指出，许多知识工作 Agent benchmark 会在知道任务之后为 Agent 预选相关文件，这实际上已经替 Agent 完成了一部分最困难的信息定位。它改为先固定 company revision、date 与 employee seat，由三者决定某名员工在特定时间点真实可见的工作空间，再把任务加入其中。系统区分 candidate package 与 verifier package：Agent 只能访问角色权限内的工作区、工具和可写 workspace，而 rubric 与隐藏验证证据保持隔离。当前实现建立在 Harbor 上，并通过 MCP 暴露组织内部交互系统；可变操作进入 append-only event history。作者在虚构制药公司 PharmaCo 中构建 8 个任务和 6 个 employee seats，并进行 192 组 matched evaluations：从 task-curated context 切换到完整 role-visible workplace 后，evidence access 从 90.4% 降至 74.5%，criterion pass 从 79.4% 降至 68.2%，而获取足够证据之后的通过率变化较小。",
+        "recommendation": "重点：它把企业 Agent 中常被 benchmark 隐藏的成本重新放回评测——面对共享盘、内部记录、通信和权限体系时，Agent 首先得知道去哪里找东西。创新点：核心不是再造一批办公任务，而是把 Organization State 与 Task Specification 解耦，使同一个组织世界可支持多个任务、员工身份和时间点，避免 task-specific context selection 掩盖检索与环境理解能力。结论：企业 Agent 的“给齐资料以后能否完成任务”和“能否从真实工作环境找到所需资料”应被视为两个不同能力，后者会把 Retrieval、Context Assembly、Workspace Navigation 和 Permission Awareness 重新推回 Harness 核心层。"
+      },
+      {
+        "id": "ocr-memory",
+        "title": "OCR-Memory: Optical Context Retrieval for Long-Horizon Agent Memory",
+        "titleZh": "OCR-Memory：面向长程 Agent 记忆的光学上下文检索",
+        "type": "Long Paper · ACL 2026",
+        "status": "ACL 2026 Main Conference",
+        "authors": "Jinze Li、Yang Zhang、Xin Yang、Jiayi Qu、Jinfeng Xu、Shuo Yang、Junhua Ding、Edith Cheuk-Han Ngai",
+        "institution": "未确认",
+        "venue": "ACL · 2026",
+        "published": "2026年7月；2026年4月29日预印本公开",
+        "doi": "10.18653/v1/2026.acl-long.474",
+        "code": "未确认公开代码",
+        "url": "https://aclanthology.org/2026.acl-long.474/",
+        "topics": [
+          "Agent Memory",
+          "Context Management",
+          "Long-horizon Agent",
+          "Multimodal Retrieval",
+          "Evidence Recovery"
+        ],
+        "overview": "OCR-Memory 不直接把超长 Agent trajectory 摘要成越来越短的文本，而是把历史轨迹渲染成带唯一视觉 identifier 的图像，用 optical retriever 在高密度视觉表示中定位相关片段。关键在于视觉模型只负责 locate，而不负责重新生成记忆内容；选中锚点后，系统按照 identifier 回到原始 trajectory，确定性地取出对应 verbatim text。论文将这一机制概括为 locate-and-transcribe，因此视觉表示承担高密度索引功能，最终进入 Agent Context 的事实证据仍来自原始日志。在严格 Context Budget 下，作者报告相对于多类 memory baseline 的一致提升，说明 optical encoding 可以增加有效记忆容量，同时保持证据回取的保真度。",
+        "recommendation": "重点：OCR-Memory 提供了不同于 Summarization、Vector Retrieval 和 KV Compression 的 Memory substrate：历史本体仍然保留，只改变检索历史的表示形式。创新点：最值得注意的是 Locate 与 Transcribe 的解耦——视觉模型可以有损地压缩“在哪里找”，但不能有损地重写“找到了什么”；最终事实仍由不可变原始记录提供。结论：Agent Memory 的压缩对象未必一定是事实内容本身，更通用的方向可能是保留完整原始 trajectory，再构建便宜、高密度、甚至跨模态的索引层负责定位，从而让 Context Compression 与 Evidence Fidelity 分别优化。"
+      }
+    ],
+    "signal": {
+      "title": "Agent 的信息瓶颈正在从“有没有上下文”转向“能否在巨大信息空间中定位可信证据”",
+      "body": "WorkWorlds 从环境侧显示，去掉人工预选资料后，知识工作 Agent 的主要损失发生在 evidence localization；OCR-Memory 则从 Memory 侧尝试降低搜索长历史的成本，同时保留原始证据。长程 Agent 的 Context Manager 因而可能从单纯 Token 压缩器演化为同时管理搜索空间、来源、权限和证据保真的信息控制层。",
+      "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-09-27",
+    "shortTitle": "知识工作 Agent 的瓶颈转向证据定位，长程记忆开始压缩寻找过程",
+    "count": 2,
+    "topics": [
+      "Knowledge Work",
+      "Agent Memory",
+      "Context Management"
+    ],
+    "path": "data/reports/2026-09-27.json"
+  },
+  "ratings": {
+    "comem": 6,
+    "toolscope": 4,
+    "appworld-ul": 6,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 4,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 5,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 5,
+    "modeling-human-interaction-web-agents": 5,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 5,
+    "ai-agents-push-humans-out-of-loop": 4,
+    "apex-mem": 4,
+    "harnesslens": 5,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 4,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 5,
+    "proactive-thought-partners-writing": 5,
+    "hypermem": 4,
+    "delegating-or-doing": 5,
+    "ai-agents-consensus": 4,
+    "harnessdev": 4,
+    "tahi": 5,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 5,
+    "scanning-the-harness": 4,
+    "task-model-induction": 6,
+    "agentlogs": 5,
+    "value-of-information-human-agent": 6,
+    "recreate": 5,
+    "inquiremobile": 5,
+    "karl-agent": 5,
+    "agencybench": 6,
+    "supo-context-compression": 6,
+    "posterforest": 5,
+    "doubleagents": 6,
+    "spreadsheetagent": 5,
+    "harness-zero": 5,
+    "context-privilege-escalation": 6,
+    "agentic-rubrics": 5,
+    "harness-as-language-jaz": 5,
+    "agentask": 5,
+    "trace-tampering-agents": 6,
+    "safemcp": 5,
+    "workworlds": 5,
+    "ocr-memory": 5
+  },
+  "pdfs": [
+    {
+      "title": "WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks",
+      "pdfUrl": "https://arxiv.org/pdf/2609.23806",
+      "path": "papers/2026-09-27/2609.23806 WorkWorlds.pdf"
+    },
+    {
+      "title": "OCR-Memory: Optical Context Retrieval for Long-Horizon Agent Memory",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.474.pdf",
+      "path": "papers/2026-09-27/2026.acl-long.474 OCR-Memory.pdf"
+    }
+  ]
+}
