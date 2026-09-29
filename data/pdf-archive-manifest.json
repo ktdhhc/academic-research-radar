@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-29",
   "papers": [
     {
-      "title": "WorkWorlds: An Infrastructure for Evaluating AI Agents on Workplace Tasks",
-      "pdfUrl": "https://arxiv.org/pdf/2609.23806",
-      "path": "papers/2026-09-27/2609.23806 WorkWorlds.pdf"
+      "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+      "pdfUrl": "https://arxiv.org/pdf/2609.24972",
+      "path": "papers/2026-09-29/2609.24972 RRSI.pdf"
     },
     {
-      "title": "OCR-Memory: Optical Context Retrieval for Long-Horizon Agent Memory",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.474.pdf",
-      "path": "papers/2026-09-27/2026.acl-long.474 OCR-Memory.pdf"
+      "title": "GAM: Hierarchical Graph-based Agentic Memory for LLM Agents",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1600.pdf",
+      "path": "papers/2026-09-29/2026.acl-long.1600 GAM.pdf"
     }
   ]
 }
