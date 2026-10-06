@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-10-07",
   "papers": [
     {
-      "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
-      "pdfUrl": "https://arxiv.org/pdf/2609.24972",
-      "path": "papers/2026-09-29/2609.24972 RRSI.pdf"
+      "title": "LLM Agent Capabilities Should Follow Task Intent and Context Source",
+      "pdfUrl": "https://arxiv.org/pdf/2609.14631",
+      "path": "papers/2026-10-07/2609.14631 IntentCap.pdf"
     },
     {
-      "title": "GAM: Hierarchical Graph-based Agentic Memory for LLM Agents",
-      "pdfUrl": "https://aclanthology.org/2026.acl-long.1600.pdf",
-      "path": "papers/2026-09-29/2026.acl-long.1600 GAM.pdf"
+      "title": "ProactiveEval: A Unified Evaluation Framework for Proactive Dialogue Agents",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.1906.pdf",
+      "path": "papers/2026-10-07/2026.acl-long.1906 ProactiveEval.pdf"
     }
   ]
 }

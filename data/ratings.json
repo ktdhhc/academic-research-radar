@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-07",
   "scale": {
     "min": 1,
     "max": 7,
@@ -80,6 +80,8 @@
     "workworlds": 5,
     "ocr-memory": 5,
     "rrsi": 6,
-    "gam": 5
+    "gam": 5,
+    "intentcap": 6,
+    "proactiveeval": 5
   }
 }

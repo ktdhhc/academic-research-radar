@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-10-07",
+      "shortTitle": "Agent 权限开始按上下文来源组合，主动交互评测拆分目标规划与对话引导",
+      "count": 2,
+      "topics": [
+        "Agent Security",
+        "Agent Harness",
+        "Human-Agent Interaction"
+      ],
+      "path": "data/reports/2026-10-07.json"
+    },
+    {
       "date": "2026-09-29",
       "shortTitle": "Harness 自我演化开始治理过拟合，Agent Memory 用写隔离控制长期知识晋升",
       "count": 2,
