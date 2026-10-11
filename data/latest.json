@@ -1,71 +1,71 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-07",
-  "title": "Agent 权限开始按上下文来源组合，主动交互评测从单一行为走向目标规划与对话引导",
-  "subtitle": "IntentCap 将用户意图、工作流、工具 Schema 与运行时环境拆成不同权限来源，以字段级所有权和单调收窄约束副作用；ProactiveEval 则把主动对话拆成目标规划与对话引导，在 6 个领域、328 个环境中系统评估主动交互能力。",
+  "date": "2026-10-11",
+  "title": "GenAI 交互从纯文本提示走向交互增强指令，人类协作成为 Agent 设计的一部分",
+  "subtitle": "IAI 用统一模型描述文本 Prompt、GUI 操作与 Artifact 如何组合成可执行指令；HHAI 研究则发现，共享 AI 可以在协作编程中增强同伴问责、减少直接照搬 AI 代码，并降低主动介入的干扰。",
   "summary": [
     {
-      "paperId": "intentcap",
-      "headline": "LLM Agent Capabilities Should Follow Task Intent and Context Source",
-      "takeaway": "推荐指数 ★★★★★★☆。IntentCap 认为 Agent 的最小权限不能只按 Session 或 Sandbox 固定，而应由当前任务意图与上下文来源共同决定；用户请求、工作流、工具 Schema 和运行时环境各自只能填写被授权的决策字段，并由确定性 checker 在副作用提交前验证。"
+      "paperId": "interaction-augmented-instruction",
+      "headline": "【顶会/顶刊收录：CHI 2026】 Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
+      "takeaway": "推荐指数 ★★★★★★☆。IAI 把文本 Prompt、GUI 操作、既有 Artifact 与模型输入之间的关系形式化为六类实体及其关系，并从既有系统中归纳出 12 种可组合的交互范式；该论文获 CHI 2026 Honorable Mention。"
     },
     {
-      "paperId": "proactiveeval",
-      "headline": "【顶会/顶刊收录：ACL 2026】 ProactiveEval: A Unified Evaluation Framework for Proactive Dialogue Agents",
-      "takeaway": "推荐指数 ★★★★★☆☆。ProactiveEval 将主动对话拆成 target planning 与 dialogue guidance，在 6 个领域构建 328 个评测环境并测试 22 类 LLM，说明“主动”不是单一能力，而至少包含决定追求什么目标与如何把对话引向该目标两个不同环节。"
+      "paperId": "human-human-ai-triadic-programming",
+      "headline": "【顶会/顶刊收录：CHI 2026】 Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
+      "takeaway": "推荐指数 ★★★★★☆☆。这项 20 人、10 组参与者的研究比较共享 AI、个人 AI 与单人使用 AI，发现将 AI 嵌入两名人类的共同编程中，能改善协作学习与社会临场感，并减少直接采用 AI 生成代码。"
     }
   ],
   "papers": [
     {
-      "id": "intentcap",
-      "title": "LLM Agent Capabilities Should Follow Task Intent and Context Source",
-      "titleZh": "LLM Agent 的能力权限应遵循任务意图与上下文来源",
-      "type": "Research Paper · arXiv:2609.14631",
-      "status": "预印本，尚未确认正式同行评审收录",
-      "authors": "Yusheng Zheng、Wenhui Zhang、Yu Mao",
-      "institution": "University of California, Santa Cruz；Roblox；ByteDance",
-      "venue": "arXiv",
-      "published": "2026年9月13日",
-      "doi": "10.48550/arXiv.2609.14631",
-      "url": "https://arxiv.org/abs/2609.14631",
+      "id": "interaction-augmented-instruction",
+      "title": "Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
+      "titleZh": "交互增强指令：建模人类与生成式 AI 协作中提示词与交互的协同作用",
+      "type": "Conference Paper · CHI 2026",
+      "status": "CHI 2026 Main Conference【顶会/顶刊收录：CHI 2026】；Honorable Mention Award",
+      "authors": "Leixian Shen、Yifang Wang、Huamin Qu、Xing Xie、Haotian Li",
+      "institution": "The Hong Kong University of Science and Technology；Florida State University；Microsoft Research Asia",
+      "venue": "CHI 2026 · Full Paper",
+      "published": "2026年4月13日（预印本于2025年10月30日公开，2026年2月24日更新）",
+      "doi": "10.1145/3772318.3790505",
+      "url": "https://doi.org/10.1145/3772318.3790505",
       "code": "未确认",
       "topics": [
-        "Agent Security",
-        "Agent Harness",
-        "Least Privilege",
-        "Context Engineering",
-        "Tool Use"
+        "Human-AI Interaction",
+        "AI UX",
+        "Interaction Design",
+        "Multimodal Instruction",
+        "Agentic Interfaces"
       ],
-      "overview": "LLM Agent 的行动同时受用户请求、文档、工具结果、Skill/MCP 指令和运行时状态影响，但这些来源进入统一规划通道后，常被赋予近似相同的影响力。IntentCap 提出 task-scoped、multi-source authority composition：用户意图、工作流指令、工具 Schema 与运行时环境分别拥有特定决策字段，任何来源都不能越权填写另一来源的字段，后续 lease 只能在用户已授权范围内单调收窄。LLM 负责提出短期 capability lease，但真正决定能否提交副作用的是确定性 checker，并结合工具与 OS 层信息流策略执行。论文报告在 3,746 个安全敏感回放事件上没有接受被测试的违规动作，同时覆盖 tau2 风格代理中的 3,813 个 benign reference actions；这些结果仅适用于论文测试范围。",
-      "recommendation": "重点：它把 Prompt Injection 与意外 scope widening 统一为“不同上下文来源不应拥有相同 authority”的 Runtime 问题。创新点：权限不是静态绑定到 Agent 或 Session，而是在字段级由多来源组合，并且 LLM 只能 proposal、不能最终授权。结论：Agent Harness 的 Context Assembly 不仅决定模型看到什么，还应决定每条 Context 有权影响哪些动作字段；Source Provenance 因此可能直接进入权限系统，而不只是用于引用追踪。"
+      "overview": "纯文本提示灵活，却难以准确表达细粒度、指向具体对象的意图；现有系统逐渐将文字与点击、涂画、选区和 Artifact 编辑结合，但缺少可比较、可复用的统一模型。论文提出 Interaction-Augmented Instruction（IAI）模型，以 Human、Interaction、Text Prompt、Augmented Instruction、GenAI 和 Artifact 六类实体及其关系描述交互信息流，并将交互范式表达为有向图。作者从既有 GenAI 系统中归纳出 12 种可组合的原子范式，按模型调用前后以及是否依赖既有 Artifact 组织。四个使用场景展示该模型如何帮助比较现有界面、调整既有范式并推导新的交互设计。关键词：Human-AI Interaction、AI UX、Interaction Design、Multimodal Instruction、Agentic Interfaces。",
+      "recommendation": "重点：它把 Prompt 与 GUI 操作的协同从零散的产品技巧提升为可以描述和比较的交互模型。创新点：IAI 显式区分用户意图、非文本交互、既有 Artifact 与最终送入模型的 Augmented Instruction，并提供 12 种可组合范式。结论：Agent 产品不必把所有意图都塞进聊天框；在需要精确定位、修正和约束的任务中，结构化交互可以成为模型指令的一部分，而非聊天之外的装饰。"
     },
     {
-      "id": "proactiveeval",
-      "title": "ProactiveEval: A Unified Evaluation Framework for Proactive Dialogue Agents",
-      "titleZh": "ProactiveEval：面向主动对话 Agent 的统一评估框架",
-      "type": "Long Paper · ACL 2026",
-      "status": "ACL 2026 Main Conference【顶会/顶刊收录：ACL 2026】",
-      "authors": "Tianjian Liu、Fanqi Wan、Jiajian Guo、Xiaojun Quan",
-      "institution": "未确认",
-      "venue": "ACL 2026 · Main Conference · Long Paper",
-      "published": "2026年7月；2025年8月28日预印本公开",
-      "doi": "10.18653/v1/2026.acl-long.1906",
-      "url": "https://aclanthology.org/2026.acl-long.1906/",
-      "code": "https://github.com/liutj9/ProactiveEval",
+      "id": "human-human-ai-triadic-programming",
+      "title": "Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
+      "titleZh": "人类—人类—AI 三元编程：揭示协作学习中 AI Agent 与人类伙伴的价值",
+      "type": "Conference Paper · CHI 2026",
+      "status": "CHI 2026 Main Conference【顶会/顶刊收录：CHI 2026】",
+      "authors": "Taufiq Daryanto、Xiaohan Ding、Kaike Ping、Lance T. Wilhelm、Yan Chen、Chris Brown、Eugenia H. Rho",
+      "institution": "Virginia Tech；University of Michigan",
+      "venue": "CHI 2026 · Full Paper",
+      "published": "2026年4月13日（预印本于2026年1月17日公开）",
+      "doi": "10.1145/3772318.3791773",
+      "url": "https://doi.org/10.1145/3772318.3791773",
+      "code": "未确认",
       "topics": [
-        "Proactive AI",
         "Human-Agent Interaction",
-        "Agent Evaluation",
-        "Dialogue Agent",
+        "Proactive AI",
+        "Collaborative Programming",
+        "Human-AI Collaboration",
         "AI UX"
       ],
-      "overview": "ProactiveEval 针对主动对话评测长期碎片化的问题，将能力拆成 target planning 与 dialogue guidance：前者关注 Agent 应主动追求什么交互目标，后者关注如何通过多轮对话把交互引向目标。框架还自动生成多样化评测数据，最终构建 328 个 evaluation environments，覆盖 6 个领域，并评估 22 种不同 LLM。论文结果显示，不同模型在两类能力上的优势并不一致：DeepSeek-R1 在 target planning 上表现突出，而 Claude-3.7-Sonnet 在 dialogue guidance 上表现突出。作者进一步分析 reasoning capability 与 proactive behavior 的关系，并公开代码和数据。",
-      "recommendation": "重点：它避免把“主动性”简化成 Agent 是否先开口或是否主动建议，而是区分目标选择与交互引导。创新点：统一环境生成与跨领域评测让主动交互从零散场景设计变成可比较的能力维度。结论：产品中的 Proactive Agent 不应只优化触发率；何时介入、介入后追求什么目标、怎样逐步引导用户，需要分别评测，否则更强的主动性可能只是更频繁地打断用户。"
+      "overview": "许多 AI 编程工具将 Agent 设计为人类同伴的替代品，而这可能削弱共同推理、解释与问责。作者构建了支持两名用户实时协作的编程工作区，并将 AI 作为第三位参与者，比较共享 AI、每人独立使用的个人 AI，以及单人—AI 基线三种条件。研究采用 20 名计算机科学学生、10 组搭档的被试内实验；两种三元协作条件均提升了协作学习和社会临场感。共享 AI 条件中，最终代码里由 AI 生成的比例为 1.4%，而单人—AI 基线为 23.1%；共享 AI 的主动提示也被参与者评为较少打扰。关键词：Human-Agent Interaction、Proactive AI、Collaborative Programming、Human-AI Collaboration、AI UX。",
+      "recommendation": "重点：它将 AI 从单人助手重新定位为人类团队中的共享协作者，并实测这种角色变化对互动和学习的影响。创新点：实验同时比较共享 AI 与个人 AI，并观察主动介入、社会临场感、协作学习和实际代码采用，而不只看任务完成率。结论：在协作型产品里，AI 的最佳介入方式未必是最大化自动生成；让输出对团队可见、保留同伴讨论和责任感，可能更有助于建立可控且不打断工作流的协作体验。"
     }
   ],
   "signal": {
-    "title": "Agent Runtime 正在同时回答两个边界问题：什么 Context 有权影响行动，以及 Agent 什么时候有理由主动影响用户",
-    "body": "IntentCap 把 Context Source 变成权限边界，ProactiveEval 把 Proactivity 拆成可评估的目标规划与对话引导。两者共同指向更细粒度的 Agent Control Plane：不仅控制工具能否调用，还要控制不同信息源能影响哪些决策，以及主动行为在什么目标与交互策略下才算合理。",
+    "title": "GenAI 交互正在从“输入更好的 Prompt”转向“设计更好的意图表达与协作关系”",
+    "body": "IAI 说明文字、指向性操作与既有 Artifact 可以共同组成模型真正接收的指令；三元编程研究则显示，Agent 的角色位置和输出可见性会改变人类如何讨论、学习与承担责任。两者共同提示：AI 产品设计不应只优化模型输出，还应设计用户如何表达意图、何时介入，以及 Agent 如何融入既有的人类协作结构。",
     "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
   }
 }
