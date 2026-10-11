@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-10-11",
+    "title": "GenAI 交互从纯文本提示走向交互增强指令，人类协作成为 Agent 设计的一部分",
+    "subtitle": "IAI 用统一模型描述文本 Prompt、GUI 操作与 Artifact 如何组合成可执行指令；HHAI 研究则发现，共享 AI 可以在协作编程中增强同伴问责、减少直接照搬 AI 代码，并降低主动介入的干扰。",
+    "summary": [
+      {
+        "paperId": "interaction-augmented-instruction",
+        "headline": "【顶会/顶刊收录：CHI 2026】 Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
+        "takeaway": "推荐指数 ★★★★★★☆。IAI 把文本 Prompt、GUI 操作、既有 Artifact 与模型输入之间的关系形式化为六类实体及其关系，并从既有系统中归纳出 12 种可组合的交互范式；该论文获 CHI 2026 Honorable Mention。"
+      },
+      {
+        "paperId": "human-human-ai-triadic-programming",
+        "headline": "【顶会/顶刊收录：CHI 2026】 Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
+        "takeaway": "推荐指数 ★★★★★☆☆。这项 20 人、10 组参与者的研究比较共享 AI、个人 AI 与单人使用 AI，发现将 AI 嵌入两名人类的共同编程中，能改善协作学习与社会临场感，并减少直接采用 AI 生成代码。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "interaction-augmented-instruction",
+        "title": "Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
+        "titleZh": "交互增强指令：建模人类与生成式 AI 协作中提示词与交互的协同作用",
+        "type": "Conference Paper · CHI 2026",
+        "status": "CHI 2026 Main Conference【顶会/顶刊收录：CHI 2026】；Honorable Mention Award",
+        "authors": "Leixian Shen、Yifang Wang、Huamin Qu、Xing Xie、Haotian Li",
+        "institution": "The Hong Kong University of Science and Technology；Florida State University；Microsoft Research Asia",
+        "venue": "CHI 2026 · Full Paper",
+        "published": "2026年4月13日（预印本于2025年10月30日公开，2026年2月24日更新）",
+        "doi": "10.1145/3772318.3790505",
+        "url": "https://doi.org/10.1145/3772318.3790505",
+        "code": "未确认",
+        "topics": [
+          "Human-AI Interaction",
+          "AI UX",
+          "Interaction Design",
+          "Multimodal Instruction",
+          "Agentic Interfaces"
+        ],
+        "overview": "纯文本提示灵活，却难以准确表达细粒度、指向具体对象的意图；现有系统逐渐将文字与点击、涂画、选区和 Artifact 编辑结合，但缺少可比较、可复用的统一模型。论文提出 Interaction-Augmented Instruction（IAI）模型，以 Human、Interaction、Text Prompt、Augmented Instruction、GenAI 和 Artifact 六类实体及其关系描述交互信息流，并将交互范式表达为有向图。作者从既有 GenAI 系统中归纳出 12 种可组合的原子范式，按模型调用前后以及是否依赖既有 Artifact 组织。四个使用场景展示该模型如何帮助比较现有界面、调整既有范式并推导新的交互设计。关键词：Human-AI Interaction、AI UX、Interaction Design、Multimodal Instruction、Agentic Interfaces。",
+        "recommendation": "重点：它把 Prompt 与 GUI 操作的协同从零散的产品技巧提升为可以描述和比较的交互模型。创新点：IAI 显式区分用户意图、非文本交互、既有 Artifact 与最终送入模型的 Augmented Instruction，并提供 12 种可组合范式。结论：Agent 产品不必把所有意图都塞进聊天框；在需要精确定位、修正和约束的任务中，结构化交互可以成为模型指令的一部分，而非聊天之外的装饰。"
+      },
+      {
+        "id": "human-human-ai-triadic-programming",
+        "title": "Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
+        "titleZh": "人类—人类—AI 三元编程：揭示协作学习中 AI Agent 与人类伙伴的价值",
+        "type": "Conference Paper · CHI 2026",
+        "status": "CHI 2026 Main Conference【顶会/顶刊收录：CHI 2026】",
+        "authors": "Taufiq Daryanto、Xiaohan Ding、Kaike Ping、Lance T. Wilhelm、Yan Chen、Chris Brown、Eugenia H. Rho",
+        "institution": "Virginia Tech；University of Michigan",
+        "venue": "CHI 2026 · Full Paper",
+        "published": "2026年4月13日（预印本于2026年1月17日公开）",
+        "doi": "10.1145/3772318.3791773",
+        "url": "https://doi.org/10.1145/3772318.3791773",
+        "code": "未确认",
+        "topics": [
+          "Human-Agent Interaction",
+          "Proactive AI",
+          "Collaborative Programming",
+          "Human-AI Collaboration",
+          "AI UX"
+        ],
+        "overview": "许多 AI 编程工具将 Agent 设计为人类同伴的替代品，而这可能削弱共同推理、解释与问责。作者构建了支持两名用户实时协作的编程工作区，并将 AI 作为第三位参与者，比较共享 AI、每人独立使用的个人 AI，以及单人—AI 基线三种条件。研究采用 20 名计算机科学学生、10 组搭档的被试内实验；两种三元协作条件均提升了协作学习和社会临场感。共享 AI 条件中，最终代码里由 AI 生成的比例为 1.4%，而单人—AI 基线为 23.1%；共享 AI 的主动提示也被参与者评为较少打扰。关键词：Human-Agent Interaction、Proactive AI、Collaborative Programming、Human-AI Collaboration、AI UX。",
+        "recommendation": "重点：它将 AI 从单人助手重新定位为人类团队中的共享协作者，并实测这种角色变化对互动和学习的影响。创新点：实验同时比较共享 AI 与个人 AI，并观察主动介入、社会临场感、协作学习和实际代码采用，而不只看任务完成率。结论：在协作型产品里，AI 的最佳介入方式未必是最大化自动生成；让输出对团队可见、保留同伴讨论和责任感，可能更有助于建立可控且不打断工作流的协作体验。"
+      }
+    ],
+    "signal": {
+      "title": "GenAI 交互正在从“输入更好的 Prompt”转向“设计更好的意图表达与协作关系”",
+      "body": "IAI 说明文字、指向性操作与既有 Artifact 可以共同组成模型真正接收的指令；三元编程研究则显示，Agent 的角色位置和输出可见性会改变人类如何讨论、学习与承担责任。两者共同提示：AI 产品设计不应只优化模型输出，还应设计用户如何表达意图、何时介入，以及 Agent 如何融入既有的人类协作结构。",
+      "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-10-11",
+    "shortTitle": "GenAI 交互从纯文本提示走向交互增强指令，人类协作成为 Agent 设计的一部分",
+    "count": 2,
+    "topics": [
+      "Human-AI Interaction",
+      "AI UX",
+      "Human-Agent Collaboration"
+    ],
+    "path": "data/reports/2026-10-11.json"
+  },
+  "ratings": {
+    "comem": 5,
+    "toolscope": 4,
+    "appworld-ul": 5,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 3,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 4,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 4,
+    "modeling-human-interaction-web-agents": 4,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 4,
+    "ai-agents-push-humans-out-of-loop": 3,
+    "apex-mem": 4,
+    "harnesslens": 4,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 3,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 4,
+    "proactive-thought-partners-writing": 4,
+    "hypermem": 4,
+    "delegating-or-doing": 4,
+    "ai-agents-consensus": 3,
+    "harnessdev": 3,
+    "tahi": 4,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 4,
+    "scanning-the-harness": 3,
+    "task-model-induction": 6,
+    "agentlogs": 4,
+    "value-of-information-human-agent": 6,
+    "recreate": 5,
+    "inquiremobile": 5,
+    "karl-agent": 5,
+    "agencybench": 6,
+    "supo-context-compression": 7,
+    "posterforest": 5,
+    "doubleagents": 5,
+    "spreadsheetagent": 5,
+    "harness-zero": 4,
+    "context-privilege-escalation": 6,
+    "agentic-rubrics": 5,
+    "harness-as-language-jaz": 4,
+    "agentask": 5,
+    "trace-tampering-agents": 6,
+    "safemcp": 5,
+    "workworlds": 4,
+    "ocr-memory": 5,
+    "rrsi": 7,
+    "gam": 5,
+    "intentcap": 6,
+    "proactiveeval": 5,
+    "interaction-augmented-instruction": 6,
+    "human-human-ai-triadic-programming": 5
+  },
+  "pdfs": [
+    {
+      "title": "Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
+      "pdfUrl": "https://arxiv.org/pdf/2510.26069",
+      "path": "papers/2026-10-11/interaction-augmented-instruction.pdf"
+    },
+    {
+      "title": "Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
+      "pdfUrl": "https://arxiv.org/pdf/2601.12134",
+      "path": "papers/2026-10-11/human-human-ai-triadic-programming.pdf"
+    }
+  ]
+}
