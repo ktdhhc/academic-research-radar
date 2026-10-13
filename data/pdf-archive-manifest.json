@@ -1,15 +1,15 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-13",
   "papers": [
     {
-      "title": "Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
-      "pdfUrl": "https://arxiv.org/pdf/2510.26069",
-      "path": "papers/2026-10-11/interaction-augmented-instruction.pdf"
+      "title": "What Did the AI Take On? Characterizing Cognitive Delegation in LLM Reasoning",
+      "pdfUrl": "https://arxiv.org/pdf/2610.06328",
+      "path": "papers/2026-10-13/cognitive-delegation-llm-reasoning.pdf"
     },
     {
-      "title": "Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
-      "pdfUrl": "https://arxiv.org/pdf/2601.12134",
-      "path": "papers/2026-10-11/human-human-ai-triadic-programming.pdf"
+      "title": "Neuro-Symbolic Agentic Reinforcement Learning for Long-Term Original Character Companionship and Interaction",
+      "pdfUrl": "https://aclanthology.org/2026.acl-short.44.pdf",
+      "path": "papers/2026-10-13/neuro-symbolic-agentic-rl-companionship.pdf"
     }
   ]
 }

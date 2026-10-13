@@ -1,71 +1,71 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-11",
-  "title": "GenAI 交互从纯文本提示走向交互增强指令，人类协作成为 Agent 设计的一部分",
-  "subtitle": "IAI 用统一模型描述文本 Prompt、GUI 操作与 Artifact 如何组合成可执行指令；HHAI 研究则发现，共享 AI 可以在协作编程中增强同伴问责、减少直接照搬 AI 代码，并降低主动介入的干扰。",
+  "date": "2026-10-13",
+  "title": "Agent 的主动权需要可见与可协商：从认知委派到长期陪伴",
+  "subtitle": "一项新的人机协作研究发现，用户认为近半数推理步骤是 AI 自行接手的工作；ACL 2026 的长期陪伴 Agent 研究则把路由、记忆和角色表达拆成可训练子策略。",
   "summary": [
     {
-      "paperId": "interaction-augmented-instruction",
-      "headline": "【顶会/顶刊收录：CHI 2026】 Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
-      "takeaway": "推荐指数 ★★★★★★☆。IAI 把文本 Prompt、GUI 操作、既有 Artifact 与模型输入之间的关系形式化为六类实体及其关系，并从既有系统中归纳出 12 种可组合的交互范式；该论文获 CHI 2026 Honorable Mention。"
+      "paperId": "cognitive-delegation-llm-reasoning",
+      "headline": "What Did the AI Take On? Characterizing Cognitive Delegation in LLM Reasoning",
+      "takeaway": "推荐指数 ★★★★★☆☆。对 24 名用户在三类知识工作中的 992 条推理步骤标注显示，48.6% 被参与者视为 AI 主动接手的工作；论文据此提出按认知工作类型灵活协商参与程度，并让重要的 AI 主动决策可检查、可修改。"
     },
     {
-      "paperId": "human-human-ai-triadic-programming",
-      "headline": "【顶会/顶刊收录：CHI 2026】 Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
-      "takeaway": "推荐指数 ★★★★★☆☆。这项 20 人、10 组参与者的研究比较共享 AI、个人 AI 与单人使用 AI，发现将 AI 嵌入两名人类的共同编程中，能改善协作学习与社会临场感，并减少直接采用 AI 生成代码。"
+      "paperId": "neuro-symbolic-agentic-rl-companionship",
+      "headline": "【顶会/顶刊收录：ACL 2026】 Neuro-Symbolic Agentic Reinforcement Learning for Long-Term Original Character Companionship and Interaction",
+      "takeaway": "推荐指数 ★★★★☆☆☆。这篇 ACL 2026 Short Paper 将长期角色陪伴建模为 POMDP，把路由、记忆和角色生成拆成子策略，并以可验证反馈进行强化学习；初步实验显示，结构化执行更稳，但也容易过度路由，提示逻辑控制与角色表达可能需要混合部署。"
     }
   ],
   "papers": [
     {
-      "id": "interaction-augmented-instruction",
-      "title": "Interaction-Augmented Instruction: Modeling the Synergy of Prompts and Interactions in Human-GenAI Collaboration",
-      "titleZh": "交互增强指令：建模人类与生成式 AI 协作中提示词与交互的协同作用",
-      "type": "Conference Paper · CHI 2026",
-      "status": "CHI 2026 Main Conference【顶会/顶刊收录：CHI 2026】；Honorable Mention Award",
-      "authors": "Leixian Shen、Yifang Wang、Huamin Qu、Xing Xie、Haotian Li",
-      "institution": "The Hong Kong University of Science and Technology；Florida State University；Microsoft Research Asia",
-      "venue": "CHI 2026 · Full Paper",
-      "published": "2026年4月13日（预印本于2025年10月30日公开，2026年2月24日更新）",
-      "doi": "10.1145/3772318.3790505",
-      "url": "https://doi.org/10.1145/3772318.3790505",
+      "id": "cognitive-delegation-llm-reasoning",
+      "title": "What Did the AI Take On? Characterizing Cognitive Delegation in LLM Reasoning",
+      "titleZh": "AI 究竟接手了哪些认知工作？——LLM 推理中的认知委派研究",
+      "type": "Preprint · arXiv",
+      "status": "arXiv 预印本；尚未确认正式会议或期刊收录",
+      "authors": "Yoonsu Kim、Sean Kim、Kihoon Son、Saelyne Yang、Juho Kim",
+      "institution": "KAIST；Carnegie Mellon University；SkillBench",
+      "venue": "arXiv · cs.HC",
+      "published": "2026年10月5日",
+      "doi": "10.48550/arXiv.2610.06328（arXiv-issued DOI，待注册）",
+      "url": "https://arxiv.org/abs/2610.06328",
       "code": "未确认",
       "topics": [
         "Human-AI Interaction",
         "AI UX",
-        "Interaction Design",
-        "Multimodal Instruction",
-        "Agentic Interfaces"
+        "Cognitive Delegation",
+        "Knowledge Work",
+        "Human-Agent Interaction"
       ],
-      "overview": "纯文本提示灵活，却难以准确表达细粒度、指向具体对象的意图；现有系统逐渐将文字与点击、涂画、选区和 Artifact 编辑结合，但缺少可比较、可复用的统一模型。论文提出 Interaction-Augmented Instruction（IAI）模型，以 Human、Interaction、Text Prompt、Augmented Instruction、GenAI 和 Artifact 六类实体及其关系描述交互信息流，并将交互范式表达为有向图。作者从既有 GenAI 系统中归纳出 12 种可组合的原子范式，按模型调用前后以及是否依赖既有 Artifact 组织。四个使用场景展示该模型如何帮助比较现有界面、调整既有范式并推导新的交互设计。关键词：Human-AI Interaction、AI UX、Interaction Design、Multimodal Instruction、Agentic Interfaces。",
-      "recommendation": "重点：它把 Prompt 与 GUI 操作的协同从零散的产品技巧提升为可以描述和比较的交互模型。创新点：IAI 显式区分用户意图、非文本交互、既有 Artifact 与最终送入模型的 Augmented Instruction，并提供 12 种可组合范式。结论：Agent 产品不必把所有意图都塞进聊天框；在需要精确定位、修正和约束的任务中，结构化交互可以成为模型指令的一部分，而非聊天之外的装饰。"
+      "overview": "LLM 在执行任务时会自行补全用户未明确指定的中间工作，但用户不一定希望所有这些决定都自动交给 AI，也不希望逐步确认每一个动作。研究让 24 名用户完成创作、信息获取和建议三类知识工作，并在事后标注 992 条推理步骤与工具动作。参与者将 48.6% 的步骤视为 AI 主动接手，其中不少确实有帮助，但用户对关键决策和琐碎工作的参与偏好明显不同。研究据此构建认知工作、委派方式和期望参与协议三组分类体系。作者建议在一次任务内部支持多种委派协议，并使重要的 AI 主动决策可检查、可修改。关键词：Human-AI Interaction、Cognitive Delegation、User Agency、Knowledge Work、AI UX。",
+      "recommendation": "重点：它把委派从“整项任务交给 AI 还是自己做”的二元选择，细化为一次响应中的不同认知步骤。创新点：研究把用户对步骤主动性、重要程度、结果是否符合意图和期望参与方式联系起来，提供了 992 条步骤级标注。结论：产品不必要求用户审查每一步，但应为高影响、未明确委派的 AI 决策提供可见、可修改的介入点。"
     },
     {
-      "id": "human-human-ai-triadic-programming",
-      "title": "Human-Human-AI Triadic Programming: Uncovering the Role of AI Agent and the Value of Human Partner in Collaborative Learning",
-      "titleZh": "人类—人类—AI 三元编程：揭示协作学习中 AI Agent 与人类伙伴的价值",
-      "type": "Conference Paper · CHI 2026",
-      "status": "CHI 2026 Main Conference【顶会/顶刊收录：CHI 2026】",
-      "authors": "Taufiq Daryanto、Xiaohan Ding、Kaike Ping、Lance T. Wilhelm、Yan Chen、Chris Brown、Eugenia H. Rho",
-      "institution": "Virginia Tech；University of Michigan",
-      "venue": "CHI 2026 · Full Paper",
-      "published": "2026年4月13日（预印本于2026年1月17日公开）",
-      "doi": "10.1145/3772318.3791773",
-      "url": "https://doi.org/10.1145/3772318.3791773",
+      "id": "neuro-symbolic-agentic-rl-companionship",
+      "title": "Neuro-Symbolic Agentic Reinforcement Learning for Long-Term Original Character Companionship and Interaction",
+      "titleZh": "用于长期原创角色陪伴与交互的神经符号 Agent 强化学习",
+      "type": "Conference Paper · ACL 2026 Short Papers",
+      "status": "ACL 2026 Main Conference · Short Papers【顶会/顶刊收录：ACL 2026】",
+      "authors": "Zhenhan Huang",
+      "institution": "Neurobo AI",
+      "venue": "ACL 2026 · Short Papers",
+      "published": "2026年7月2–7日",
+      "doi": "10.18653/v1/2026.acl-short.44",
+      "url": "https://aclanthology.org/2026.acl-short.44/",
       "code": "未确认",
       "topics": [
         "Human-Agent Interaction",
-        "Proactive AI",
-        "Collaborative Programming",
-        "Human-AI Collaboration",
-        "AI UX"
+        "Agent Memory",
+        "Long-Term Personalization",
+        "Agentic RL",
+        "Companion Agents"
       ],
-      "overview": "许多 AI 编程工具将 Agent 设计为人类同伴的替代品，而这可能削弱共同推理、解释与问责。作者构建了支持两名用户实时协作的编程工作区，并将 AI 作为第三位参与者，比较共享 AI、每人独立使用的个人 AI，以及单人—AI 基线三种条件。研究采用 20 名计算机科学学生、10 组搭档的被试内实验；两种三元协作条件均提升了协作学习和社会临场感。共享 AI 条件中，最终代码里由 AI 生成的比例为 1.4%，而单人—AI 基线为 23.1%；共享 AI 的主动提示也被参与者评为较少打扰。关键词：Human-Agent Interaction、Proactive AI、Collaborative Programming、Human-AI Collaboration、AI UX。",
-      "recommendation": "重点：它将 AI 从单人助手重新定位为人类团队中的共享协作者，并实测这种角色变化对互动和学习的影响。创新点：实验同时比较共享 AI 与个人 AI，并观察主动介入、社会临场感、协作学习和实际代码采用，而不只看任务完成率。结论：在协作型产品里，AI 的最佳介入方式未必是最大化自动生成；让输出对团队可见、保留同伴讨论和责任感，可能更有助于建立可控且不打断工作流的协作体验。"
+      "overview": "长期角色陪伴 Agent 不仅要维持人设，还需要在多轮交互中决定何时检索或保存记忆、何时调用其他模块，以及如何应对不断变化的用户偏好。论文提出 NSARL，将陪伴交互形式化为部分可观测马尔可夫决策过程，并把系统拆成 Router、Memory 和 Persona 三个子策略，在图约束的工作流中用可验证反馈进行强化学习。实验使用 600 条交互样本，其中 500 条训练、100 条测试。初步结果显示，NSARL 的路由结构得分为 0.619，高于基础模型的 0.261，记忆动作准确率也有所提升；但策略倾向于过度路由和偏向保存记忆，且原始数据因隐私和专有约束未公开。作者建议将 RL 模块用于逻辑与状态控制，将监督微调模块用于更自然的角色表达。关键词：Human-Agent Interaction、Companion Agents、Agent Memory、Neuro-Symbolic Systems、Reinforcement Learning。",
+      "recommendation": "重点：它把长期陪伴中的记忆管理、执行路由和角色表达视为不同的决策任务，而不只依赖一段静态人设 Prompt。创新点：确定性工作流约束与可训练子策略结合，并用闭环反馈优化多轮轨迹行为。结论：长期交互可能需要将可靠的状态控制与富有表现力的对话生成分开治理；不过当前结果仍属初步验证，数据规模和不可公开性限制了可复现性。"
     }
   ],
   "signal": {
-    "title": "GenAI 交互正在从“输入更好的 Prompt”转向“设计更好的意图表达与协作关系”",
-    "body": "IAI 说明文字、指向性操作与既有 Artifact 可以共同组成模型真正接收的指令；三元编程研究则显示，Agent 的角色位置和输出可见性会改变人类如何讨论、学习与承担责任。两者共同提示：AI 产品设计不应只优化模型输出，还应设计用户如何表达意图、何时介入，以及 Agent 如何融入既有的人类协作结构。",
+    "title": "Agent 交互从统一的自主等级走向步骤级委派与分模块控制",
+    "body": "认知委派研究显示，用户对 AI 主动性的接受程度取决于具体工作及其后果，而不是简单地偏好全自动或逐步确认。长期陪伴 Agent 的研究则把路由、记忆和表达拆分为可独立训练的模块。两者共同提示：更可控的 Agent 需要让重要决策可见、让参与协议随步骤变化，并将可靠的状态控制与自然的表达适当分离。",
     "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
   }
 }

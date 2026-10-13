@@ -2,6 +2,18 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-10-13",
+      "shortTitle": "Agent 主动权走向步骤级委派，长期陪伴系统拆分路由、记忆与表达",
+      "count": 2,
+      "topics": [
+        "Human-AI Interaction",
+        "Agent Memory",
+        "Agentic RL",
+        "AI UX"
+      ],
+      "path": "data/reports/2026-10-13.json"
+    },
+    {
       "date": "2026-10-11",
       "shortTitle": "GenAI 交互从纯文本提示走向交互增强指令，人类协作成为 Agent 设计的一部分",
       "count": 2,
