@@ -1,15 +1,20 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-17",
   "papers": [
     {
-      "title": "What Did the AI Take On? Characterizing Cognitive Delegation in LLM Reasoning",
-      "pdfUrl": "https://arxiv.org/pdf/2610.06328",
-      "path": "papers/2026-10-13/cognitive-delegation-llm-reasoning.pdf"
+      "title": "Harmony Harness: Multi-Objective Self-Evolution of Agent Harnesses",
+      "pdfUrl": "https://arxiv.org/pdf/2610.15150",
+      "path": "papers/2026-10-17/harmony-harness.pdf"
     },
     {
-      "title": "Neuro-Symbolic Agentic Reinforcement Learning for Long-Term Original Character Companionship and Interaction",
-      "pdfUrl": "https://aclanthology.org/2026.acl-short.44.pdf",
-      "path": "papers/2026-10-13/neuro-symbolic-agentic-rl-companionship.pdf"
+      "title": "Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination",
+      "pdfUrl": "https://arxiv.org/pdf/2610.05382",
+      "path": "papers/2026-10-17/harness-search.pdf"
+    },
+    {
+      "title": "Reinforcement Learning for Self-Improving Agent with Skill Library",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.69.pdf",
+      "path": "papers/2026-10-17/sage-skill-library.pdf"
     }
   ]
 }

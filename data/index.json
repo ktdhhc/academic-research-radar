@@ -2,6 +2,19 @@
   "schemaVersion": 1,
   "issues": [
     {
+      "date": "2026-10-17",
+      "shortTitle": "Harness 演化兼顾安全与迁移，长程搜索拆分证据提交与终止审计",
+      "count": 3,
+      "topics": [
+        "Agent Harness",
+        "Harness Evolution",
+        "Long-Horizon Search",
+        "Agent Skills",
+        "Agentic RL"
+      ],
+      "path": "data/reports/2026-10-17.json"
+    },
+    {
       "date": "2026-10-13",
       "shortTitle": "Agent 主动权走向步骤级委派，长期陪伴系统拆分路由、记忆与表达",
       "count": 2,

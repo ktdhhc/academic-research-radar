@@ -1,71 +1,99 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-13",
-  "title": "Agent 的主动权需要可见与可协商：从认知委派到长期陪伴",
-  "subtitle": "一项新的人机协作研究发现，用户认为近半数推理步骤是 AI 自行接手的工作；ACL 2026 的长期陪伴 Agent 研究则把路由、记忆和角色表达拆成可训练子策略。",
+  "date": "2026-10-17",
+  "title": "Harness 演化开始兼顾安全与迁移，长程搜索拆分证据提交与终止审计",
+  "subtitle": "两项最新预印本分别研究多目标 Harness 自演化与长程搜索的证据治理；ACL 2026 的 SAGE 则展示如何把跨任务复用的 Skill Library 纳入强化学习。",
   "summary": [
     {
-      "paperId": "cognitive-delegation-llm-reasoning",
-      "headline": "What Did the AI Take On? Characterizing Cognitive Delegation in LLM Reasoning",
-      "takeaway": "推荐指数 ★★★★★☆☆。对 24 名用户在三类知识工作中的 992 条推理步骤标注显示，48.6% 被参与者视为 AI 主动接手的工作；论文据此提出按认知工作类型灵活协商参与程度，并让重要的 AI 主动决策可检查、可修改。"
+      "paperId": "harmony-harness-multiobjective",
+      "headline": "Harmony Harness: Multi-Objective Self-Evolution of Agent Harnesses",
+      "takeaway": "推荐指数 ★★★★★★☆。Harmony Harness 将 Harness 演化建模为功能与安全的多目标优化，并把通用机制和环境专属适配分开演化、在运行时动态组合；在 SecRepoBench 与 BaxBench 上，相比强 Harness 演化基线报告了超过 10% 的提升。"
     },
     {
-      "paperId": "neuro-symbolic-agentic-rl-companionship",
-      "headline": "【顶会/顶刊收录：ACL 2026】 Neuro-Symbolic Agentic Reinforcement Learning for Long-Term Original Character Companionship and Interaction",
-      "takeaway": "推荐指数 ★★★★☆☆☆。这篇 ACL 2026 Short Paper 将长期角色陪伴建模为 POMDP，把路由、记忆和角色生成拆成子策略，并以可验证反馈进行强化学习；初步实验显示，结构化执行更稳，但也容易过度路由，提示逻辑控制与角色表达可能需要混合部署。"
+      "paperId": "harness-search",
+      "headline": "Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination",
+      "takeaway": "推荐指数 ★★★★★☆☆。该预印本将长程搜索拆为检索提案、持久证据管理和终止审计三个权限受限的角色，通过 Propose–Commit–Audit 循环减少搜索停滞与证据遗漏；七个基准上的证据召回率和最终答案召回率均有提升。"
+    },
+    {
+      "paperId": "sage-skill-library",
+      "headline": "【顶会/顶刊收录：ACL 2026】 Reinforcement Learning for Self-Improving Agent with Skill Library",
+      "takeaway": "推荐指数 ★★★★★☆☆。ACL 2026 长论文 SAGE 将相似任务串成 Sequential Rollout，让前一任务生成的可执行 Skill 在后续任务中被复用，并用 Skill-integrated Reward 同时优化任务完成与技能生成/使用；AppWorld 实验报告场景目标完成率提高 8.9 个百分点，同时交互步数减少 26%、生成 Token 减少 59%。"
     }
   ],
   "papers": [
     {
-      "id": "cognitive-delegation-llm-reasoning",
-      "title": "What Did the AI Take On? Characterizing Cognitive Delegation in LLM Reasoning",
-      "titleZh": "AI 究竟接手了哪些认知工作？——LLM 推理中的认知委派研究",
+      "id": "harmony-harness-multiobjective",
+      "title": "Harmony Harness: Multi-Objective Self-Evolution of Agent Harnesses",
+      "titleZh": "Harmony Harness：Agent Harness 的多目标自我演化",
       "type": "Preprint · arXiv",
       "status": "arXiv 预印本；尚未确认正式会议或期刊收录",
-      "authors": "Yoonsu Kim、Sean Kim、Kihoon Son、Saelyne Yang、Juho Kim",
-      "institution": "KAIST；Carnegie Mellon University；SkillBench",
-      "venue": "arXiv · cs.HC",
-      "published": "2026年10月5日",
-      "doi": "10.48550/arXiv.2610.06328（arXiv-issued DOI，待注册）",
-      "url": "https://arxiv.org/abs/2610.06328",
+      "authors": "Weichen Yu、Lesly Miculicich、Bhavana Dalvi Mishra、Jiefeng Chen、Shuo Li、Matt Fredrikson、Tomas Pfister、Long T. Le",
+      "institution": "Google Cloud AI Research；Google DeepMind；Carnegie Mellon University",
+      "venue": "arXiv · cs.AI",
+      "published": "2026年10月10日",
+      "doi": "10.48550/arXiv.2610.15150（arXiv-issued DOI，待注册）",
+      "url": "https://arxiv.org/abs/2610.15150",
       "code": "未确认",
       "topics": [
-        "Human-AI Interaction",
-        "AI UX",
-        "Cognitive Delegation",
-        "Knowledge Work",
-        "Human-Agent Interaction"
+        "Agent Harness",
+        "Harness Evolution",
+        "Multi-Objective Optimization",
+        "Runtime Security",
+        "Transferability"
       ],
-      "overview": "LLM 在执行任务时会自行补全用户未明确指定的中间工作，但用户不一定希望所有这些决定都自动交给 AI，也不希望逐步确认每一个动作。研究让 24 名用户完成创作、信息获取和建议三类知识工作，并在事后标注 992 条推理步骤与工具动作。参与者将 48.6% 的步骤视为 AI 主动接手，其中不少确实有帮助，但用户对关键决策和琐碎工作的参与偏好明显不同。研究据此构建认知工作、委派方式和期望参与协议三组分类体系。作者建议在一次任务内部支持多种委派协议，并使重要的 AI 主动决策可检查、可修改。关键词：Human-AI Interaction、Cognitive Delegation、User Agency、Knowledge Work、AI UX。",
-      "recommendation": "重点：它把委派从“整项任务交给 AI 还是自己做”的二元选择，细化为一次响应中的不同认知步骤。创新点：研究把用户对步骤主动性、重要程度、结果是否符合意图和期望参与方式联系起来，提供了 992 条步骤级标注。结论：产品不必要求用户审查每一步，但应为高影响、未明确委派的 AI 决策提供可见、可修改的介入点。"
+      "overview": "现有 Harness 自演化工作多以单一任务得分作为目标，并把整个 Harness 当作整体修改，容易让功能提升掩盖安全退化，也难以区分可迁移机制与特定环境的适配。Harmony Harness 将演化表述为功能与安全的多目标优化，利用分解式进化搜索保留 Pareto 前沿不同偏好的候选方案。它还将工具、技能和执行逻辑的修改因子化，分别演化通用机制与环境专属组件，并在推理时动态组合。作者在 SecRepoBench 与 BaxBench 上报告，相较强 Harness 演化基线，两项基准均取得超过 10% 的提升。当前验证聚焦于安全代码生成，论文也指出部署成本随真实 Docker 构建与漏洞利用评测而上升。关键词：Agent Harness、Multi-Objective Optimization、Harness Evolution、Runtime Security、Transferability。",
+      "recommendation": "重点：把 Harness 自演化中的功能与安全权衡显式化，而不是将安全仅当作功能分数中的隐含因素。创新点：结合 Pareto 分解式进化、通用/环境专属组件因子化，以及推理时的动态组合。结论：多目标和可组合的 Harness 演化有助于避免单一指标驱动的退化，但其在安全代码生成之外的迁移能力仍待验证。"
     },
     {
-      "id": "neuro-symbolic-agentic-rl-companionship",
-      "title": "Neuro-Symbolic Agentic Reinforcement Learning for Long-Term Original Character Companionship and Interaction",
-      "titleZh": "用于长期原创角色陪伴与交互的神经符号 Agent 强化学习",
-      "type": "Conference Paper · ACL 2026 Short Papers",
-      "status": "ACL 2026 Main Conference · Short Papers【顶会/顶刊收录：ACL 2026】",
-      "authors": "Zhenhan Huang",
-      "institution": "Neurobo AI",
-      "venue": "ACL 2026 · Short Papers",
-      "published": "2026年7月2–7日",
-      "doi": "10.18653/v1/2026.acl-short.44",
-      "url": "https://aclanthology.org/2026.acl-short.44/",
-      "code": "未确认",
+      "id": "harness-search",
+      "title": "Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination",
+      "titleZh": "Harness-Search：通过多 Agent 协作引导长程搜索",
+      "type": "Preprint · arXiv",
+      "status": "预印本；论文标注 Under review，尚未确认正式会议或期刊收录",
+      "authors": "Shanyong Wang、Zhenwen Ji、Lei Jin、Yining Zhao、Yicheng Qian、Chengqiang Lu、Yi Wu、Yao Hu、Lizhen Cui、Yanyu Xu",
+      "institution": "小红书；山东大学（Joint SDU-NTU Centre for Artificial Intelligence Research）；University of Illinois Urbana-Champaign",
+      "venue": "arXiv · cs.CL",
+      "published": "2026年10月4日",
+      "doi": "未确认",
+      "url": "https://arxiv.org/abs/2610.05382",
+      "code": "https://github.com/SwimmingWang/Harness-Search",
       "topics": [
-        "Human-Agent Interaction",
-        "Agent Memory",
-        "Long-Term Personalization",
-        "Agentic RL",
-        "Companion Agents"
+        "Agent Harness",
+        "Long-Horizon Search",
+        "Multi-Agent Coordination",
+        "Evidence Curation",
+        "Verification"
       ],
-      "overview": "长期角色陪伴 Agent 不仅要维持人设，还需要在多轮交互中决定何时检索或保存记忆、何时调用其他模块，以及如何应对不断变化的用户偏好。论文提出 NSARL，将陪伴交互形式化为部分可观测马尔可夫决策过程，并把系统拆成 Router、Memory 和 Persona 三个子策略，在图约束的工作流中用可验证反馈进行强化学习。实验使用 600 条交互样本，其中 500 条训练、100 条测试。初步结果显示，NSARL 的路由结构得分为 0.619，高于基础模型的 0.261，记忆动作准确率也有所提升；但策略倾向于过度路由和偏向保存记忆，且原始数据因隐私和专有约束未公开。作者建议将 RL 模块用于逻辑与状态控制，将监督微调模块用于更自然的角色表达。关键词：Human-Agent Interaction、Companion Agents、Agent Memory、Neuro-Symbolic Systems、Reinforcement Learning。",
-      "recommendation": "重点：它把长期陪伴中的记忆管理、执行路由和角色表达视为不同的决策任务，而不只依赖一段静态人设 Prompt。创新点：确定性工作流约束与可训练子策略结合，并用闭环反馈优化多轮轨迹行为。结论：长期交互可能需要将可靠的状态控制与富有表现力的对话生成分开治理；不过当前结果仍属初步验证，数据规模和不可公开性限制了可复现性。"
+      "overview": "长程搜索中，单一策略既要决定下一步检索什么，又要管理哪些证据进入持久状态，还要判断是否已经足以回答，容易重复搜索、遗漏证据或过早结束。Harness-Search 将这三项职责分配给检索策略、记忆操作器和摘要审计器，并用 Propose–Commit–Audit 循环连接它们。记忆操作器负责验证并提交持久状态变更，审计器则在终止前检查证据的完整性、依据充分性与一致性。作者在七个长程搜索基准上报告，证据召回率相对各基准上最强 Harness 基线提高 4.60–27.92 个百分点，最终答案召回率提高 12.34–30.13 个百分点。论文仍处于预印本/审稿阶段，结果主要覆盖搜索与多跳问答任务。关键词：Long-Horizon Search、Agent Harness、Persistent Memory、Evidence Grounding、Multi-Agent Coordination。",
+      "recommendation": "重点：把搜索动作、持久证据提交和是否终止分成不同的控制权限，减少单一策略的局部错误传播。创新点：通过显式进度账本、受约束的记忆提交与独立的证据充分性审计形成闭环。结论：长程研究型 Agent 可以把“是否已经找到足够证据”作为可检查的控制步骤，而不是完全依赖主 Agent 自行判断。"
+    },
+    {
+      "id": "sage-skill-library",
+      "title": "Reinforcement Learning for Self-Improving Agent with Skill Library",
+      "titleZh": "通过强化学习实现带 Skill Library 的自我改进 Agent",
+      "type": "Conference Paper · ACL 2026 Main Conference · Long Paper",
+      "status": "ACL 2026 Main Conference · Long Papers【顶会/顶刊收录：ACL 2026】",
+      "authors": "Jiongxiao Wang、Qiaojing Yan、Yawei Wang、Yijun Tian、Soumya Smruti Mishra、Zhichao Xu、Megha Gandhi、Panpan Xu、Lin Lee Cheong",
+      "institution": "University of Wisconsin–Madison；AWS Agentic AI",
+      "venue": "ACL 2026 · Main Conference · Long Papers",
+      "published": "2026年7月2–7日",
+      "doi": "10.18653/v1/2026.acl-long.69",
+      "url": "https://aclanthology.org/2026.acl-long.69/",
+      "code": "https://github.com/amazon-science/SAGE",
+      "topics": [
+        "Agent Skills",
+        "Agentic RL",
+        "Self-Improving Agents",
+        "Skill Library",
+        "Tool Use"
+      ],
+      "overview": "许多 Agent 的技能库依赖提示词来生成与调用技能，技能质量和跨任务复用因而受模型指令遵循能力限制。SAGE（Skill Augmented GRPO for self-Evolution）把相似任务串成 Sequential Rollout，使前一个任务生成的可执行函数技能立即进入技能库，并可供后续任务调用。它还引入 Skill-integrated Reward，在常规任务结果奖励之外，奖励成功的技能生成与复用，从而把技能质量纳入强化学习信号。AppWorld 实验显示，在经过专家轨迹监督微调的模型上，SAGE 相较对应强化学习基线将 Scenario Goal Completion 提高 8.9 个百分点，交互步数减少 26%，生成 Token 减少 59%。该方法重点面向通过 API 与环境交互的工具型 Agent，任务链长度与训练成本之间仍需权衡。关键词：Agent Skills、Skill Library、Agentic Reinforcement Learning、Sequential Rollout、Tool Use。",
+      "recommendation": "重点：把可执行技能的形成与后续复用放进同一个跨任务学习过程，而不是等任务结束后再被动总结经验。创新点：Sequential Rollout 让后续任务的技能使用反馈回到前序技能生成，并通过 Skill-integrated Reward 提供额外训练信号。结论：技能库可成为 Agent 跨任务积累可执行能力的机制，但当前验证集中于 AppWorld 与 API 工具任务，仍需检查在其他环境中的泛化。"
     }
   ],
   "signal": {
-    "title": "Agent 交互从统一的自主等级走向步骤级委派与分模块控制",
-    "body": "认知委派研究显示，用户对 AI 主动性的接受程度取决于具体工作及其后果，而不是简单地偏好全自动或逐步确认。长期陪伴 Agent 的研究则把路由、记忆和表达拆分为可独立训练的模块。两者共同提示：更可控的 Agent 需要让重要决策可见、让参与协议随步骤变化，并将可靠的状态控制与自然的表达适当分离。",
-    "note": "这是基于本期两篇论文的编辑判断，不代表论文作者的共同结论。"
+    "title": "Harness 正从单一成功率优化走向多目标治理与证据生命周期控制",
+    "body": "Harmony Harness 将功能与安全放进同一演化过程，并区分通用能力和环境专属适配；Harness-Search 则把长程搜索中的检索、持久状态提交和终止判断拆成独立控制权限。ACL 2026 的 SAGE 展示了另一条经验积累路径：把可执行技能的生成和复用直接纳入强化学习。三者共同指向更可治理的 Agent 基础设施：不仅要让任务完成，还要控制能力如何演化、证据如何进入状态，以及经验如何跨任务复用。",
+    "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
   }
 }
