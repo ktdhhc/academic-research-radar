@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-17",
+  "report": {
+    "schemaVersion": 1,
+    "date": "2026-10-17",
+    "title": "Harness 演化开始兼顾安全与迁移，长程搜索拆分证据提交与终止审计",
+    "subtitle": "两项最新预印本分别研究多目标 Harness 自演化与长程搜索的证据治理；ACL 2026 的 SAGE 则展示如何把跨任务复用的 Skill Library 纳入强化学习。",
+    "summary": [
+      {
+        "paperId": "harmony-harness-multiobjective",
+        "headline": "Harmony Harness: Multi-Objective Self-Evolution of Agent Harnesses",
+        "takeaway": "推荐指数 ★★★★★★☆。Harmony Harness 将 Harness 演化建模为功能与安全的多目标优化，并把通用机制和环境专属适配分开演化、在运行时动态组合；在 SecRepoBench 与 BaxBench 上，相比强 Harness 演化基线报告了超过 10% 的提升。"
+      },
+      {
+        "paperId": "harness-search",
+        "headline": "Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination",
+        "takeaway": "推荐指数 ★★★★★☆☆。该预印本将长程搜索拆为检索提案、持久证据管理和终止审计三个权限受限的角色，通过 Propose–Commit–Audit 循环减少搜索停滞与证据遗漏；七个基准上的证据召回率和最终答案召回率均有提升。"
+      },
+      {
+        "paperId": "sage-skill-library",
+        "headline": "【顶会/顶刊收录：ACL 2026】 Reinforcement Learning for Self-Improving Agent with Skill Library",
+        "takeaway": "推荐指数 ★★★★★☆☆。ACL 2026 长论文 SAGE 将相似任务串成 Sequential Rollout，让前一任务生成的可执行 Skill 在后续任务中被复用，并用 Skill-integrated Reward 同时优化任务完成与技能生成/使用；AppWorld 实验报告场景目标完成率提高 8.9 个百分点，同时交互步数减少 26%、生成 Token 减少 59%。"
+      }
+    ],
+    "papers": [
+      {
+        "id": "harmony-harness-multiobjective",
+        "title": "Harmony Harness: Multi-Objective Self-Evolution of Agent Harnesses",
+        "titleZh": "Harmony Harness：Agent Harness 的多目标自我演化",
+        "type": "Preprint · arXiv",
+        "status": "arXiv 预印本；尚未确认正式会议或期刊收录",
+        "authors": "Weichen Yu、Lesly Miculicich、Bhavana Dalvi Mishra、Jiefeng Chen、Shuo Li、Matt Fredrikson、Tomas Pfister、Long T. Le",
+        "institution": "Google Cloud AI Research；Google DeepMind；Carnegie Mellon University",
+        "venue": "arXiv · cs.AI",
+        "published": "2026年10月10日",
+        "doi": "10.48550/arXiv.2610.15150（arXiv-issued DOI，待注册）",
+        "url": "https://arxiv.org/abs/2610.15150",
+        "code": "未确认",
+        "topics": [
+          "Agent Harness",
+          "Harness Evolution",
+          "Multi-Objective Optimization",
+          "Runtime Security",
+          "Transferability"
+        ],
+        "overview": "现有 Harness 自演化工作多以单一任务得分作为目标，并把整个 Harness 当作整体修改，容易让功能提升掩盖安全退化，也难以区分可迁移机制与特定环境的适配。Harmony Harness 将演化表述为功能与安全的多目标优化，利用分解式进化搜索保留 Pareto 前沿不同偏好的候选方案。它还将工具、技能和执行逻辑的修改因子化，分别演化通用机制与环境专属组件，并在推理时动态组合。作者在 SecRepoBench 与 BaxBench 上报告，相较强 Harness 演化基线，两项基准均取得超过 10% 的提升。当前验证聚焦于安全代码生成，论文也指出部署成本随真实 Docker 构建与漏洞利用评测而上升。关键词：Agent Harness、Multi-Objective Optimization、Harness Evolution、Runtime Security、Transferability。",
+        "recommendation": "重点：把 Harness 自演化中的功能与安全权衡显式化，而不是将安全仅当作功能分数中的隐含因素。创新点：结合 Pareto 分解式进化、通用/环境专属组件因子化，以及推理时的动态组合。结论：多目标和可组合的 Harness 演化有助于避免单一指标驱动的退化，但其在安全代码生成之外的迁移能力仍待验证。"
+      },
+      {
+        "id": "harness-search",
+        "title": "Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination",
+        "titleZh": "Harness-Search：通过多 Agent 协作引导长程搜索",
+        "type": "Preprint · arXiv",
+        "status": "预印本；论文标注 Under review，尚未确认正式会议或期刊收录",
+        "authors": "Shanyong Wang、Zhenwen Ji、Lei Jin、Yining Zhao、Yicheng Qian、Chengqiang Lu、Yi Wu、Yao Hu、Lizhen Cui、Yanyu Xu",
+        "institution": "小红书；山东大学（Joint SDU-NTU Centre for Artificial Intelligence Research）；University of Illinois Urbana-Champaign",
+        "venue": "arXiv · cs.CL",
+        "published": "2026年10月4日",
+        "doi": "未确认",
+        "url": "https://arxiv.org/abs/2610.05382",
+        "code": "https://github.com/SwimmingWang/Harness-Search",
+        "topics": [
+          "Agent Harness",
+          "Long-Horizon Search",
+          "Multi-Agent Coordination",
+          "Evidence Curation",
+          "Verification"
+        ],
+        "overview": "长程搜索中，单一策略既要决定下一步检索什么，又要管理哪些证据进入持久状态，还要判断是否已经足以回答，容易重复搜索、遗漏证据或过早结束。Harness-Search 将这三项职责分配给检索策略、记忆操作器和摘要审计器，并用 Propose–Commit–Audit 循环连接它们。记忆操作器负责验证并提交持久状态变更，审计器则在终止前检查证据的完整性、依据充分性与一致性。作者在七个长程搜索基准上报告，证据召回率相对各基准上最强 Harness 基线提高 4.60–27.92 个百分点，最终答案召回率提高 12.34–30.13 个百分点。论文仍处于预印本/审稿阶段，结果主要覆盖搜索与多跳问答任务。关键词：Long-Horizon Search、Agent Harness、Persistent Memory、Evidence Grounding、Multi-Agent Coordination。",
+        "recommendation": "重点：把搜索动作、持久证据提交和是否终止分成不同的控制权限，减少单一策略的局部错误传播。创新点：通过显式进度账本、受约束的记忆提交与独立的证据充分性审计形成闭环。结论：长程研究型 Agent 可以把“是否已经找到足够证据”作为可检查的控制步骤，而不是完全依赖主 Agent 自行判断。"
+      },
+      {
+        "id": "sage-skill-library",
+        "title": "Reinforcement Learning for Self-Improving Agent with Skill Library",
+        "titleZh": "通过强化学习实现带 Skill Library 的自我改进 Agent",
+        "type": "Conference Paper · ACL 2026 Main Conference · Long Paper",
+        "status": "ACL 2026 Main Conference · Long Papers【顶会/顶刊收录：ACL 2026】",
+        "authors": "Jiongxiao Wang、Qiaojing Yan、Yawei Wang、Yijun Tian、Soumya Smruti Mishra、Zhichao Xu、Megha Gandhi、Panpan Xu、Lin Lee Cheong",
+        "institution": "University of Wisconsin–Madison；AWS Agentic AI",
+        "venue": "ACL 2026 · Main Conference · Long Papers",
+        "published": "2026年7月2–7日",
+        "doi": "10.18653/v1/2026.acl-long.69",
+        "url": "https://aclanthology.org/2026.acl-long.69/",
+        "code": "https://github.com/amazon-science/SAGE",
+        "topics": [
+          "Agent Skills",
+          "Agentic RL",
+          "Self-Improving Agents",
+          "Skill Library",
+          "Tool Use"
+        ],
+        "overview": "许多 Agent 的技能库依赖提示词来生成与调用技能，技能质量和跨任务复用因而受模型指令遵循能力限制。SAGE（Skill Augmented GRPO for self-Evolution）把相似任务串成 Sequential Rollout，使前一个任务生成的可执行函数技能立即进入技能库，并可供后续任务调用。它还引入 Skill-integrated Reward，在常规任务结果奖励之外，奖励成功的技能生成与复用，从而把技能质量纳入强化学习信号。AppWorld 实验显示，在经过专家轨迹监督微调的模型上，SAGE 相较对应强化学习基线将 Scenario Goal Completion 提高 8.9 个百分点，交互步数减少 26%，生成 Token 减少 59%。该方法重点面向通过 API 与环境交互的工具型 Agent，任务链长度与训练成本之间仍需权衡。关键词：Agent Skills、Skill Library、Agentic Reinforcement Learning、Sequential Rollout、Tool Use。",
+        "recommendation": "重点：把可执行技能的形成与后续复用放进同一个跨任务学习过程，而不是等任务结束后再被动总结经验。创新点：Sequential Rollout 让后续任务的技能使用反馈回到前序技能生成，并通过 Skill-integrated Reward 提供额外训练信号。结论：技能库可成为 Agent 跨任务积累可执行能力的机制，但当前验证集中于 AppWorld 与 API 工具任务，仍需检查在其他环境中的泛化。"
+      }
+    ],
+    "signal": {
+      "title": "Harness 正从单一成功率优化走向多目标治理与证据生命周期控制",
+      "body": "Harmony Harness 将功能与安全放进同一演化过程，并区分通用能力和环境专属适配；Harness-Search 则把长程搜索中的检索、持久状态提交和终止判断拆成独立控制权限。ACL 2026 的 SAGE 展示了另一条经验积累路径：把可执行技能的生成和复用直接纳入强化学习。三者共同指向更可治理的 Agent 基础设施：不仅要让任务完成，还要控制能力如何演化、证据如何进入状态，以及经验如何跨任务复用。",
+      "note": "这是基于本期三篇论文的编辑判断，不代表论文作者的共同结论。"
+    }
+  },
+  "indexEntry": {
+    "date": "2026-10-17",
+    "shortTitle": "Harness 演化兼顾安全与迁移，长程搜索拆分证据提交与终止审计",
+    "count": 3,
+    "topics": [
+      "Agent Harness",
+      "Harness Evolution",
+      "Long-Horizon Search",
+      "Agent Skills",
+      "Agentic RL"
+    ],
+    "path": "data/reports/2026-10-17.json"
+  },
+  "ratings": {
+    "comem": 5,
+    "toolscope": 4,
+    "appworld-ul": 5,
+    "agentic-memory": 5,
+    "os-symphony": 4,
+    "dream": 2,
+    "scroll-context-environment": 5,
+    "prime-agent": 3,
+    "pearl": 4,
+    "same-model-different-harness": 3,
+    "harness-if": 3,
+    "personalalign": 4,
+    "memoharness": 3,
+    "genai-workplace-adoption": 5,
+    "ui-copilot": 4,
+    "longhorizon-harness": 4,
+    "swe-rpg": 3,
+    "magnet": 4,
+    "sidekick": 6,
+    "proaide": 4,
+    "genai-critical-thinking": 7,
+    "controllable-memory-usage": 5,
+    "agent-safety-runtime-contract": 2,
+    "human-ai-coordination-zones": 2,
+    "stagedworkspace": 3,
+    "magma-memory": 3,
+    "workplace-agent-ux-principles": 1,
+    "hela-mem": 4,
+    "harness-the-memory": 4,
+    "modeling-human-interaction-web-agents": 4,
+    "mem2actbench": 5,
+    "task-aware-harness-provisioning": 4,
+    "ai-agents-push-humans-out-of-loop": 3,
+    "apex-mem": 4,
+    "harnesslens": 4,
+    "agents-reshape-knowledge-work": 6,
+    "lightmem": 4,
+    "openjiuwen": 3,
+    "confidence-dichotomy": 6,
+    "agent-lightning-v1": 4,
+    "proactive-thought-partners-writing": 4,
+    "hypermem": 4,
+    "delegating-or-doing": 4,
+    "ai-agents-consensus": 3,
+    "harnessdev": 3,
+    "tahi": 4,
+    "world-model-foresight": 5,
+    "when-should-users-check": 6,
+    "jit-agent": 4,
+    "scanning-the-harness": 3,
+    "task-model-induction": 6,
+    "agentlogs": 4,
+    "value-of-information-human-agent": 6,
+    "recreate": 5,
+    "inquiremobile": 5,
+    "karl-agent": 5,
+    "agencybench": 6,
+    "supo-context-compression": 7,
+    "posterforest": 5,
+    "doubleagents": 5,
+    "spreadsheetagent": 5,
+    "harness-zero": 4,
+    "context-privilege-escalation": 6,
+    "agentic-rubrics": 5,
+    "harness-as-language-jaz": 4,
+    "agentask": 5,
+    "trace-tampering-agents": 6,
+    "safemcp": 5,
+    "workworlds": 4,
+    "ocr-memory": 5,
+    "rrsi": 7,
+    "gam": 5,
+    "intentcap": 6,
+    "proactiveeval": 5,
+    "interaction-augmented-instruction": 6,
+    "human-human-ai-triadic-programming": 5,
+    "cognitive-delegation-llm-reasoning": 5,
+    "neuro-symbolic-agentic-rl-companionship": 4,
+    "harmony-harness-multiobjective": 6,
+    "harness-search": 5,
+    "sage-skill-library": 5
+  },
+  "pdfs": [
+    {
+      "title": "Harmony Harness: Multi-Objective Self-Evolution of Agent Harnesses",
+      "pdfUrl": "https://arxiv.org/pdf/2610.15150",
+      "path": "papers/2026-10-17/harmony-harness.pdf"
+    },
+    {
+      "title": "Harness-Search: Guiding Long-Horizon Search through Multi-Agent Coordination",
+      "pdfUrl": "https://arxiv.org/pdf/2610.05382",
+      "path": "papers/2026-10-17/harness-search.pdf"
+    },
+    {
+      "title": "Reinforcement Learning for Self-Improving Agent with Skill Library",
+      "pdfUrl": "https://aclanthology.org/2026.acl-long.69.pdf",
+      "path": "papers/2026-10-17/sage-skill-library.pdf"
+    }
+  ]
+}
